@@ -1,0 +1,1627 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		FA4F23AD2209331B00AB64C2 /* AJRInterfaceFoundation All */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = FA4F23AE2209331B00AB64C2 /* Build configuration list for PBXAggregateTarget "AJRInterfaceFoundation All" */;
+			buildPhases = (
+			);
+			dependencies = (
+				FA4F23B22209332800AB64C2 /* PBXTargetDependency */,
+				FA4F23B42209332800AB64C2 /* PBXTargetDependency */,
+				FA4F23B62209332800AB64C2 /* PBXTargetDependency */,
+				FA4F23B82209332800AB64C2 /* PBXTargetDependency */,
+			);
+			name = "AJRInterfaceFoundation All";
+			productName = "AJRInterfaceFoundation All";
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		FA07C898220EB8AE0077A0B5 /* AJRColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA07C897220EB8AE0077A0B5 /* AJRColor.swift */; };
+		FA07C899220EB8AE0077A0B5 /* AJRColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA07C897220EB8AE0077A0B5 /* AJRColor.swift */; };
+		FA07C89A220EB8AE0077A0B5 /* AJRColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA07C897220EB8AE0077A0B5 /* AJRColor.swift */; };
+		FA07C89B220EB8AE0077A0B5 /* AJRColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA07C897220EB8AE0077A0B5 /* AJRColor.swift */; };
+		FA07C89F220EB9250077A0B5 /* AJRColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA07C89E220EB9250077A0B5 /* AJRColorView.swift */; };
+		FA07C8A0220EB9250077A0B5 /* AJRColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA07C89E220EB9250077A0B5 /* AJRColorView.swift */; };
+		FA07C8A1220EB9250077A0B5 /* AJRColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA07C89E220EB9250077A0B5 /* AJRColorView.swift */; };
+		FA07C8A2220EB9250077A0B5 /* AJRColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA07C89E220EB9250077A0B5 /* AJRColorView.swift */; };
+		FA07C8A7220EBB050077A0B5 /* AJRView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA07C8A6220EBB050077A0B5 /* AJRView.swift */; };
+		FA07C8A8220EBB050077A0B5 /* AJRView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA07C8A6220EBB050077A0B5 /* AJRView.swift */; };
+		FA07C8A9220EBB050077A0B5 /* AJRView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA07C8A6220EBB050077A0B5 /* AJRView.swift */; };
+		FA07C8AA220EBB050077A0B5 /* AJRView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA07C8A6220EBB050077A0B5 /* AJRView.swift */; };
+		FA07C8AD220EBB4B0077A0B5 /* AJRXView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA07C8AC220EBB4B0077A0B5 /* AJRXView.swift */; };
+		FA07C8AE220EBB4B0077A0B5 /* AJRXView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA07C8AC220EBB4B0077A0B5 /* AJRXView.swift */; };
+		FA07C8AF220EBB4B0077A0B5 /* AJRXView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA07C8AC220EBB4B0077A0B5 /* AJRXView.swift */; };
+		FA07C8B0220EBB4B0077A0B5 /* AJRXView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA07C8AC220EBB4B0077A0B5 /* AJRXView.swift */; };
+		FA07C8B2220EBBBB0077A0B5 /* AJRFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA07C8B1220EBBBB0077A0B5 /* AJRFont.swift */; };
+		FA07C8B3220EBBBB0077A0B5 /* AJRFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA07C8B1220EBBBB0077A0B5 /* AJRFont.swift */; };
+		FA07C8B4220EBBBB0077A0B5 /* AJRFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA07C8B1220EBBBB0077A0B5 /* AJRFont.swift */; };
+		FA07C8B5220EBBBB0077A0B5 /* AJRFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA07C8B1220EBBBB0077A0B5 /* AJRFont.swift */; };
+		FA07C8B9220FB18F0077A0B5 /* AJRGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA07C8B8220FB18F0077A0B5 /* AJRGradient.swift */; };
+		FA07C8BA220FB18F0077A0B5 /* AJRGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA07C8B8220FB18F0077A0B5 /* AJRGradient.swift */; };
+		FA07C8BB220FB18F0077A0B5 /* AJRGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA07C8B8220FB18F0077A0B5 /* AJRGradient.swift */; };
+		FA07C8BC220FB18F0077A0B5 /* AJRGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA07C8B8220FB18F0077A0B5 /* AJRGradient.swift */; };
+		FA08612022C842760021CCC5 /* AJROverlayTextMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA08611F22C842760021CCC5 /* AJROverlayTextMessageView.swift */; };
+		FA08612122C842760021CCC5 /* AJROverlayTextMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA08611F22C842760021CCC5 /* AJROverlayTextMessageView.swift */; };
+		FA08612222C842760021CCC5 /* AJROverlayTextMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA08611F22C842760021CCC5 /* AJROverlayTextMessageView.swift */; };
+		FA08612322C842760021CCC5 /* AJROverlayTextMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA08611F22C842760021CCC5 /* AJROverlayTextMessageView.swift */; };
+		FA08612622C93ADF0021CCC5 /* AJRTextLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA08612522C93ADF0021CCC5 /* AJRTextLayer.swift */; };
+		FA08612722C93ADF0021CCC5 /* AJRTextLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA08612522C93ADF0021CCC5 /* AJRTextLayer.swift */; };
+		FA08612822C93ADF0021CCC5 /* AJRTextLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA08612522C93ADF0021CCC5 /* AJRTextLayer.swift */; };
+		FA08612922C93ADF0021CCC5 /* AJRTextLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA08612522C93ADF0021CCC5 /* AJRTextLayer.swift */; };
+		FA08612B22C93C190021CCC5 /* AJROverlayTextMessageLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA08612A22C93C190021CCC5 /* AJROverlayTextMessageLayer.swift */; };
+		FA08612C22C93C190021CCC5 /* AJROverlayTextMessageLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA08612A22C93C190021CCC5 /* AJROverlayTextMessageLayer.swift */; };
+		FA08612D22C93C190021CCC5 /* AJROverlayTextMessageLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA08612A22C93C190021CCC5 /* AJROverlayTextMessageLayer.swift */; };
+		FA08612E22C93C190021CCC5 /* AJROverlayTextMessageLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA08612A22C93C190021CCC5 /* AJROverlayTextMessageLayer.swift */; };
+		FA10398B225D89BA005B0D3B /* NSAttributedStringAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10398A225D89BA005B0D3B /* NSAttributedStringAdditions.swift */; };
+		FA10398C225D89BA005B0D3B /* NSAttributedStringAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10398A225D89BA005B0D3B /* NSAttributedStringAdditions.swift */; };
+		FA10398D225D89BA005B0D3B /* NSAttributedStringAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10398A225D89BA005B0D3B /* NSAttributedStringAdditions.swift */; };
+		FA10398E225D89BA005B0D3B /* NSAttributedStringAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10398A225D89BA005B0D3B /* NSAttributedStringAdditions.swift */; };
+		FA10399C225EB2B6005B0D3B /* NSLayoutConstraint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10399B225EB2B6005B0D3B /* NSLayoutConstraint+Extensions.swift */; };
+		FA10399D225EB2B6005B0D3B /* NSLayoutConstraint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10399B225EB2B6005B0D3B /* NSLayoutConstraint+Extensions.swift */; };
+		FA10399E225EB2B6005B0D3B /* NSLayoutConstraint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10399B225EB2B6005B0D3B /* NSLayoutConstraint+Extensions.swift */; };
+		FA10399F225EB2B6005B0D3B /* NSLayoutConstraint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10399B225EB2B6005B0D3B /* NSLayoutConstraint+Extensions.swift */; };
+		FA42F7A020D0841F001AF25E /* AJRColorUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = FA42F79F20D0841F001AF25E /* AJRColorUtilities.m */; };
+		FA42F7A220D08432001AF25E /* AJRColorUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = FA42F7A120D08429001AF25E /* AJRColorUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA42F7A420D0C3E7001AF25E /* AJRFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA42F7A320D0C3E7001AF25E /* AJRFoundation.framework */; };
+		FA42F7A620D0C495001AF25E /* AJRFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA42F7A320D0C3E7001AF25E /* AJRFoundation.framework */; };
+		FA42F7AA20D0E557001AF25E /* AJRImageUtilitiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FA42F7A920D0E557001AF25E /* AJRImageUtilitiesTests.m */; };
+		FA4F230D220930DB00AB64C2 /* AJRImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4F230C220930DB00AB64C2 /* AJRImage.swift */; };
+		FA4F23102209323900AB64C2 /* AJRBezierPath+AJRIntersection.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5EFBE620E1C603006C48B0 /* AJRBezierPath+AJRIntersection.m */; };
+		FA4F23112209323900AB64C2 /* AJRColorUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = FA42F79F20D0841F001AF25E /* AJRColorUtilities.m */; };
+		FA4F23122209323900AB64C2 /* AJRBezierCurves.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5EFC0520E1C6AF006C48B0 /* AJRBezierCurves.m */; };
+		FA4F23132209323900AB64C2 /* AJRInset.m in Sources */ = {isa = PBXBuildFile; fileRef = FA59099B217E96420007D278 /* AJRInset.m */; };
+		FA4F23142209323900AB64C2 /* AJRBezierPath+AJRExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5EFBE520E1C603006C48B0 /* AJRBezierPath+AJRExtensions.m */; };
+		FA4F23152209323900AB64C2 /* AJRVertex.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5EFBF320E1C603006C48B0 /* AJRVertex.m */; };
+		FA4F23162209323900AB64C2 /* AJRIntersection.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5EFBED20E1C603006C48B0 /* AJRIntersection.m */; };
+		FA4F23172209323900AB64C2 /* NSValue+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5EFC1620E1C761006C48B0 /* NSValue+Extensions.m */; };
+		FA4F23182209323900AB64C2 /* AJRPathAnalyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5EFBEF20E1C603006C48B0 /* AJRPathAnalyzer.m */; };
+		FA4F23192209323900AB64C2 /* AJRTrigonometry.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5EFC0920E1C6AF006C48B0 /* AJRTrigonometry.m */; };
+		FA4F231A2209323900AB64C2 /* AJRImageUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4FE53420AD46AB0008257B /* AJRImageUtilities.m */; };
+		FA4F231B2209323900AB64C2 /* AJRPathEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5EFC1920E1C7E9006C48B0 /* AJRPathEnumerator.m */; };
+		FA4F231C2209323900AB64C2 /* AJRImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4F230C220930DB00AB64C2 /* AJRImage.swift */; };
+		FA4F231D2209323900AB64C2 /* AJRXMLCoder+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5EFC1D20E1C8BE006C48B0 /* AJRXMLCoder+Extensions.m */; };
+		FA4F231E2209323900AB64C2 /* AJRPolygon.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5EFBF120E1C603006C48B0 /* AJRPolygon.m */; };
+		FA4F231F2209323900AB64C2 /* AJRGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5EFC0720E1C6AF006C48B0 /* AJRGeometry.m */; };
+		FA4F23202209323900AB64C2 /* AJRBezierPath.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5EFBE820E1C603006C48B0 /* AJRBezierPath.m */; };
+		FA4F23212209323900AB64C2 /* AJRVector.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5EFC0B20E1C6AF006C48B0 /* AJRVector.m */; };
+		FA4F23222209323900AB64C2 /* AJRBezierPathFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5EFBEA20E1C603006C48B0 /* AJRBezierPathFunctions.m */; };
+		FA4F23232209323900AB64C2 /* CATransaction+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = FA89258D21FA94D000246D46 /* CATransaction+Extensions.m */; };
+		FA4F23242209323900AB64C2 /* AJRGraphicsUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5EFC2220E1D093006C48B0 /* AJRGraphicsUtilities.m */; };
+		FA4F23262209323900AB64C2 /* AJRFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA42F7A320D0C3E7001AF25E /* AJRFoundation.framework */; };
+		FA4F23272209323900AB64C2 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA4FE53C20AD47250008257B /* ImageIO.framework */; };
+		FA4F23282209323900AB64C2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA4FE53A20AD471F0008257B /* CoreGraphics.framework */; };
+		FA4F232A2209323900AB64C2 /* AJRGeometry.h in Headers */ = {isa = PBXBuildFile; fileRef = FA5EFC0620E1C6AF006C48B0 /* AJRGeometry.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA4F232B2209323900AB64C2 /* AJRXMLCoder+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = FA5EFC1E20E1C8BE006C48B0 /* AJRXMLCoder+Extensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA4F232C2209323900AB64C2 /* AJRVector.h in Headers */ = {isa = PBXBuildFile; fileRef = FA5EFC0A20E1C6AF006C48B0 /* AJRVector.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA4F232D2209323900AB64C2 /* AJRBezierPath.h in Headers */ = {isa = PBXBuildFile; fileRef = FA5EFBE720E1C603006C48B0 /* AJRBezierPath.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA4F232E2209323900AB64C2 /* AJRGraphicsUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = FA5EFC2120E1D093006C48B0 /* AJRGraphicsUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA4F232F2209323900AB64C2 /* AJRColorUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = FA42F7A120D08429001AF25E /* AJRColorUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA4F23302209323900AB64C2 /* AJRInterfaceFoundation.h in Headers */ = {isa = PBXBuildFile; fileRef = FA4FE51320AD46690008257B /* AJRInterfaceFoundation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA4F23312209323900AB64C2 /* AJRPathEnumerator.h in Headers */ = {isa = PBXBuildFile; fileRef = FA5EFC1A20E1C7E9006C48B0 /* AJRPathEnumerator.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA4F23322209323900AB64C2 /* AJRInset.h in Headers */ = {isa = PBXBuildFile; fileRef = FA59099A217E96420007D278 /* AJRInset.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA4F23332209323900AB64C2 /* AJRBezierPathP.h in Headers */ = {isa = PBXBuildFile; fileRef = FA5EFBEB20E1C603006C48B0 /* AJRBezierPathP.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA4F23342209323900AB64C2 /* AJRBezierPathFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = FA5EFBE920E1C603006C48B0 /* AJRBezierPathFunctions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA4F23352209323900AB64C2 /* AJRPolygon.h in Headers */ = {isa = PBXBuildFile; fileRef = FA5EFBF020E1C603006C48B0 /* AJRPolygon.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA4F23362209323900AB64C2 /* AJRBezierCurves.h in Headers */ = {isa = PBXBuildFile; fileRef = FA5EFC0420E1C6AF006C48B0 /* AJRBezierCurves.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA4F23372209323900AB64C2 /* CATransaction+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = FA89258C21FA94D000246D46 /* CATransaction+Extensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA4F23382209323900AB64C2 /* AJRImageUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = FA4FE53320AD46AB0008257B /* AJRImageUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA4F23392209323900AB64C2 /* AJRIntersection.h in Headers */ = {isa = PBXBuildFile; fileRef = FA5EFBEC20E1C603006C48B0 /* AJRIntersection.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA4F233A2209323900AB64C2 /* NSValue+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = FA5EFC1520E1C761006C48B0 /* NSValue+Extensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA4F233B2209323900AB64C2 /* AJRVertex.h in Headers */ = {isa = PBXBuildFile; fileRef = FA5EFBF220E1C603006C48B0 /* AJRVertex.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA4F233C2209323900AB64C2 /* AJRTrigonometry.h in Headers */ = {isa = PBXBuildFile; fileRef = FA5EFC0820E1C6AF006C48B0 /* AJRTrigonometry.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA4F233D2209323900AB64C2 /* AJRPathAnalyzer.h in Headers */ = {isa = PBXBuildFile; fileRef = FA5EFBEE20E1C603006C48B0 /* AJRPathAnalyzer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA4F23452209329300AB64C2 /* AJRBezierPath+AJRIntersection.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5EFBE620E1C603006C48B0 /* AJRBezierPath+AJRIntersection.m */; };
+		FA4F23462209329300AB64C2 /* AJRColorUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = FA42F79F20D0841F001AF25E /* AJRColorUtilities.m */; };
+		FA4F23472209329300AB64C2 /* AJRBezierCurves.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5EFC0520E1C6AF006C48B0 /* AJRBezierCurves.m */; };
+		FA4F23482209329300AB64C2 /* AJRInset.m in Sources */ = {isa = PBXBuildFile; fileRef = FA59099B217E96420007D278 /* AJRInset.m */; };
+		FA4F23492209329300AB64C2 /* AJRBezierPath+AJRExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5EFBE520E1C603006C48B0 /* AJRBezierPath+AJRExtensions.m */; };
+		FA4F234A2209329300AB64C2 /* AJRVertex.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5EFBF320E1C603006C48B0 /* AJRVertex.m */; };
+		FA4F234B2209329300AB64C2 /* AJRIntersection.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5EFBED20E1C603006C48B0 /* AJRIntersection.m */; };
+		FA4F234C2209329300AB64C2 /* NSValue+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5EFC1620E1C761006C48B0 /* NSValue+Extensions.m */; };
+		FA4F234D2209329300AB64C2 /* AJRPathAnalyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5EFBEF20E1C603006C48B0 /* AJRPathAnalyzer.m */; };
+		FA4F234E2209329300AB64C2 /* AJRTrigonometry.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5EFC0920E1C6AF006C48B0 /* AJRTrigonometry.m */; };
+		FA4F234F2209329300AB64C2 /* AJRImageUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4FE53420AD46AB0008257B /* AJRImageUtilities.m */; };
+		FA4F23502209329300AB64C2 /* AJRPathEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5EFC1920E1C7E9006C48B0 /* AJRPathEnumerator.m */; };
+		FA4F23512209329300AB64C2 /* AJRImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4F230C220930DB00AB64C2 /* AJRImage.swift */; };
+		FA4F23522209329300AB64C2 /* AJRXMLCoder+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5EFC1D20E1C8BE006C48B0 /* AJRXMLCoder+Extensions.m */; };
+		FA4F23532209329300AB64C2 /* AJRPolygon.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5EFBF120E1C603006C48B0 /* AJRPolygon.m */; };
+		FA4F23542209329300AB64C2 /* AJRGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5EFC0720E1C6AF006C48B0 /* AJRGeometry.m */; };
+		FA4F23552209329300AB64C2 /* AJRBezierPath.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5EFBE820E1C603006C48B0 /* AJRBezierPath.m */; };
+		FA4F23562209329300AB64C2 /* AJRVector.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5EFC0B20E1C6AF006C48B0 /* AJRVector.m */; };
+		FA4F23572209329300AB64C2 /* AJRBezierPathFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5EFBEA20E1C603006C48B0 /* AJRBezierPathFunctions.m */; };
+		FA4F23582209329300AB64C2 /* CATransaction+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = FA89258D21FA94D000246D46 /* CATransaction+Extensions.m */; };
+		FA4F23592209329300AB64C2 /* AJRGraphicsUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5EFC2220E1D093006C48B0 /* AJRGraphicsUtilities.m */; };
+		FA4F235B2209329300AB64C2 /* AJRFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA42F7A320D0C3E7001AF25E /* AJRFoundation.framework */; };
+		FA4F235C2209329300AB64C2 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA4FE53C20AD47250008257B /* ImageIO.framework */; };
+		FA4F235D2209329300AB64C2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA4FE53A20AD471F0008257B /* CoreGraphics.framework */; };
+		FA4F235F2209329300AB64C2 /* AJRGeometry.h in Headers */ = {isa = PBXBuildFile; fileRef = FA5EFC0620E1C6AF006C48B0 /* AJRGeometry.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA4F23602209329300AB64C2 /* AJRXMLCoder+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = FA5EFC1E20E1C8BE006C48B0 /* AJRXMLCoder+Extensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA4F23612209329300AB64C2 /* AJRVector.h in Headers */ = {isa = PBXBuildFile; fileRef = FA5EFC0A20E1C6AF006C48B0 /* AJRVector.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA4F23622209329300AB64C2 /* AJRBezierPath.h in Headers */ = {isa = PBXBuildFile; fileRef = FA5EFBE720E1C603006C48B0 /* AJRBezierPath.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA4F23632209329300AB64C2 /* AJRGraphicsUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = FA5EFC2120E1D093006C48B0 /* AJRGraphicsUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA4F23642209329300AB64C2 /* AJRColorUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = FA42F7A120D08429001AF25E /* AJRColorUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA4F23652209329300AB64C2 /* AJRInterfaceFoundation.h in Headers */ = {isa = PBXBuildFile; fileRef = FA4FE51320AD46690008257B /* AJRInterfaceFoundation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA4F23662209329300AB64C2 /* AJRPathEnumerator.h in Headers */ = {isa = PBXBuildFile; fileRef = FA5EFC1A20E1C7E9006C48B0 /* AJRPathEnumerator.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA4F23672209329300AB64C2 /* AJRInset.h in Headers */ = {isa = PBXBuildFile; fileRef = FA59099A217E96420007D278 /* AJRInset.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA4F23682209329300AB64C2 /* AJRBezierPathP.h in Headers */ = {isa = PBXBuildFile; fileRef = FA5EFBEB20E1C603006C48B0 /* AJRBezierPathP.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA4F23692209329300AB64C2 /* AJRBezierPathFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = FA5EFBE920E1C603006C48B0 /* AJRBezierPathFunctions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA4F236A2209329300AB64C2 /* AJRPolygon.h in Headers */ = {isa = PBXBuildFile; fileRef = FA5EFBF020E1C603006C48B0 /* AJRPolygon.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA4F236B2209329300AB64C2 /* AJRBezierCurves.h in Headers */ = {isa = PBXBuildFile; fileRef = FA5EFC0420E1C6AF006C48B0 /* AJRBezierCurves.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA4F236C2209329300AB64C2 /* CATransaction+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = FA89258C21FA94D000246D46 /* CATransaction+Extensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA4F236D2209329300AB64C2 /* AJRImageUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = FA4FE53320AD46AB0008257B /* AJRImageUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA4F236E2209329300AB64C2 /* AJRIntersection.h in Headers */ = {isa = PBXBuildFile; fileRef = FA5EFBEC20E1C603006C48B0 /* AJRIntersection.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA4F236F2209329300AB64C2 /* NSValue+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = FA5EFC1520E1C761006C48B0 /* NSValue+Extensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA4F23702209329300AB64C2 /* AJRVertex.h in Headers */ = {isa = PBXBuildFile; fileRef = FA5EFBF220E1C603006C48B0 /* AJRVertex.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA4F23712209329300AB64C2 /* AJRTrigonometry.h in Headers */ = {isa = PBXBuildFile; fileRef = FA5EFC0820E1C6AF006C48B0 /* AJRTrigonometry.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA4F23722209329300AB64C2 /* AJRPathAnalyzer.h in Headers */ = {isa = PBXBuildFile; fileRef = FA5EFBEE20E1C603006C48B0 /* AJRPathAnalyzer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA4F237A220932B600AB64C2 /* AJRBezierPath+AJRIntersection.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5EFBE620E1C603006C48B0 /* AJRBezierPath+AJRIntersection.m */; };
+		FA4F237B220932B600AB64C2 /* AJRColorUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = FA42F79F20D0841F001AF25E /* AJRColorUtilities.m */; };
+		FA4F237C220932B600AB64C2 /* AJRBezierCurves.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5EFC0520E1C6AF006C48B0 /* AJRBezierCurves.m */; };
+		FA4F237D220932B600AB64C2 /* AJRInset.m in Sources */ = {isa = PBXBuildFile; fileRef = FA59099B217E96420007D278 /* AJRInset.m */; };
+		FA4F237E220932B600AB64C2 /* AJRBezierPath+AJRExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5EFBE520E1C603006C48B0 /* AJRBezierPath+AJRExtensions.m */; };
+		FA4F237F220932B600AB64C2 /* AJRVertex.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5EFBF320E1C603006C48B0 /* AJRVertex.m */; };
+		FA4F2380220932B600AB64C2 /* AJRIntersection.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5EFBED20E1C603006C48B0 /* AJRIntersection.m */; };
+		FA4F2381220932B600AB64C2 /* NSValue+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5EFC1620E1C761006C48B0 /* NSValue+Extensions.m */; };
+		FA4F2382220932B600AB64C2 /* AJRPathAnalyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5EFBEF20E1C603006C48B0 /* AJRPathAnalyzer.m */; };
+		FA4F2383220932B600AB64C2 /* AJRTrigonometry.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5EFC0920E1C6AF006C48B0 /* AJRTrigonometry.m */; };
+		FA4F2384220932B600AB64C2 /* AJRImageUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4FE53420AD46AB0008257B /* AJRImageUtilities.m */; };
+		FA4F2385220932B600AB64C2 /* AJRPathEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5EFC1920E1C7E9006C48B0 /* AJRPathEnumerator.m */; };
+		FA4F2386220932B600AB64C2 /* AJRImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4F230C220930DB00AB64C2 /* AJRImage.swift */; };
+		FA4F2387220932B600AB64C2 /* AJRXMLCoder+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5EFC1D20E1C8BE006C48B0 /* AJRXMLCoder+Extensions.m */; };
+		FA4F2388220932B600AB64C2 /* AJRPolygon.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5EFBF120E1C603006C48B0 /* AJRPolygon.m */; };
+		FA4F2389220932B600AB64C2 /* AJRGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5EFC0720E1C6AF006C48B0 /* AJRGeometry.m */; };
+		FA4F238A220932B600AB64C2 /* AJRBezierPath.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5EFBE820E1C603006C48B0 /* AJRBezierPath.m */; };
+		FA4F238B220932B600AB64C2 /* AJRVector.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5EFC0B20E1C6AF006C48B0 /* AJRVector.m */; };
+		FA4F238C220932B600AB64C2 /* AJRBezierPathFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5EFBEA20E1C603006C48B0 /* AJRBezierPathFunctions.m */; };
+		FA4F238D220932B600AB64C2 /* CATransaction+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = FA89258D21FA94D000246D46 /* CATransaction+Extensions.m */; };
+		FA4F238E220932B600AB64C2 /* AJRGraphicsUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5EFC2220E1D093006C48B0 /* AJRGraphicsUtilities.m */; };
+		FA4F2390220932B600AB64C2 /* AJRFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA42F7A320D0C3E7001AF25E /* AJRFoundation.framework */; };
+		FA4F2391220932B600AB64C2 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA4FE53C20AD47250008257B /* ImageIO.framework */; };
+		FA4F2392220932B600AB64C2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA4FE53A20AD471F0008257B /* CoreGraphics.framework */; };
+		FA4F2394220932B600AB64C2 /* AJRGeometry.h in Headers */ = {isa = PBXBuildFile; fileRef = FA5EFC0620E1C6AF006C48B0 /* AJRGeometry.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA4F2395220932B600AB64C2 /* AJRXMLCoder+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = FA5EFC1E20E1C8BE006C48B0 /* AJRXMLCoder+Extensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA4F2396220932B600AB64C2 /* AJRVector.h in Headers */ = {isa = PBXBuildFile; fileRef = FA5EFC0A20E1C6AF006C48B0 /* AJRVector.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA4F2397220932B600AB64C2 /* AJRBezierPath.h in Headers */ = {isa = PBXBuildFile; fileRef = FA5EFBE720E1C603006C48B0 /* AJRBezierPath.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA4F2398220932B600AB64C2 /* AJRGraphicsUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = FA5EFC2120E1D093006C48B0 /* AJRGraphicsUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA4F2399220932B600AB64C2 /* AJRColorUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = FA42F7A120D08429001AF25E /* AJRColorUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA4F239A220932B600AB64C2 /* AJRInterfaceFoundation.h in Headers */ = {isa = PBXBuildFile; fileRef = FA4FE51320AD46690008257B /* AJRInterfaceFoundation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA4F239B220932B600AB64C2 /* AJRPathEnumerator.h in Headers */ = {isa = PBXBuildFile; fileRef = FA5EFC1A20E1C7E9006C48B0 /* AJRPathEnumerator.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA4F239C220932B600AB64C2 /* AJRInset.h in Headers */ = {isa = PBXBuildFile; fileRef = FA59099A217E96420007D278 /* AJRInset.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA4F239D220932B600AB64C2 /* AJRBezierPathP.h in Headers */ = {isa = PBXBuildFile; fileRef = FA5EFBEB20E1C603006C48B0 /* AJRBezierPathP.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA4F239E220932B600AB64C2 /* AJRBezierPathFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = FA5EFBE920E1C603006C48B0 /* AJRBezierPathFunctions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA4F239F220932B600AB64C2 /* AJRPolygon.h in Headers */ = {isa = PBXBuildFile; fileRef = FA5EFBF020E1C603006C48B0 /* AJRPolygon.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA4F23A0220932B600AB64C2 /* AJRBezierCurves.h in Headers */ = {isa = PBXBuildFile; fileRef = FA5EFC0420E1C6AF006C48B0 /* AJRBezierCurves.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA4F23A1220932B600AB64C2 /* CATransaction+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = FA89258C21FA94D000246D46 /* CATransaction+Extensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA4F23A2220932B600AB64C2 /* AJRImageUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = FA4FE53320AD46AB0008257B /* AJRImageUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA4F23A3220932B600AB64C2 /* AJRIntersection.h in Headers */ = {isa = PBXBuildFile; fileRef = FA5EFBEC20E1C603006C48B0 /* AJRIntersection.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA4F23A4220932B600AB64C2 /* NSValue+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = FA5EFC1520E1C761006C48B0 /* NSValue+Extensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA4F23A5220932B600AB64C2 /* AJRVertex.h in Headers */ = {isa = PBXBuildFile; fileRef = FA5EFBF220E1C603006C48B0 /* AJRVertex.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA4F23A6220932B600AB64C2 /* AJRTrigonometry.h in Headers */ = {isa = PBXBuildFile; fileRef = FA5EFC0820E1C6AF006C48B0 /* AJRTrigonometry.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA4F23A7220932B600AB64C2 /* AJRPathAnalyzer.h in Headers */ = {isa = PBXBuildFile; fileRef = FA5EFBEE20E1C603006C48B0 /* AJRPathAnalyzer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA4F23BA22094D1000AB64C2 /* CGColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4F23B922094D1000AB64C2 /* CGColorExtensions.swift */; };
+		FA4FE51A20AD46690008257B /* AJRInterfaceFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA4FE51020AD46690008257B /* AJRInterfaceFoundation.framework */; };
+		FA4FE51F20AD46690008257B /* AJRColorUtilitiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4FE51E20AD46690008257B /* AJRColorUtilitiesTests.m */; };
+		FA4FE52120AD46690008257B /* AJRInterfaceFoundation.h in Headers */ = {isa = PBXBuildFile; fileRef = FA4FE51320AD46690008257B /* AJRInterfaceFoundation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA4FE53520AD46AB0008257B /* AJRImageUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = FA4FE53320AD46AB0008257B /* AJRImageUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA4FE53620AD46AB0008257B /* AJRImageUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4FE53420AD46AB0008257B /* AJRImageUtilities.m */; };
+		FA4FE53B20AD471F0008257B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA4FE53A20AD471F0008257B /* CoreGraphics.framework */; };
+		FA4FE53D20AD47250008257B /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA4FE53C20AD47250008257B /* ImageIO.framework */; };
+		FA53D6452241BC6A003E02B1 /* AJRBlockDrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA53D6442241BC6A003E02B1 /* AJRBlockDrawingView.swift */; };
+		FA53D6462241BC6A003E02B1 /* AJRBlockDrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA53D6442241BC6A003E02B1 /* AJRBlockDrawingView.swift */; };
+		FA53D6472241BC6A003E02B1 /* AJRBlockDrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA53D6442241BC6A003E02B1 /* AJRBlockDrawingView.swift */; };
+		FA53D6482241BC6A003E02B1 /* AJRBlockDrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA53D6442241BC6A003E02B1 /* AJRBlockDrawingView.swift */; };
+		FA59099C217E96420007D278 /* AJRInset.h in Headers */ = {isa = PBXBuildFile; fileRef = FA59099A217E96420007D278 /* AJRInset.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA59099D217E96420007D278 /* AJRInset.m in Sources */ = {isa = PBXBuildFile; fileRef = FA59099B217E96420007D278 /* AJRInset.m */; };
+		FA5EFBF420E1C603006C48B0 /* AJRBezierPath+AJRExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5EFBE520E1C603006C48B0 /* AJRBezierPath+AJRExtensions.m */; };
+		FA5EFBF520E1C603006C48B0 /* AJRBezierPath+AJRIntersection.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5EFBE620E1C603006C48B0 /* AJRBezierPath+AJRIntersection.m */; };
+		FA5EFBF620E1C603006C48B0 /* AJRBezierPath.h in Headers */ = {isa = PBXBuildFile; fileRef = FA5EFBE720E1C603006C48B0 /* AJRBezierPath.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA5EFBF720E1C603006C48B0 /* AJRBezierPath.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5EFBE820E1C603006C48B0 /* AJRBezierPath.m */; };
+		FA5EFBF820E1C603006C48B0 /* AJRBezierPathFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = FA5EFBE920E1C603006C48B0 /* AJRBezierPathFunctions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA5EFBF920E1C603006C48B0 /* AJRBezierPathFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5EFBEA20E1C603006C48B0 /* AJRBezierPathFunctions.m */; };
+		FA5EFBFA20E1C603006C48B0 /* AJRBezierPathP.h in Headers */ = {isa = PBXBuildFile; fileRef = FA5EFBEB20E1C603006C48B0 /* AJRBezierPathP.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA5EFBFB20E1C603006C48B0 /* AJRIntersection.h in Headers */ = {isa = PBXBuildFile; fileRef = FA5EFBEC20E1C603006C48B0 /* AJRIntersection.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA5EFBFC20E1C603006C48B0 /* AJRIntersection.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5EFBED20E1C603006C48B0 /* AJRIntersection.m */; };
+		FA5EFBFD20E1C603006C48B0 /* AJRPathAnalyzer.h in Headers */ = {isa = PBXBuildFile; fileRef = FA5EFBEE20E1C603006C48B0 /* AJRPathAnalyzer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA5EFBFE20E1C603006C48B0 /* AJRPathAnalyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5EFBEF20E1C603006C48B0 /* AJRPathAnalyzer.m */; };
+		FA5EFBFF20E1C603006C48B0 /* AJRPolygon.h in Headers */ = {isa = PBXBuildFile; fileRef = FA5EFBF020E1C603006C48B0 /* AJRPolygon.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA5EFC0020E1C603006C48B0 /* AJRPolygon.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5EFBF120E1C603006C48B0 /* AJRPolygon.m */; };
+		FA5EFC0120E1C603006C48B0 /* AJRVertex.h in Headers */ = {isa = PBXBuildFile; fileRef = FA5EFBF220E1C603006C48B0 /* AJRVertex.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA5EFC0220E1C603006C48B0 /* AJRVertex.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5EFBF320E1C603006C48B0 /* AJRVertex.m */; };
+		FA5EFC0C20E1C6AF006C48B0 /* AJRBezierCurves.h in Headers */ = {isa = PBXBuildFile; fileRef = FA5EFC0420E1C6AF006C48B0 /* AJRBezierCurves.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA5EFC0D20E1C6AF006C48B0 /* AJRBezierCurves.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5EFC0520E1C6AF006C48B0 /* AJRBezierCurves.m */; };
+		FA5EFC0E20E1C6AF006C48B0 /* AJRGeometry.h in Headers */ = {isa = PBXBuildFile; fileRef = FA5EFC0620E1C6AF006C48B0 /* AJRGeometry.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA5EFC0F20E1C6AF006C48B0 /* AJRGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5EFC0720E1C6AF006C48B0 /* AJRGeometry.m */; };
+		FA5EFC1020E1C6AF006C48B0 /* AJRTrigonometry.h in Headers */ = {isa = PBXBuildFile; fileRef = FA5EFC0820E1C6AF006C48B0 /* AJRTrigonometry.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA5EFC1120E1C6AF006C48B0 /* AJRTrigonometry.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5EFC0920E1C6AF006C48B0 /* AJRTrigonometry.m */; };
+		FA5EFC1220E1C6AF006C48B0 /* AJRVector.h in Headers */ = {isa = PBXBuildFile; fileRef = FA5EFC0A20E1C6AF006C48B0 /* AJRVector.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA5EFC1320E1C6AF006C48B0 /* AJRVector.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5EFC0B20E1C6AF006C48B0 /* AJRVector.m */; };
+		FA5EFC1720E1C762006C48B0 /* NSValue+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = FA5EFC1520E1C761006C48B0 /* NSValue+Extensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA5EFC1820E1C762006C48B0 /* NSValue+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5EFC1620E1C761006C48B0 /* NSValue+Extensions.m */; };
+		FA5EFC1B20E1C7E9006C48B0 /* AJRPathEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5EFC1920E1C7E9006C48B0 /* AJRPathEnumerator.m */; };
+		FA5EFC1C20E1C7E9006C48B0 /* AJRPathEnumerator.h in Headers */ = {isa = PBXBuildFile; fileRef = FA5EFC1A20E1C7E9006C48B0 /* AJRPathEnumerator.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA5EFC1F20E1C8BF006C48B0 /* AJRXMLCoder+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5EFC1D20E1C8BE006C48B0 /* AJRXMLCoder+Extensions.m */; };
+		FA5EFC2020E1C8BF006C48B0 /* AJRXMLCoder+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = FA5EFC1E20E1C8BE006C48B0 /* AJRXMLCoder+Extensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA5EFC2320E1D093006C48B0 /* AJRGraphicsUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = FA5EFC2120E1D093006C48B0 /* AJRGraphicsUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA5EFC2420E1D093006C48B0 /* AJRGraphicsUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5EFC2220E1D093006C48B0 /* AJRGraphicsUtilities.m */; };
+		FA7A8CE1228E100300D14301 /* CGContext+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7A8CE0228E100300D14301 /* CGContext+Extensions.swift */; };
+		FA7A8CE2228E100300D14301 /* CGContext+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7A8CE0228E100300D14301 /* CGContext+Extensions.swift */; };
+		FA7A8CE3228E100300D14301 /* CGContext+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7A8CE0228E100300D14301 /* CGContext+Extensions.swift */; };
+		FA7A8CE4228E100300D14301 /* CGContext+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7A8CE0228E100300D14301 /* CGContext+Extensions.swift */; };
+		FA80617D2223FB7500D6D59F /* AJRGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA80617C2223FB7500D6D59F /* AJRGeometry.swift */; };
+		FA80617E2223FB7500D6D59F /* AJRGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA80617C2223FB7500D6D59F /* AJRGeometry.swift */; };
+		FA80617F2223FB7500D6D59F /* AJRGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA80617C2223FB7500D6D59F /* AJRGeometry.swift */; };
+		FA8061802223FB7500D6D59F /* AJRGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA80617C2223FB7500D6D59F /* AJRGeometry.swift */; };
+		FA89258E21FA94D100246D46 /* CATransaction+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = FA89258C21FA94D000246D46 /* CATransaction+Extensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA89258F21FA94D100246D46 /* CATransaction+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = FA89258D21FA94D000246D46 /* CATransaction+Extensions.m */; };
+		FA95DE5222B47339005EC953 /* AJRInset+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA95DE5122B47339005EC953 /* AJRInset+Extensions.swift */; };
+		FA95DE5322B47339005EC953 /* AJRInset+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA95DE5122B47339005EC953 /* AJRInset+Extensions.swift */; };
+		FA95DE5422B47339005EC953 /* AJRInset+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA95DE5122B47339005EC953 /* AJRInset+Extensions.swift */; };
+		FA95DE5522B47339005EC953 /* AJRInset+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA95DE5122B47339005EC953 /* AJRInset+Extensions.swift */; };
+		FAA826392526C217004B7A31 /* AJRImageUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA826382526C217004B7A31 /* AJRImageUtilities.swift */; };
+		FAAAD95B223346D7002CA09C /* CATransaction+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAAD95A223346D7002CA09C /* CATransaction+Extensions.swift */; };
+		FACEC3F822D297ED008AA6DB /* CGColorSpace+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACEC3F722D297ED008AA6DB /* CGColorSpace+Extensions.swift */; };
+		FACEC3F922D297ED008AA6DB /* CGColorSpace+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACEC3F722D297ED008AA6DB /* CGColorSpace+Extensions.swift */; };
+		FACEC3FA22D297ED008AA6DB /* CGColorSpace+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACEC3F722D297ED008AA6DB /* CGColorSpace+Extensions.swift */; };
+		FACEC3FB22D297ED008AA6DB /* CGColorSpace+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACEC3F722D297ED008AA6DB /* CGColorSpace+Extensions.swift */; };
+		FAD0BB92259400D600346E67 /* AJRBezierPathTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD0BB91259400D600346E67 /* AJRBezierPathTests.swift */; };
+		FAD6FD4522AC5B7400C8B5EB /* AJRTrigonometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD6FD4422AC5B7400C8B5EB /* AJRTrigonometry.swift */; };
+		FAD6FD4622AC5B7400C8B5EB /* AJRTrigonometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD6FD4422AC5B7400C8B5EB /* AJRTrigonometry.swift */; };
+		FAD6FD4722AC5B7400C8B5EB /* AJRTrigonometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD6FD4422AC5B7400C8B5EB /* AJRTrigonometry.swift */; };
+		FAD6FD4822AC5B7400C8B5EB /* AJRTrigonometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD6FD4422AC5B7400C8B5EB /* AJRTrigonometry.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FA4F23B12209332800AB64C2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA4FE50720AD46690008257B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA4FE50F20AD46690008257B;
+			remoteInfo = AJRInterfaceFoundation;
+		};
+		FA4F23B32209332800AB64C2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA4FE50720AD46690008257B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA4F230E2209323900AB64C2;
+			remoteInfo = AJRInterfaceFoundationCocoaTouch;
+		};
+		FA4F23B52209332800AB64C2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA4FE50720AD46690008257B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA4F23432209329300AB64C2;
+			remoteInfo = AJRInterfaceFoundationTV;
+		};
+		FA4F23B72209332800AB64C2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA4FE50720AD46690008257B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA4F2378220932B600AB64C2;
+			remoteInfo = AJRInterfaceFoundationWatch;
+		};
+		FA4FE51B20AD46690008257B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA4FE50720AD46690008257B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA4FE50F20AD46690008257B;
+			remoteInfo = AJRInterfaceFoundation;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		FA07C897220EB8AE0077A0B5 /* AJRColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AJRColor.swift; sourceTree = "<group>"; };
+		FA07C89E220EB9250077A0B5 /* AJRColorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AJRColorView.swift; sourceTree = "<group>"; };
+		FA07C8A6220EBB050077A0B5 /* AJRView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AJRView.swift; sourceTree = "<group>"; };
+		FA07C8AC220EBB4B0077A0B5 /* AJRXView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AJRXView.swift; sourceTree = "<group>"; };
+		FA07C8B1220EBBBB0077A0B5 /* AJRFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AJRFont.swift; sourceTree = "<group>"; };
+		FA07C8B8220FB18F0077A0B5 /* AJRGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AJRGradient.swift; sourceTree = "<group>"; };
+		FA08611F22C842760021CCC5 /* AJROverlayTextMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AJROverlayTextMessageView.swift; sourceTree = "<group>"; };
+		FA08612522C93ADF0021CCC5 /* AJRTextLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AJRTextLayer.swift; sourceTree = "<group>"; };
+		FA08612A22C93C190021CCC5 /* AJROverlayTextMessageLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AJROverlayTextMessageLayer.swift; sourceTree = "<group>"; };
+		FA10398A225D89BA005B0D3B /* NSAttributedStringAdditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSAttributedStringAdditions.swift; sourceTree = "<group>"; };
+		FA10399B225EB2B6005B0D3B /* NSLayoutConstraint+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Extensions.swift"; sourceTree = "<group>"; };
+		FA42F79F20D0841F001AF25E /* AJRColorUtilities.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AJRColorUtilities.m; sourceTree = "<group>"; };
+		FA42F7A120D08429001AF25E /* AJRColorUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AJRColorUtilities.h; sourceTree = "<group>"; };
+		FA42F7A320D0C3E7001AF25E /* AJRFoundation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AJRFoundation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA42F7A720D0C499001AF25E /* AJRTestFoundation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AJRTestFoundation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA42F7A920D0E557001AF25E /* AJRImageUtilitiesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AJRImageUtilitiesTests.m; sourceTree = "<group>"; };
+		FA4F230C220930DB00AB64C2 /* AJRImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AJRImage.swift; sourceTree = "<group>"; };
+		FA4F23422209323900AB64C2 /* AJRInterfaceFoundation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AJRInterfaceFoundation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA4F23772209329300AB64C2 /* AJRInterfaceFoundation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AJRInterfaceFoundation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA4F23AC220932B600AB64C2 /* AJRInterfaceFoundation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AJRInterfaceFoundation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA4F23B922094D1000AB64C2 /* CGColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGColorExtensions.swift; sourceTree = "<group>"; };
+		FA4FE51020AD46690008257B /* AJRInterfaceFoundation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AJRInterfaceFoundation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA4FE51320AD46690008257B /* AJRInterfaceFoundation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AJRInterfaceFoundation.h; sourceTree = "<group>"; };
+		FA4FE51420AD46690008257B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Cocoa/Info.plist; sourceTree = "<group>"; };
+		FA4FE51920AD46690008257B /* AJRInterfaceFoundationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AJRInterfaceFoundationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA4FE51E20AD46690008257B /* AJRColorUtilitiesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AJRColorUtilitiesTests.m; sourceTree = "<group>"; };
+		FA4FE52020AD46690008257B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA4FE53320AD46AB0008257B /* AJRImageUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AJRImageUtilities.h; sourceTree = "<group>"; };
+		FA4FE53420AD46AB0008257B /* AJRImageUtilities.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AJRImageUtilities.m; sourceTree = "<group>"; };
+		FA4FE53A20AD471F0008257B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		FA4FE53C20AD47250008257B /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		FA53D6442241BC6A003E02B1 /* AJRBlockDrawingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AJRBlockDrawingView.swift; sourceTree = "<group>"; };
+		FA59099A217E96420007D278 /* AJRInset.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AJRInset.h; sourceTree = "<group>"; };
+		FA59099B217E96420007D278 /* AJRInset.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AJRInset.m; sourceTree = "<group>"; };
+		FA5EFBE520E1C603006C48B0 /* AJRBezierPath+AJRExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AJRBezierPath+AJRExtensions.m"; sourceTree = "<group>"; };
+		FA5EFBE620E1C603006C48B0 /* AJRBezierPath+AJRIntersection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AJRBezierPath+AJRIntersection.m"; sourceTree = "<group>"; };
+		FA5EFBE720E1C603006C48B0 /* AJRBezierPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJRBezierPath.h; sourceTree = "<group>"; };
+		FA5EFBE820E1C603006C48B0 /* AJRBezierPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJRBezierPath.m; sourceTree = "<group>"; };
+		FA5EFBE920E1C603006C48B0 /* AJRBezierPathFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJRBezierPathFunctions.h; sourceTree = "<group>"; };
+		FA5EFBEA20E1C603006C48B0 /* AJRBezierPathFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJRBezierPathFunctions.m; sourceTree = "<group>"; };
+		FA5EFBEB20E1C603006C48B0 /* AJRBezierPathP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJRBezierPathP.h; sourceTree = "<group>"; };
+		FA5EFBEC20E1C603006C48B0 /* AJRIntersection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJRIntersection.h; sourceTree = "<group>"; };
+		FA5EFBED20E1C603006C48B0 /* AJRIntersection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJRIntersection.m; sourceTree = "<group>"; };
+		FA5EFBEE20E1C603006C48B0 /* AJRPathAnalyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJRPathAnalyzer.h; sourceTree = "<group>"; };
+		FA5EFBEF20E1C603006C48B0 /* AJRPathAnalyzer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJRPathAnalyzer.m; sourceTree = "<group>"; };
+		FA5EFBF020E1C603006C48B0 /* AJRPolygon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJRPolygon.h; sourceTree = "<group>"; };
+		FA5EFBF120E1C603006C48B0 /* AJRPolygon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJRPolygon.m; sourceTree = "<group>"; };
+		FA5EFBF220E1C603006C48B0 /* AJRVertex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJRVertex.h; sourceTree = "<group>"; };
+		FA5EFBF320E1C603006C48B0 /* AJRVertex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJRVertex.m; sourceTree = "<group>"; };
+		FA5EFC0420E1C6AF006C48B0 /* AJRBezierCurves.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJRBezierCurves.h; sourceTree = "<group>"; };
+		FA5EFC0520E1C6AF006C48B0 /* AJRBezierCurves.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJRBezierCurves.m; sourceTree = "<group>"; };
+		FA5EFC0620E1C6AF006C48B0 /* AJRGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJRGeometry.h; sourceTree = "<group>"; };
+		FA5EFC0720E1C6AF006C48B0 /* AJRGeometry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJRGeometry.m; sourceTree = "<group>"; };
+		FA5EFC0820E1C6AF006C48B0 /* AJRTrigonometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJRTrigonometry.h; sourceTree = "<group>"; };
+		FA5EFC0920E1C6AF006C48B0 /* AJRTrigonometry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJRTrigonometry.m; sourceTree = "<group>"; };
+		FA5EFC0A20E1C6AF006C48B0 /* AJRVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJRVector.h; sourceTree = "<group>"; };
+		FA5EFC0B20E1C6AF006C48B0 /* AJRVector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJRVector.m; sourceTree = "<group>"; };
+		FA5EFC1520E1C761006C48B0 /* NSValue+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSValue+Extensions.h"; sourceTree = "<group>"; };
+		FA5EFC1620E1C761006C48B0 /* NSValue+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSValue+Extensions.m"; sourceTree = "<group>"; };
+		FA5EFC1920E1C7E9006C48B0 /* AJRPathEnumerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJRPathEnumerator.m; sourceTree = "<group>"; };
+		FA5EFC1A20E1C7E9006C48B0 /* AJRPathEnumerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJRPathEnumerator.h; sourceTree = "<group>"; };
+		FA5EFC1D20E1C8BE006C48B0 /* AJRXMLCoder+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AJRXMLCoder+Extensions.m"; sourceTree = "<group>"; };
+		FA5EFC1E20E1C8BE006C48B0 /* AJRXMLCoder+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AJRXMLCoder+Extensions.h"; sourceTree = "<group>"; };
+		FA5EFC2120E1D093006C48B0 /* AJRGraphicsUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AJRGraphicsUtilities.h; sourceTree = "<group>"; };
+		FA5EFC2220E1D093006C48B0 /* AJRGraphicsUtilities.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AJRGraphicsUtilities.m; sourceTree = "<group>"; };
+		FA7A8CE0228E100300D14301 /* CGContext+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGContext+Extensions.swift"; sourceTree = "<group>"; };
+		FA80617C2223FB7500D6D59F /* AJRGeometry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AJRGeometry.swift; sourceTree = "<group>"; };
+		FA89258C21FA94D000246D46 /* CATransaction+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CATransaction+Extensions.h"; sourceTree = "<group>"; };
+		FA89258D21FA94D000246D46 /* CATransaction+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CATransaction+Extensions.m"; sourceTree = "<group>"; };
+		FA95DE5122B47339005EC953 /* AJRInset+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AJRInset+Extensions.swift"; sourceTree = "<group>"; };
+		FAA826382526C217004B7A31 /* AJRImageUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AJRImageUtilities.swift; sourceTree = "<group>"; };
+		FAAAD95A223346D7002CA09C /* CATransaction+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CATransaction+Extensions.swift"; sourceTree = "<group>"; };
+		FACEC3F722D297ED008AA6DB /* CGColorSpace+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGColorSpace+Extensions.swift"; sourceTree = "<group>"; };
+		FAD0BB90259400D600346E67 /* AJRInterfaceFoundationTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AJRInterfaceFoundationTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		FAD0BB91259400D600346E67 /* AJRBezierPathTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AJRBezierPathTests.swift; sourceTree = "<group>"; };
+		FAD6FD4422AC5B7400C8B5EB /* AJRTrigonometry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AJRTrigonometry.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FA4F23252209323900AB64C2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA4F23262209323900AB64C2 /* AJRFoundation.framework in Frameworks */,
+				FA4F23272209323900AB64C2 /* ImageIO.framework in Frameworks */,
+				FA4F23282209323900AB64C2 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA4F235A2209329300AB64C2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA4F235B2209329300AB64C2 /* AJRFoundation.framework in Frameworks */,
+				FA4F235C2209329300AB64C2 /* ImageIO.framework in Frameworks */,
+				FA4F235D2209329300AB64C2 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA4F238F220932B600AB64C2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA4F2390220932B600AB64C2 /* AJRFoundation.framework in Frameworks */,
+				FA4F2391220932B600AB64C2 /* ImageIO.framework in Frameworks */,
+				FA4F2392220932B600AB64C2 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA4FE50C20AD46690008257B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA42F7A420D0C3E7001AF25E /* AJRFoundation.framework in Frameworks */,
+				FA4FE53D20AD47250008257B /* ImageIO.framework in Frameworks */,
+				FA4FE53B20AD471F0008257B /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA4FE51620AD46690008257B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA42F7A620D0C495001AF25E /* AJRFoundation.framework in Frameworks */,
+				FA4FE51A20AD46690008257B /* AJRInterfaceFoundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FA07C89C220EB8F90077A0B5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FA08611E22C842520021CCC5 /* AJROverlayTextMessageView */,
+				FA53D6432241BC4D003E02B1 /* AJRBlockDrawingView */,
+				FA07C89D220EB9090077A0B5 /* AJRColorView */,
+				FA07C8AB220EBB360077A0B5 /* AJRXView */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		FA07C89D220EB9090077A0B5 /* AJRColorView */ = {
+			isa = PBXGroup;
+			children = (
+				FA07C89E220EB9250077A0B5 /* AJRColorView.swift */,
+			);
+			path = AJRColorView;
+			sourceTree = "<group>";
+		};
+		FA07C8AB220EBB360077A0B5 /* AJRXView */ = {
+			isa = PBXGroup;
+			children = (
+				FA07C8AC220EBB4B0077A0B5 /* AJRXView.swift */,
+			);
+			path = AJRXView;
+			sourceTree = "<group>";
+		};
+		FA08611E22C842520021CCC5 /* AJROverlayTextMessageView */ = {
+			isa = PBXGroup;
+			children = (
+				FA08612A22C93C190021CCC5 /* AJROverlayTextMessageLayer.swift */,
+				FA08611F22C842760021CCC5 /* AJROverlayTextMessageView.swift */,
+			);
+			path = AJROverlayTextMessageView;
+			sourceTree = "<group>";
+		};
+		FA08612422C93AC70021CCC5 /* Layers */ = {
+			isa = PBXGroup;
+			children = (
+				FA08612522C93ADF0021CCC5 /* AJRTextLayer.swift */,
+			);
+			path = Layers;
+			sourceTree = "<group>";
+		};
+		FA4F230B220930B900AB64C2 /* Cocoa and CocoaTouch Bridging */ = {
+			isa = PBXGroup;
+			children = (
+				FA07C897220EB8AE0077A0B5 /* AJRColor.swift */,
+				FA07C8B1220EBBBB0077A0B5 /* AJRFont.swift */,
+				FA07C8B8220FB18F0077A0B5 /* AJRGradient.swift */,
+				FA4F230C220930DB00AB64C2 /* AJRImage.swift */,
+				FA07C8A6220EBB050077A0B5 /* AJRView.swift */,
+			);
+			path = "Cocoa and CocoaTouch Bridging";
+			sourceTree = "<group>";
+		};
+		FA4FE50620AD46690008257B = {
+			isa = PBXGroup;
+			children = (
+				FA4FE51220AD46690008257B /* Classes */,
+				FA77D2B920DDBA6D00C07BAB /* Cocoa */,
+				FA4FE51D20AD46690008257B /* AJRInterfaceFoundationTests */,
+				FA4FE51120AD46690008257B /* Products */,
+				FA4FE53920AD471F0008257B /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		FA4FE51120AD46690008257B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FA4FE51020AD46690008257B /* AJRInterfaceFoundation.framework */,
+				FA4FE51920AD46690008257B /* AJRInterfaceFoundationTests.xctest */,
+				FA4F23422209323900AB64C2 /* AJRInterfaceFoundation.framework */,
+				FA4F23772209329300AB64C2 /* AJRInterfaceFoundation.framework */,
+				FA4F23AC220932B600AB64C2 /* AJRInterfaceFoundation.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FA4FE51220AD46690008257B /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				FA5EFBE420E1C603006C48B0 /* Bezier Path */,
+				FA4F230B220930B900AB64C2 /* Cocoa and CocoaTouch Bridging */,
+				FA5EFC1420E1C761006C48B0 /* Extensions */,
+				FA5EFC0320E1C6AF006C48B0 /* Geometry */,
+				FA08612422C93AC70021CCC5 /* Layers */,
+				FA07C89C220EB8F90077A0B5 /* Views */,
+				FA4FE51320AD46690008257B /* AJRInterfaceFoundation.h */,
+				FA4FE53320AD46AB0008257B /* AJRImageUtilities.h */,
+				FA4FE53420AD46AB0008257B /* AJRImageUtilities.m */,
+				FAA826382526C217004B7A31 /* AJRImageUtilities.swift */,
+				FA42F7A120D08429001AF25E /* AJRColorUtilities.h */,
+				FA42F79F20D0841F001AF25E /* AJRColorUtilities.m */,
+				FA5EFC2120E1D093006C48B0 /* AJRGraphicsUtilities.h */,
+				FA5EFC2220E1D093006C48B0 /* AJRGraphicsUtilities.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		FA4FE51D20AD46690008257B /* AJRInterfaceFoundationTests */ = {
+			isa = PBXGroup;
+			children = (
+				FAD0BB91259400D600346E67 /* AJRBezierPathTests.swift */,
+				FA4FE51E20AD46690008257B /* AJRColorUtilitiesTests.m */,
+				FA42F7A920D0E557001AF25E /* AJRImageUtilitiesTests.m */,
+				FA4FE52020AD46690008257B /* Info.plist */,
+				FAD0BB90259400D600346E67 /* AJRInterfaceFoundationTests-Bridging-Header.h */,
+			);
+			path = AJRInterfaceFoundationTests;
+			sourceTree = "<group>";
+		};
+		FA4FE53920AD471F0008257B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FA42F7A720D0C499001AF25E /* AJRTestFoundation.framework */,
+				FA42F7A320D0C3E7001AF25E /* AJRFoundation.framework */,
+				FA4FE53C20AD47250008257B /* ImageIO.framework */,
+				FA4FE53A20AD471F0008257B /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FA53D6432241BC4D003E02B1 /* AJRBlockDrawingView */ = {
+			isa = PBXGroup;
+			children = (
+				FA53D6442241BC6A003E02B1 /* AJRBlockDrawingView.swift */,
+			);
+			path = AJRBlockDrawingView;
+			sourceTree = "<group>";
+		};
+		FA5EFBE420E1C603006C48B0 /* Bezier Path */ = {
+			isa = PBXGroup;
+			children = (
+				FA5EFBE520E1C603006C48B0 /* AJRBezierPath+AJRExtensions.m */,
+				FA5EFBE620E1C603006C48B0 /* AJRBezierPath+AJRIntersection.m */,
+				FA5EFBE720E1C603006C48B0 /* AJRBezierPath.h */,
+				FA5EFBE820E1C603006C48B0 /* AJRBezierPath.m */,
+				FA5EFBE920E1C603006C48B0 /* AJRBezierPathFunctions.h */,
+				FA5EFBEA20E1C603006C48B0 /* AJRBezierPathFunctions.m */,
+				FA5EFBEB20E1C603006C48B0 /* AJRBezierPathP.h */,
+				FA5EFBEC20E1C603006C48B0 /* AJRIntersection.h */,
+				FA5EFBED20E1C603006C48B0 /* AJRIntersection.m */,
+				FA5EFBEE20E1C603006C48B0 /* AJRPathAnalyzer.h */,
+				FA5EFBEF20E1C603006C48B0 /* AJRPathAnalyzer.m */,
+				FA5EFBF020E1C603006C48B0 /* AJRPolygon.h */,
+				FA5EFBF120E1C603006C48B0 /* AJRPolygon.m */,
+				FA5EFBF220E1C603006C48B0 /* AJRVertex.h */,
+				FA5EFBF320E1C603006C48B0 /* AJRVertex.m */,
+			);
+			path = "Bezier Path";
+			sourceTree = "<group>";
+		};
+		FA5EFC0320E1C6AF006C48B0 /* Geometry */ = {
+			isa = PBXGroup;
+			children = (
+				FA5EFC0420E1C6AF006C48B0 /* AJRBezierCurves.h */,
+				FA5EFC0520E1C6AF006C48B0 /* AJRBezierCurves.m */,
+				FA5EFC0620E1C6AF006C48B0 /* AJRGeometry.h */,
+				FA5EFC0720E1C6AF006C48B0 /* AJRGeometry.m */,
+				FA80617C2223FB7500D6D59F /* AJRGeometry.swift */,
+				FA59099A217E96420007D278 /* AJRInset.h */,
+				FA59099B217E96420007D278 /* AJRInset.m */,
+				FA95DE5122B47339005EC953 /* AJRInset+Extensions.swift */,
+				FA5EFC1A20E1C7E9006C48B0 /* AJRPathEnumerator.h */,
+				FA5EFC1920E1C7E9006C48B0 /* AJRPathEnumerator.m */,
+				FA5EFC0820E1C6AF006C48B0 /* AJRTrigonometry.h */,
+				FA5EFC0920E1C6AF006C48B0 /* AJRTrigonometry.m */,
+				FAD6FD4422AC5B7400C8B5EB /* AJRTrigonometry.swift */,
+				FA5EFC0A20E1C6AF006C48B0 /* AJRVector.h */,
+				FA5EFC0B20E1C6AF006C48B0 /* AJRVector.m */,
+			);
+			path = Geometry;
+			sourceTree = "<group>";
+		};
+		FA5EFC1420E1C761006C48B0 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FA5EFC1E20E1C8BE006C48B0 /* AJRXMLCoder+Extensions.h */,
+				FA5EFC1D20E1C8BE006C48B0 /* AJRXMLCoder+Extensions.m */,
+				FA89258C21FA94D000246D46 /* CATransaction+Extensions.h */,
+				FA89258D21FA94D000246D46 /* CATransaction+Extensions.m */,
+				FAAAD95A223346D7002CA09C /* CATransaction+Extensions.swift */,
+				FA4F23B922094D1000AB64C2 /* CGColorExtensions.swift */,
+				FACEC3F722D297ED008AA6DB /* CGColorSpace+Extensions.swift */,
+				FA7A8CE0228E100300D14301 /* CGContext+Extensions.swift */,
+				FA10398A225D89BA005B0D3B /* NSAttributedStringAdditions.swift */,
+				FA10399B225EB2B6005B0D3B /* NSLayoutConstraint+Extensions.swift */,
+				FA5EFC1520E1C761006C48B0 /* NSValue+Extensions.h */,
+				FA5EFC1620E1C761006C48B0 /* NSValue+Extensions.m */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		FA77D2B920DDBA6D00C07BAB /* Cocoa */ = {
+			isa = PBXGroup;
+			children = (
+				FA4FE51420AD46690008257B /* Info.plist */,
+			);
+			path = Cocoa;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		FA4F23292209323900AB64C2 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA4F232A2209323900AB64C2 /* AJRGeometry.h in Headers */,
+				FA4F232B2209323900AB64C2 /* AJRXMLCoder+Extensions.h in Headers */,
+				FA4F232C2209323900AB64C2 /* AJRVector.h in Headers */,
+				FA4F232D2209323900AB64C2 /* AJRBezierPath.h in Headers */,
+				FA4F232E2209323900AB64C2 /* AJRGraphicsUtilities.h in Headers */,
+				FA4F232F2209323900AB64C2 /* AJRColorUtilities.h in Headers */,
+				FA4F23302209323900AB64C2 /* AJRInterfaceFoundation.h in Headers */,
+				FA4F23312209323900AB64C2 /* AJRPathEnumerator.h in Headers */,
+				FA4F23322209323900AB64C2 /* AJRInset.h in Headers */,
+				FA4F23332209323900AB64C2 /* AJRBezierPathP.h in Headers */,
+				FA4F23342209323900AB64C2 /* AJRBezierPathFunctions.h in Headers */,
+				FA4F23352209323900AB64C2 /* AJRPolygon.h in Headers */,
+				FA4F23362209323900AB64C2 /* AJRBezierCurves.h in Headers */,
+				FA4F23372209323900AB64C2 /* CATransaction+Extensions.h in Headers */,
+				FA4F23382209323900AB64C2 /* AJRImageUtilities.h in Headers */,
+				FA4F23392209323900AB64C2 /* AJRIntersection.h in Headers */,
+				FA4F233A2209323900AB64C2 /* NSValue+Extensions.h in Headers */,
+				FA4F233B2209323900AB64C2 /* AJRVertex.h in Headers */,
+				FA4F233C2209323900AB64C2 /* AJRTrigonometry.h in Headers */,
+				FA4F233D2209323900AB64C2 /* AJRPathAnalyzer.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA4F235E2209329300AB64C2 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA4F235F2209329300AB64C2 /* AJRGeometry.h in Headers */,
+				FA4F23602209329300AB64C2 /* AJRXMLCoder+Extensions.h in Headers */,
+				FA4F23612209329300AB64C2 /* AJRVector.h in Headers */,
+				FA4F23622209329300AB64C2 /* AJRBezierPath.h in Headers */,
+				FA4F23632209329300AB64C2 /* AJRGraphicsUtilities.h in Headers */,
+				FA4F23642209329300AB64C2 /* AJRColorUtilities.h in Headers */,
+				FA4F23652209329300AB64C2 /* AJRInterfaceFoundation.h in Headers */,
+				FA4F23662209329300AB64C2 /* AJRPathEnumerator.h in Headers */,
+				FA4F23672209329300AB64C2 /* AJRInset.h in Headers */,
+				FA4F23682209329300AB64C2 /* AJRBezierPathP.h in Headers */,
+				FA4F23692209329300AB64C2 /* AJRBezierPathFunctions.h in Headers */,
+				FA4F236A2209329300AB64C2 /* AJRPolygon.h in Headers */,
+				FA4F236B2209329300AB64C2 /* AJRBezierCurves.h in Headers */,
+				FA4F236C2209329300AB64C2 /* CATransaction+Extensions.h in Headers */,
+				FA4F236D2209329300AB64C2 /* AJRImageUtilities.h in Headers */,
+				FA4F236E2209329300AB64C2 /* AJRIntersection.h in Headers */,
+				FA4F236F2209329300AB64C2 /* NSValue+Extensions.h in Headers */,
+				FA4F23702209329300AB64C2 /* AJRVertex.h in Headers */,
+				FA4F23712209329300AB64C2 /* AJRTrigonometry.h in Headers */,
+				FA4F23722209329300AB64C2 /* AJRPathAnalyzer.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA4F2393220932B600AB64C2 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA4F2394220932B600AB64C2 /* AJRGeometry.h in Headers */,
+				FA4F2395220932B600AB64C2 /* AJRXMLCoder+Extensions.h in Headers */,
+				FA4F2396220932B600AB64C2 /* AJRVector.h in Headers */,
+				FA4F2397220932B600AB64C2 /* AJRBezierPath.h in Headers */,
+				FA4F2398220932B600AB64C2 /* AJRGraphicsUtilities.h in Headers */,
+				FA4F2399220932B600AB64C2 /* AJRColorUtilities.h in Headers */,
+				FA4F239A220932B600AB64C2 /* AJRInterfaceFoundation.h in Headers */,
+				FA4F239B220932B600AB64C2 /* AJRPathEnumerator.h in Headers */,
+				FA4F239C220932B600AB64C2 /* AJRInset.h in Headers */,
+				FA4F239D220932B600AB64C2 /* AJRBezierPathP.h in Headers */,
+				FA4F239E220932B600AB64C2 /* AJRBezierPathFunctions.h in Headers */,
+				FA4F239F220932B600AB64C2 /* AJRPolygon.h in Headers */,
+				FA4F23A0220932B600AB64C2 /* AJRBezierCurves.h in Headers */,
+				FA4F23A1220932B600AB64C2 /* CATransaction+Extensions.h in Headers */,
+				FA4F23A2220932B600AB64C2 /* AJRImageUtilities.h in Headers */,
+				FA4F23A3220932B600AB64C2 /* AJRIntersection.h in Headers */,
+				FA4F23A4220932B600AB64C2 /* NSValue+Extensions.h in Headers */,
+				FA4F23A5220932B600AB64C2 /* AJRVertex.h in Headers */,
+				FA4F23A6220932B600AB64C2 /* AJRTrigonometry.h in Headers */,
+				FA4F23A7220932B600AB64C2 /* AJRPathAnalyzer.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA4FE50D20AD46690008257B /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA5EFC0E20E1C6AF006C48B0 /* AJRGeometry.h in Headers */,
+				FA5EFC2020E1C8BF006C48B0 /* AJRXMLCoder+Extensions.h in Headers */,
+				FA5EFC1220E1C6AF006C48B0 /* AJRVector.h in Headers */,
+				FA5EFBF620E1C603006C48B0 /* AJRBezierPath.h in Headers */,
+				FA5EFC2320E1D093006C48B0 /* AJRGraphicsUtilities.h in Headers */,
+				FA42F7A220D08432001AF25E /* AJRColorUtilities.h in Headers */,
+				FA4FE52120AD46690008257B /* AJRInterfaceFoundation.h in Headers */,
+				FA5EFC1C20E1C7E9006C48B0 /* AJRPathEnumerator.h in Headers */,
+				FA59099C217E96420007D278 /* AJRInset.h in Headers */,
+				FA5EFBFA20E1C603006C48B0 /* AJRBezierPathP.h in Headers */,
+				FA5EFBF820E1C603006C48B0 /* AJRBezierPathFunctions.h in Headers */,
+				FA5EFBFF20E1C603006C48B0 /* AJRPolygon.h in Headers */,
+				FA5EFC0C20E1C6AF006C48B0 /* AJRBezierCurves.h in Headers */,
+				FA89258E21FA94D100246D46 /* CATransaction+Extensions.h in Headers */,
+				FA4FE53520AD46AB0008257B /* AJRImageUtilities.h in Headers */,
+				FA5EFBFB20E1C603006C48B0 /* AJRIntersection.h in Headers */,
+				FA5EFC1720E1C762006C48B0 /* NSValue+Extensions.h in Headers */,
+				FA5EFC0120E1C603006C48B0 /* AJRVertex.h in Headers */,
+				FA5EFC1020E1C6AF006C48B0 /* AJRTrigonometry.h in Headers */,
+				FA5EFBFD20E1C603006C48B0 /* AJRPathAnalyzer.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		FA4F230E2209323900AB64C2 /* AJRInterfaceFoundationCocoaTouch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA4F233F2209323900AB64C2 /* Build configuration list for PBXNativeTarget "AJRInterfaceFoundationCocoaTouch" */;
+			buildPhases = (
+				FA4F230F2209323900AB64C2 /* Sources */,
+				FA4F23252209323900AB64C2 /* Frameworks */,
+				FA4F23292209323900AB64C2 /* Headers */,
+				FA4F233E2209323900AB64C2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AJRInterfaceFoundationCocoaTouch;
+			productName = AJRInterfaceFoundation;
+			productReference = FA4F23422209323900AB64C2 /* AJRInterfaceFoundation.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		FA4F23432209329300AB64C2 /* AJRInterfaceFoundationTV */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA4F23742209329300AB64C2 /* Build configuration list for PBXNativeTarget "AJRInterfaceFoundationTV" */;
+			buildPhases = (
+				FA4F23442209329300AB64C2 /* Sources */,
+				FA4F235A2209329300AB64C2 /* Frameworks */,
+				FA4F235E2209329300AB64C2 /* Headers */,
+				FA4F23732209329300AB64C2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AJRInterfaceFoundationTV;
+			productName = AJRInterfaceFoundation;
+			productReference = FA4F23772209329300AB64C2 /* AJRInterfaceFoundation.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		FA4F2378220932B600AB64C2 /* AJRInterfaceFoundationWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA4F23A9220932B600AB64C2 /* Build configuration list for PBXNativeTarget "AJRInterfaceFoundationWatch" */;
+			buildPhases = (
+				FA4F2379220932B600AB64C2 /* Sources */,
+				FA4F238F220932B600AB64C2 /* Frameworks */,
+				FA4F2393220932B600AB64C2 /* Headers */,
+				FA4F23A8220932B600AB64C2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AJRInterfaceFoundationWatch;
+			productName = AJRInterfaceFoundation;
+			productReference = FA4F23AC220932B600AB64C2 /* AJRInterfaceFoundation.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		FA4FE50F20AD46690008257B /* AJRInterfaceFoundation */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA4FE52420AD46690008257B /* Build configuration list for PBXNativeTarget "AJRInterfaceFoundation" */;
+			buildPhases = (
+				FA4FE50B20AD46690008257B /* Sources */,
+				FA4FE50C20AD46690008257B /* Frameworks */,
+				FA4FE50D20AD46690008257B /* Headers */,
+				FA4FE50E20AD46690008257B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AJRInterfaceFoundation;
+			productName = AJRInterfaceFoundation;
+			productReference = FA4FE51020AD46690008257B /* AJRInterfaceFoundation.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		FA4FE51820AD46690008257B /* AJRInterfaceFoundationTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA4FE52720AD46690008257B /* Build configuration list for PBXNativeTarget "AJRInterfaceFoundationTests" */;
+			buildPhases = (
+				FA4FE51520AD46690008257B /* Sources */,
+				FA4FE51620AD46690008257B /* Frameworks */,
+				FA4FE51720AD46690008257B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FA4FE51C20AD46690008257B /* PBXTargetDependency */,
+			);
+			name = AJRInterfaceFoundationTests;
+			productName = AJRInterfaceFoundationTests;
+			productReference = FA4FE51920AD46690008257B /* AJRInterfaceFoundationTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FA4FE50720AD46690008257B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1200;
+				ORGANIZATIONNAME = "Alex Raftis";
+				TargetAttributes = {
+					FA4F23AD2209331B00AB64C2 = {
+						CreatedOnToolsVersion = 10.1;
+					};
+					FA4FE50F20AD46690008257B = {
+						CreatedOnToolsVersion = 9.3.1;
+						LastSwiftMigration = 1010;
+					};
+					FA4FE51820AD46690008257B = {
+						CreatedOnToolsVersion = 9.3.1;
+						LastSwiftMigration = 1230;
+					};
+				};
+			};
+			buildConfigurationList = FA4FE50A20AD46690008257B /* Build configuration list for PBXProject "AJRInterfaceFoundation" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FA4FE50620AD46690008257B;
+			productRefGroup = FA4FE51120AD46690008257B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FA4F23AD2209331B00AB64C2 /* AJRInterfaceFoundation All */,
+				FA4FE50F20AD46690008257B /* AJRInterfaceFoundation */,
+				FA4F230E2209323900AB64C2 /* AJRInterfaceFoundationCocoaTouch */,
+				FA4F23432209329300AB64C2 /* AJRInterfaceFoundationTV */,
+				FA4F2378220932B600AB64C2 /* AJRInterfaceFoundationWatch */,
+				FA4FE51820AD46690008257B /* AJRInterfaceFoundationTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FA4F233E2209323900AB64C2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA4F23732209329300AB64C2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA4F23A8220932B600AB64C2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA4FE50E20AD46690008257B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA4FE51720AD46690008257B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FA4F230F2209323900AB64C2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA4F23102209323900AB64C2 /* AJRBezierPath+AJRIntersection.m in Sources */,
+				FA10398C225D89BA005B0D3B /* NSAttributedStringAdditions.swift in Sources */,
+				FA4F23112209323900AB64C2 /* AJRColorUtilities.m in Sources */,
+				FA4F23122209323900AB64C2 /* AJRBezierCurves.m in Sources */,
+				FA4F23132209323900AB64C2 /* AJRInset.m in Sources */,
+				FA4F23142209323900AB64C2 /* AJRBezierPath+AJRExtensions.m in Sources */,
+				FA07C899220EB8AE0077A0B5 /* AJRColor.swift in Sources */,
+				FA4F23152209323900AB64C2 /* AJRVertex.m in Sources */,
+				FA4F23162209323900AB64C2 /* AJRIntersection.m in Sources */,
+				FA08612C22C93C190021CCC5 /* AJROverlayTextMessageLayer.swift in Sources */,
+				FA07C8A8220EBB050077A0B5 /* AJRView.swift in Sources */,
+				FA4F23172209323900AB64C2 /* NSValue+Extensions.m in Sources */,
+				FA4F23182209323900AB64C2 /* AJRPathAnalyzer.m in Sources */,
+				FA4F23192209323900AB64C2 /* AJRTrigonometry.m in Sources */,
+				FA07C8BA220FB18F0077A0B5 /* AJRGradient.swift in Sources */,
+				FA07C8B3220EBBBB0077A0B5 /* AJRFont.swift in Sources */,
+				FA4F231A2209323900AB64C2 /* AJRImageUtilities.m in Sources */,
+				FA4F231B2209323900AB64C2 /* AJRPathEnumerator.m in Sources */,
+				FAD6FD4622AC5B7400C8B5EB /* AJRTrigonometry.swift in Sources */,
+				FA4F231C2209323900AB64C2 /* AJRImage.swift in Sources */,
+				FA10399D225EB2B6005B0D3B /* NSLayoutConstraint+Extensions.swift in Sources */,
+				FA4F231D2209323900AB64C2 /* AJRXMLCoder+Extensions.m in Sources */,
+				FA95DE5322B47339005EC953 /* AJRInset+Extensions.swift in Sources */,
+				FA4F231E2209323900AB64C2 /* AJRPolygon.m in Sources */,
+				FA53D6462241BC6A003E02B1 /* AJRBlockDrawingView.swift in Sources */,
+				FA4F231F2209323900AB64C2 /* AJRGeometry.m in Sources */,
+				FA07C8A0220EB9250077A0B5 /* AJRColorView.swift in Sources */,
+				FA80617E2223FB7500D6D59F /* AJRGeometry.swift in Sources */,
+				FA4F23202209323900AB64C2 /* AJRBezierPath.m in Sources */,
+				FA4F23212209323900AB64C2 /* AJRVector.m in Sources */,
+				FA4F23222209323900AB64C2 /* AJRBezierPathFunctions.m in Sources */,
+				FA4F23232209323900AB64C2 /* CATransaction+Extensions.m in Sources */,
+				FA08612122C842760021CCC5 /* AJROverlayTextMessageView.swift in Sources */,
+				FA08612722C93ADF0021CCC5 /* AJRTextLayer.swift in Sources */,
+				FA07C8AE220EBB4B0077A0B5 /* AJRXView.swift in Sources */,
+				FA4F23242209323900AB64C2 /* AJRGraphicsUtilities.m in Sources */,
+				FACEC3F922D297ED008AA6DB /* CGColorSpace+Extensions.swift in Sources */,
+				FA7A8CE2228E100300D14301 /* CGContext+Extensions.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA4F23442209329300AB64C2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA4F23452209329300AB64C2 /* AJRBezierPath+AJRIntersection.m in Sources */,
+				FA10398D225D89BA005B0D3B /* NSAttributedStringAdditions.swift in Sources */,
+				FA4F23462209329300AB64C2 /* AJRColorUtilities.m in Sources */,
+				FA4F23472209329300AB64C2 /* AJRBezierCurves.m in Sources */,
+				FA4F23482209329300AB64C2 /* AJRInset.m in Sources */,
+				FA4F23492209329300AB64C2 /* AJRBezierPath+AJRExtensions.m in Sources */,
+				FA07C89A220EB8AE0077A0B5 /* AJRColor.swift in Sources */,
+				FA4F234A2209329300AB64C2 /* AJRVertex.m in Sources */,
+				FA4F234B2209329300AB64C2 /* AJRIntersection.m in Sources */,
+				FA08612D22C93C190021CCC5 /* AJROverlayTextMessageLayer.swift in Sources */,
+				FA07C8A9220EBB050077A0B5 /* AJRView.swift in Sources */,
+				FA4F234C2209329300AB64C2 /* NSValue+Extensions.m in Sources */,
+				FA4F234D2209329300AB64C2 /* AJRPathAnalyzer.m in Sources */,
+				FA4F234E2209329300AB64C2 /* AJRTrigonometry.m in Sources */,
+				FA07C8BB220FB18F0077A0B5 /* AJRGradient.swift in Sources */,
+				FA07C8B4220EBBBB0077A0B5 /* AJRFont.swift in Sources */,
+				FA4F234F2209329300AB64C2 /* AJRImageUtilities.m in Sources */,
+				FA4F23502209329300AB64C2 /* AJRPathEnumerator.m in Sources */,
+				FAD6FD4722AC5B7400C8B5EB /* AJRTrigonometry.swift in Sources */,
+				FA4F23512209329300AB64C2 /* AJRImage.swift in Sources */,
+				FA10399E225EB2B6005B0D3B /* NSLayoutConstraint+Extensions.swift in Sources */,
+				FA4F23522209329300AB64C2 /* AJRXMLCoder+Extensions.m in Sources */,
+				FA95DE5422B47339005EC953 /* AJRInset+Extensions.swift in Sources */,
+				FA4F23532209329300AB64C2 /* AJRPolygon.m in Sources */,
+				FA53D6472241BC6A003E02B1 /* AJRBlockDrawingView.swift in Sources */,
+				FA4F23542209329300AB64C2 /* AJRGeometry.m in Sources */,
+				FA07C8A1220EB9250077A0B5 /* AJRColorView.swift in Sources */,
+				FA80617F2223FB7500D6D59F /* AJRGeometry.swift in Sources */,
+				FA4F23552209329300AB64C2 /* AJRBezierPath.m in Sources */,
+				FA4F23562209329300AB64C2 /* AJRVector.m in Sources */,
+				FA4F23572209329300AB64C2 /* AJRBezierPathFunctions.m in Sources */,
+				FA4F23582209329300AB64C2 /* CATransaction+Extensions.m in Sources */,
+				FA08612222C842760021CCC5 /* AJROverlayTextMessageView.swift in Sources */,
+				FA08612822C93ADF0021CCC5 /* AJRTextLayer.swift in Sources */,
+				FA07C8AF220EBB4B0077A0B5 /* AJRXView.swift in Sources */,
+				FA4F23592209329300AB64C2 /* AJRGraphicsUtilities.m in Sources */,
+				FACEC3FA22D297ED008AA6DB /* CGColorSpace+Extensions.swift in Sources */,
+				FA7A8CE3228E100300D14301 /* CGContext+Extensions.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA4F2379220932B600AB64C2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA4F237A220932B600AB64C2 /* AJRBezierPath+AJRIntersection.m in Sources */,
+				FA10398E225D89BA005B0D3B /* NSAttributedStringAdditions.swift in Sources */,
+				FA4F237B220932B600AB64C2 /* AJRColorUtilities.m in Sources */,
+				FA4F237C220932B600AB64C2 /* AJRBezierCurves.m in Sources */,
+				FA4F237D220932B600AB64C2 /* AJRInset.m in Sources */,
+				FA4F237E220932B600AB64C2 /* AJRBezierPath+AJRExtensions.m in Sources */,
+				FA07C89B220EB8AE0077A0B5 /* AJRColor.swift in Sources */,
+				FA4F237F220932B600AB64C2 /* AJRVertex.m in Sources */,
+				FA4F2380220932B600AB64C2 /* AJRIntersection.m in Sources */,
+				FA08612E22C93C190021CCC5 /* AJROverlayTextMessageLayer.swift in Sources */,
+				FA07C8AA220EBB050077A0B5 /* AJRView.swift in Sources */,
+				FA4F2381220932B600AB64C2 /* NSValue+Extensions.m in Sources */,
+				FA4F2382220932B600AB64C2 /* AJRPathAnalyzer.m in Sources */,
+				FA4F2383220932B600AB64C2 /* AJRTrigonometry.m in Sources */,
+				FA07C8BC220FB18F0077A0B5 /* AJRGradient.swift in Sources */,
+				FA07C8B5220EBBBB0077A0B5 /* AJRFont.swift in Sources */,
+				FA4F2384220932B600AB64C2 /* AJRImageUtilities.m in Sources */,
+				FA4F2385220932B600AB64C2 /* AJRPathEnumerator.m in Sources */,
+				FAD6FD4822AC5B7400C8B5EB /* AJRTrigonometry.swift in Sources */,
+				FA4F2386220932B600AB64C2 /* AJRImage.swift in Sources */,
+				FA10399F225EB2B6005B0D3B /* NSLayoutConstraint+Extensions.swift in Sources */,
+				FA4F2387220932B600AB64C2 /* AJRXMLCoder+Extensions.m in Sources */,
+				FA95DE5522B47339005EC953 /* AJRInset+Extensions.swift in Sources */,
+				FA4F2388220932B600AB64C2 /* AJRPolygon.m in Sources */,
+				FA53D6482241BC6A003E02B1 /* AJRBlockDrawingView.swift in Sources */,
+				FA4F2389220932B600AB64C2 /* AJRGeometry.m in Sources */,
+				FA07C8A2220EB9250077A0B5 /* AJRColorView.swift in Sources */,
+				FA8061802223FB7500D6D59F /* AJRGeometry.swift in Sources */,
+				FA4F238A220932B600AB64C2 /* AJRBezierPath.m in Sources */,
+				FA4F238B220932B600AB64C2 /* AJRVector.m in Sources */,
+				FA4F238C220932B600AB64C2 /* AJRBezierPathFunctions.m in Sources */,
+				FA4F238D220932B600AB64C2 /* CATransaction+Extensions.m in Sources */,
+				FA08612322C842760021CCC5 /* AJROverlayTextMessageView.swift in Sources */,
+				FA08612922C93ADF0021CCC5 /* AJRTextLayer.swift in Sources */,
+				FA07C8B0220EBB4B0077A0B5 /* AJRXView.swift in Sources */,
+				FA4F238E220932B600AB64C2 /* AJRGraphicsUtilities.m in Sources */,
+				FACEC3FB22D297ED008AA6DB /* CGColorSpace+Extensions.swift in Sources */,
+				FA7A8CE4228E100300D14301 /* CGContext+Extensions.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA4FE50B20AD46690008257B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FAA826392526C217004B7A31 /* AJRImageUtilities.swift in Sources */,
+				FACEC3F822D297ED008AA6DB /* CGColorSpace+Extensions.swift in Sources */,
+				FA5EFBF520E1C603006C48B0 /* AJRBezierPath+AJRIntersection.m in Sources */,
+				FA10398B225D89BA005B0D3B /* NSAttributedStringAdditions.swift in Sources */,
+				FA42F7A020D0841F001AF25E /* AJRColorUtilities.m in Sources */,
+				FAD6FD4522AC5B7400C8B5EB /* AJRTrigonometry.swift in Sources */,
+				FAAAD95B223346D7002CA09C /* CATransaction+Extensions.swift in Sources */,
+				FA5EFC0D20E1C6AF006C48B0 /* AJRBezierCurves.m in Sources */,
+				FA59099D217E96420007D278 /* AJRInset.m in Sources */,
+				FA95DE5222B47339005EC953 /* AJRInset+Extensions.swift in Sources */,
+				FA07C89F220EB9250077A0B5 /* AJRColorView.swift in Sources */,
+				FA5EFBF420E1C603006C48B0 /* AJRBezierPath+AJRExtensions.m in Sources */,
+				FA08612622C93ADF0021CCC5 /* AJRTextLayer.swift in Sources */,
+				FA80617D2223FB7500D6D59F /* AJRGeometry.swift in Sources */,
+				FA7A8CE1228E100300D14301 /* CGContext+Extensions.swift in Sources */,
+				FA5EFC0220E1C603006C48B0 /* AJRVertex.m in Sources */,
+				FA08612B22C93C190021CCC5 /* AJROverlayTextMessageLayer.swift in Sources */,
+				FA10399C225EB2B6005B0D3B /* NSLayoutConstraint+Extensions.swift in Sources */,
+				FA07C8B2220EBBBB0077A0B5 /* AJRFont.swift in Sources */,
+				FA5EFBFC20E1C603006C48B0 /* AJRIntersection.m in Sources */,
+				FA5EFC1820E1C762006C48B0 /* NSValue+Extensions.m in Sources */,
+				FA53D6452241BC6A003E02B1 /* AJRBlockDrawingView.swift in Sources */,
+				FA5EFBFE20E1C603006C48B0 /* AJRPathAnalyzer.m in Sources */,
+				FA5EFC1120E1C6AF006C48B0 /* AJRTrigonometry.m in Sources */,
+				FA08612022C842760021CCC5 /* AJROverlayTextMessageView.swift in Sources */,
+				FA4FE53620AD46AB0008257B /* AJRImageUtilities.m in Sources */,
+				FA5EFC1B20E1C7E9006C48B0 /* AJRPathEnumerator.m in Sources */,
+				FA4F230D220930DB00AB64C2 /* AJRImage.swift in Sources */,
+				FA5EFC1F20E1C8BF006C48B0 /* AJRXMLCoder+Extensions.m in Sources */,
+				FA5EFC0020E1C603006C48B0 /* AJRPolygon.m in Sources */,
+				FA07C898220EB8AE0077A0B5 /* AJRColor.swift in Sources */,
+				FA5EFC0F20E1C6AF006C48B0 /* AJRGeometry.m in Sources */,
+				FA5EFBF720E1C603006C48B0 /* AJRBezierPath.m in Sources */,
+				FA07C8AD220EBB4B0077A0B5 /* AJRXView.swift in Sources */,
+				FA5EFC1320E1C6AF006C48B0 /* AJRVector.m in Sources */,
+				FA5EFBF920E1C603006C48B0 /* AJRBezierPathFunctions.m in Sources */,
+				FA07C8B9220FB18F0077A0B5 /* AJRGradient.swift in Sources */,
+				FA89258F21FA94D100246D46 /* CATransaction+Extensions.m in Sources */,
+				FA07C8A7220EBB050077A0B5 /* AJRView.swift in Sources */,
+				FA5EFC2420E1D093006C48B0 /* AJRGraphicsUtilities.m in Sources */,
+				FA4F23BA22094D1000AB64C2 /* CGColorExtensions.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA4FE51520AD46690008257B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA42F7AA20D0E557001AF25E /* AJRImageUtilitiesTests.m in Sources */,
+				FA4FE51F20AD46690008257B /* AJRColorUtilitiesTests.m in Sources */,
+				FAD0BB92259400D600346E67 /* AJRBezierPathTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FA4F23B22209332800AB64C2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA4FE50F20AD46690008257B /* AJRInterfaceFoundation */;
+			targetProxy = FA4F23B12209332800AB64C2 /* PBXContainerItemProxy */;
+		};
+		FA4F23B42209332800AB64C2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA4F230E2209323900AB64C2 /* AJRInterfaceFoundationCocoaTouch */;
+			targetProxy = FA4F23B32209332800AB64C2 /* PBXContainerItemProxy */;
+		};
+		FA4F23B62209332800AB64C2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA4F23432209329300AB64C2 /* AJRInterfaceFoundationTV */;
+			targetProxy = FA4F23B52209332800AB64C2 /* PBXContainerItemProxy */;
+		};
+		FA4F23B82209332800AB64C2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA4F2378220932B600AB64C2 /* AJRInterfaceFoundationWatch */;
+			targetProxy = FA4F23B72209332800AB64C2 /* PBXContainerItemProxy */;
+		};
+		FA4FE51C20AD46690008257B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA4FE50F20AD46690008257B /* AJRInterfaceFoundation */;
+			targetProxy = FA4FE51B20AD46690008257B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		FA4F23402209323900AB64C2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ajr.framework.interface-foundation.AJRInterfaceFoundation";
+				PRODUCT_NAME = AJRInterfaceFoundation;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		FA4F23412209323900AB64C2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ajr.framework.interface-foundation.AJRInterfaceFoundation";
+				PRODUCT_NAME = AJRInterfaceFoundation;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+			};
+			name = Release;
+		};
+		FA4F23752209329300AB64C2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ajr.framework.interface-foundation.AJRInterfaceFoundation";
+				PRODUCT_NAME = AJRInterfaceFoundation;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "appletvsimulator appletvos";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		FA4F23762209329300AB64C2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ajr.framework.interface-foundation.AJRInterfaceFoundation";
+				PRODUCT_NAME = AJRInterfaceFoundation;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "appletvsimulator appletvos";
+			};
+			name = Release;
+		};
+		FA4F23AA220932B600AB64C2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ajr.framework.interface-foundation.AJRInterfaceFoundation";
+				PRODUCT_NAME = AJRInterfaceFoundation;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "watchsimulator watchos";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		FA4F23AB220932B600AB64C2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ajr.framework.interface-foundation.AJRInterfaceFoundation";
+				PRODUCT_NAME = AJRInterfaceFoundation;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "watchsimulator watchos";
+			};
+			name = Release;
+		};
+		FA4F23AF2209331B00AB64C2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		FA4F23B02209331B00AB64C2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		FA4FE52220AD46690008257B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_NO_PIE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+				TVOS_DEPLOYMENT_TARGET = 12.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+				WATCHOS_DEPLOYMENT_TARGET = 5.0;
+			};
+			name = Debug;
+		};
+		FA4FE52320AD46690008257B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_AJRSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_NO_PIE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_VERSION = 5.0;
+				TVOS_DEPLOYMENT_TARGET = 12.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+				WATCHOS_DEPLOYMENT_TARGET = 5.0;
+			};
+			name = Release;
+		};
+		FA4FE52520AD46690008257B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ajr.framework.interface-foundation.AJRInterfaceFoundation";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		FA4FE52620AD46690008257B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ajr.framework.interface-foundation.AJRInterfaceFoundation";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		FA4FE52820AD46690008257B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = AJRInterfaceFoundationTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ajr.framework.interface-foundation.AJRInterfaceFoundationTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "AJRInterfaceFoundationTests/AJRInterfaceFoundationTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		FA4FE52920AD46690008257B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = AJRInterfaceFoundationTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ajr.framework.interface-foundation.AJRInterfaceFoundationTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "AJRInterfaceFoundationTests/AJRInterfaceFoundationTests-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FA4F233F2209323900AB64C2 /* Build configuration list for PBXNativeTarget "AJRInterfaceFoundationCocoaTouch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA4F23402209323900AB64C2 /* Debug */,
+				FA4F23412209323900AB64C2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FA4F23742209329300AB64C2 /* Build configuration list for PBXNativeTarget "AJRInterfaceFoundationTV" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA4F23752209329300AB64C2 /* Debug */,
+				FA4F23762209329300AB64C2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FA4F23A9220932B600AB64C2 /* Build configuration list for PBXNativeTarget "AJRInterfaceFoundationWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA4F23AA220932B600AB64C2 /* Debug */,
+				FA4F23AB220932B600AB64C2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FA4F23AE2209331B00AB64C2 /* Build configuration list for PBXAggregateTarget "AJRInterfaceFoundation All" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA4F23AF2209331B00AB64C2 /* Debug */,
+				FA4F23B02209331B00AB64C2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FA4FE50A20AD46690008257B /* Build configuration list for PBXProject "AJRInterfaceFoundation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA4FE52220AD46690008257B /* Debug */,
+				FA4FE52320AD46690008257B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FA4FE52420AD46690008257B /* Build configuration list for PBXNativeTarget "AJRInterfaceFoundation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA4FE52520AD46690008257B /* Debug */,
+				FA4FE52620AD46690008257B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FA4FE52720AD46690008257B /* Build configuration list for PBXNativeTarget "AJRInterfaceFoundationTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA4FE52820AD46690008257B /* Debug */,
+				FA4FE52920AD46690008257B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FA4FE50720AD46690008257B /* Project object */;
+}

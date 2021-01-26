@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>AJRInterfaceFoundation All.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
+		<key>AJRInterfaceFoundation.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>7</integer>
+		</dict>
+		<key>AJRInterfaceFoundationCocoaTouch.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>8</integer>
+		</dict>
+		<key>AJRInterfaceFoundationTV.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>9</integer>
+		</dict>
+		<key>AJRInterfaceFoundationWatch.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>10</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>FA4F230E2209323900AB64C2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FA4F23432209329300AB64C2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FA4F2378220932B600AB64C2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FA4F23AD2209331B00AB64C2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FA4FE50F20AD46690008257B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FA4FE51820AD46690008257B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>
