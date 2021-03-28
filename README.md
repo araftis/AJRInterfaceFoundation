@@ -4,10 +4,10 @@
 
 This is my interface foundation. The basic idea here is that there's actually quite a bit of code you can run on both Cocoa and CocoaTouch, due to sharing a fair amount of underlying graphics libraries. As such, if you have a class that you can conceivably see running on both iOS and Mac, this is the place. Note that when adding classes, you should avoid using special code branches as much as possible. I've establed a few code branches that should make sharing code easier. This is mainly done via type aliasing, and sometimes via adding a few methods to share between OSes. The main ones are:
 
-    1. AJRColor: UIColor / NSColor. It's good for basic operations like getting and setting a color in a graphics context.
-    2. AJRFont: UIFont / NSFont. Again, for basic font work, this is useful.
-    3. AJRImage: UIImage / NSImage. Makes dealing with images easier.
-    4. AJRView: UIView / NSView. Allows you to make simple views that can be used on iOS or Mac. Note this probably won't work for advanced views.
+  1. AJRColor: UIColor / NSColor. It's good for basic operations like getting and setting a color in a graphics context.
+  2. AJRFont: UIFont / NSFont. Again, for basic font work, this is useful.
+  3. AJRImage: UIImage / NSImage. Makes dealing with images easier.
+  4. AJRView: UIView / NSView. Allows you to make simple views that can be used on iOS or Mac. Note this probably won't work for advanced views.
 
 Beyond these, there's some useful bits in here:
 
@@ -64,7 +64,7 @@ I'm also open to feedback. If you have questions, please contact me at [AJ Rafti
 
 ## Unit Testing
 
-This framework has pretty good unit testing. At one point it was up to over 80%. but it may have dropped a little recently. I hope to get that number back up. I do try to keep unit tests up, but, sadly, I don't always have times to keep up as well as I should.
+This frame is very badly unit testing. That should be fixed, and I might even get to that someday.
 
 ## External Open Source
 
