@@ -1,10 +1,3 @@
-//
-//  CATransaction+Extensions.m
-//  Meta Monkey
-//
-//  Created by A.J. Raftis on 1/27/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
-//
 
 #import "CATransaction+Extensions.h"
 

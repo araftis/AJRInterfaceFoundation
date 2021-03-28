@@ -1,10 +1,3 @@
-//
-//  AJRBezierPathTests.swift
-//  AJRInterfaceFoundationTests
-//
-//  Created by AJ Raftis on 12/23/20.
-//  Copyright © 2020 Alex Raftis. All rights reserved.
-//
 
 import XCTest
 import AJRFoundation

@@ -1,10 +1,3 @@
-//
-//  CGColorExtensions.swift
-//  MediaQuery
-//
-//  Created by A.J. Raftis on 11/3/16.
-//  Copyright © 2016 A.J. Raftis. All rights reserved.
-//
 
 import CoreGraphics
 

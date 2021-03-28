@@ -1,10 +1,3 @@
-//
-//  NSAttributedStringAdditions.swift
-//  MediaQuery
-//
-//  Created by A.J. Raftis on 11/9/16.
-//  Copyright © 2016 A.J. Raftis. All rights reserved.
-//
 
 import Foundation
 import CoreGraphics

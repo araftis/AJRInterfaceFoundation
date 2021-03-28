@@ -1,10 +1,3 @@
-//
-//  AJRPathAnalyzer.m
-//  AJRInterface
-//
-//  Created by A.J. Raftis on 10/21/11.
-//  Copyright (c) 2011 A.J. Raftis. All rights reserved.
-//
 
 #import "AJRPathAnalyzer.h"
 

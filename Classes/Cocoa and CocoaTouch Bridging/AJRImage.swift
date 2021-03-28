@@ -1,10 +1,3 @@
-//
-//  AJRImage.swift
-//  AJRInterfaceFoundation
-//
-//  Created by AJ Raftis on 2/4/19.
-//  Copyright © 2019 A.J. Raftis. All rights reserved.
-//
 
 import Foundation
 

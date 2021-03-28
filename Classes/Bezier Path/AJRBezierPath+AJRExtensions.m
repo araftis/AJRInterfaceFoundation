@@ -1,4 +1,3 @@
-/* AJRBezierPath-AJRExtensions.m created by alex on Tue 02-Mar-1999 */
 
 #import "AJRBezierPathP.h"
 

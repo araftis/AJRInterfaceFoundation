@@ -1,10 +1,3 @@
-//
-//  AJRTrigonometry.swift
-//  AJRInterfaceFoundation
-//
-//  Created by AJ Raftis on 6/8/19.
-//  Copyright © 2019 Alex Raftis. All rights reserved.
-//
 
 import Foundation
 

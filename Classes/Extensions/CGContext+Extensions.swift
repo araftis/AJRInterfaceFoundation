@@ -1,10 +1,3 @@
-//
-//  AJRGraphicsUtilities.swift
-//  AJRInterfaceFoundation
-//
-//  Created by AJ Raftis on 5/16/19.
-//  Copyright © 2019 Alex Raftis. All rights reserved.
-//
 
 import Foundation
 import CoreGraphics

@@ -1,10 +1,3 @@
-//
-//  AJRInset.m
-//  AJRInterfaceFoundation
-//
-//  Created by AJ Raftis on 10/22/18.
-//  Copyright © 2018 A.J. Raftis. All rights reserved.
-//
 
 #import "AJRInset.h"
 

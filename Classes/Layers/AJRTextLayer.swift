@@ -1,9 +1,3 @@
-//
-//  AJRTextLayer.swift
-//
-//  Created by A.J. Raftis on 9/10/12.
-//
-//
 
 #if os(OSX)
 import AppKit

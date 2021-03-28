@@ -1,9 +1,3 @@
-//
-//  AJRColorView.swift
-//  AJRInterface
-//
-//  Created by AJ Raftis on 2/8/19.
-//
 
 #if os(iOS) || os(tvOS) || os(watchOS)
 import UIKit

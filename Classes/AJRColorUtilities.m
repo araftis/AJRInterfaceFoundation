@@ -1,10 +1,3 @@
-//
-//  AJRColorUtilities.m
-//  AJRInterfaceFoundation
-//
-//  Created by A.J. Raftis on 6/12/18.
-//  Copyright © 2018 A.J. Raftis. All rights reserved.
-//
 
 #import "AJRColorUtilities.h"
 

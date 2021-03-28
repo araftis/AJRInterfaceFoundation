@@ -1,10 +1,3 @@
-//
-//  AJRInterfaceFoundationTests.m
-//  AJRInterfaceFoundationTests
-//
-//  Created by A.J. Raftis on 5/16/18.
-//  Copyright © 2018 A.J. Raftis. All rights reserved.
-//
 
 #import <XCTest/XCTest.h>
 

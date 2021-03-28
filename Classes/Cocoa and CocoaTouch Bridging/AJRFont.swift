@@ -1,10 +1,3 @@
-//
-//  AJRFont.swift
-//  AJRInterfaceFoundation
-//
-//  Created by AJ Raftis on 2/8/19.
-//  Copyright © 2019 A.J. Raftis. All rights reserved.
-//
 
 #if os(iOS) || os(tvOS) || os(watchOS)
 

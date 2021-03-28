@@ -1,10 +1,3 @@
-//
-//  AJRPolygon.m
-//  AJRInterface
-//
-//  Created by A.J. Raftis on 9/27/11.
-//  Copyright (c) 2011 A.J. Raftis. All rights reserved.
-//
 
 #import <AJRInterfaceFoundation/AJRPolygon.h>
 

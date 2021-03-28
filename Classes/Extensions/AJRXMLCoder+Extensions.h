@@ -1,9 +1,3 @@
-//
-//  AJRXMLCoder+Extensions.h
-//  AJRInterface
-//
-//  Created by A.J. Raftis on 6/18/14.
-//
 
 #import <AJRFoundation/AJRFoundation.h>
 

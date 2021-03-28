@@ -1,4 +1,3 @@
-/* NSValue-Extensions.h created by alex on Tue 27-Oct-1998 */
 
 #import <AJRInterfaceFoundation/AJRTrigonometry.h>
 #import <AJRInterfaceFoundation/AJRBezierCurves.h>

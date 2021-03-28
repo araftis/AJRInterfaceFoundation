@@ -1,10 +1,3 @@
-//
-//  AJRImageUtilities.swift
-//  AJRInterfaceFoundation
-//
-//  Created by AJ Raftis on 10/1/20.
-//  Copyright © 2020 Alex Raftis. All rights reserved.
-//
 
 import CoreGraphics
 import AppKit

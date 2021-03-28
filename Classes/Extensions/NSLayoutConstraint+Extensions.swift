@@ -1,10 +1,3 @@
-//
-//  NSLayoutConstraint+Extensions.swift
-//  AJRInterfaceFoundation
-//
-//  Created by AJ Raftis on 4/10/19.
-//  Copyright © 2019 Alex Raftis. All rights reserved.
-//
 
 #if os(iOS) || os(tvOS) || os(watchOS)
 import UIKit

@@ -1,10 +1,3 @@
-//
-//  CGColorSpace+Extensions.swift
-//  AJRInterfaceFoundation
-//
-//  Created by AJ Raftis on 7/7/19.
-//  Copyright © 2019 Alex Raftis. All rights reserved.
-//
 
 import Foundation
 

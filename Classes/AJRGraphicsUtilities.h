@@ -1,10 +1,3 @@
-//
-//  AJRGraphicsUtilities.h
-//  AJRInterfaceFoundation
-//
-//  Created by A.J. Raftis on 6/25/18.
-//  Copyright © 2018 A.J. Raftis. All rights reserved.
-//
 
 #import <Foundation/Foundation.h>
 

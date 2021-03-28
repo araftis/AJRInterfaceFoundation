@@ -1,10 +1,3 @@
-//
-//  AJRXMLCoder+Extensions.m
-//  AJRInterface
-//
-//  Created by A.J. Raftis on 6/18/14.
-//
-//
 
 #import "AJRXMLCoder+Extensions.h"
 

@@ -1,4 +1,3 @@
-/* NSValue-Extensions.m created by alex on Tue 27-Oct-1998 */
 
 #import "NSValue+Extensions.h"
 
