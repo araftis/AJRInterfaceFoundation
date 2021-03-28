@@ -328,6 +328,9 @@
 		FA08612A22C93C190021CCC5 /* AJROverlayTextMessageLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AJROverlayTextMessageLayer.swift; sourceTree = "<group>"; };
 		FA10398A225D89BA005B0D3B /* NSAttributedStringAdditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSAttributedStringAdditions.swift; sourceTree = "<group>"; };
 		FA10399B225EB2B6005B0D3B /* NSLayoutConstraint+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Extensions.swift"; sourceTree = "<group>"; };
+		FA2876F42610227D00F5BBE8 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		FA2876F52610227D00F5BBE8 /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
+		FA2876F62610227D00F5BBE8 /* Tools */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Tools; sourceTree = "<group>"; };
 		FA42F79F20D0841F001AF25E /* AJRColorUtilities.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AJRColorUtilities.m; sourceTree = "<group>"; };
 		FA42F7A120D08429001AF25E /* AJRColorUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AJRColorUtilities.h; sourceTree = "<group>"; };
 		FA42F7A320D0C3E7001AF25E /* AJRFoundation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AJRFoundation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -507,8 +510,11 @@
 		FA4FE50620AD46690008257B = {
 			isa = PBXGroup;
 			children = (
+				FA2876F52610227D00F5BBE8 /* LICENSE.md */,
+				FA2876F42610227D00F5BBE8 /* README.md */,
 				FA4FE51220AD46690008257B /* Classes */,
 				FA77D2B920DDBA6D00C07BAB /* Cocoa */,
+				FA2876F62610227D00F5BBE8 /* Tools */,
 				FA4FE51D20AD46690008257B /* AJRInterfaceFoundationTests */,
 				FA4FE51120AD46690008257B /* Products */,
 				FA4FE53920AD471F0008257B /* Frameworks */,
