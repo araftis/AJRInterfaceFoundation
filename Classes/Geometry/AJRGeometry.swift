@@ -178,4 +178,10 @@ extension CGRect : AJRUserDefaultProvider {
     
 }
 
-
+public func AJRLineIntersection(first: AJRLine, second: AJRLine, limited: Bool) -> CGPoint? {
+    var intersection = NSPoint.zero
+    if AJRLineIntersection(first, second, limited, &intersection) {
+        return intersection
+    }
+    return nil
+}

@@ -347,9 +347,9 @@ NSString *AJRStringFromLine(AJRLine line) {
 }
 
 BOOL AJRLineIntersection(AJRLine first, AJRLine second, BOOL limited, CGPoint *point) {
-    double        a1, a2, b1, b2, c1, c2; // Coefficients of line eqns.
-    double        r1, r2, r3, r4;         // 'Sign' values
-    double        denom;
+    double a1, a2, b1, b2, c1, c2; // Coefficients of line eqns.
+    double r1, r2, r3, r4;         // 'Sign' values
+    double denom;
     
     // Compute a1, b1, c1, where line joining points 1 and 2 is "a1 x  +  b1 y  + c1  =  0".
     
