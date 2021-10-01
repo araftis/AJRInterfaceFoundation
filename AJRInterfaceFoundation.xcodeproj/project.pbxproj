@@ -24,6 +24,14 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		21FCD9C5270674A30049E558 /* AJRBezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FCD9C4270674A30049E558 /* AJRBezierPath.swift */; };
+		21FCD9C6270674A30049E558 /* AJRBezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FCD9C4270674A30049E558 /* AJRBezierPath.swift */; };
+		21FCD9C7270674A30049E558 /* AJRBezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FCD9C4270674A30049E558 /* AJRBezierPath.swift */; };
+		21FCD9C8270674A30049E558 /* AJRBezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FCD9C4270674A30049E558 /* AJRBezierPath.swift */; };
+		21FCD9CD270689A80049E558 /* AJRGraphicsUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FCD9CC270689A80049E558 /* AJRGraphicsUtilities.swift */; };
+		21FCD9CE270689A80049E558 /* AJRGraphicsUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FCD9CC270689A80049E558 /* AJRGraphicsUtilities.swift */; };
+		21FCD9CF270689A80049E558 /* AJRGraphicsUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FCD9CC270689A80049E558 /* AJRGraphicsUtilities.swift */; };
+		21FCD9D0270689A80049E558 /* AJRGraphicsUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FCD9CC270689A80049E558 /* AJRGraphicsUtilities.swift */; };
 		FA07C898220EB8AE0077A0B5 /* AJRColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA07C897220EB8AE0077A0B5 /* AJRColor.swift */; };
 		FA07C899220EB8AE0077A0B5 /* AJRColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA07C897220EB8AE0077A0B5 /* AJRColor.swift */; };
 		FA07C89A220EB8AE0077A0B5 /* AJRColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA07C897220EB8AE0077A0B5 /* AJRColor.swift */; };
@@ -317,6 +325,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		21FCD9C4270674A30049E558 /* AJRBezierPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AJRBezierPath.swift; sourceTree = "<group>"; };
+		21FCD9CC270689A80049E558 /* AJRGraphicsUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AJRGraphicsUtilities.swift; sourceTree = "<group>"; };
 		FA07C897220EB8AE0077A0B5 /* AJRColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AJRColor.swift; sourceTree = "<group>"; };
 		FA07C89E220EB9250077A0B5 /* AJRColorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AJRColorView.swift; sourceTree = "<group>"; };
 		FA07C8A6220EBB050077A0B5 /* AJRView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AJRView.swift; sourceTree = "<group>"; };
@@ -550,6 +560,7 @@
 				FA42F79F20D0841F001AF25E /* AJRColorUtilities.m */,
 				FA5EFC2120E1D093006C48B0 /* AJRGraphicsUtilities.h */,
 				FA5EFC2220E1D093006C48B0 /* AJRGraphicsUtilities.m */,
+				21FCD9CC270689A80049E558 /* AJRGraphicsUtilities.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -592,6 +603,7 @@
 				FA5EFBE620E1C603006C48B0 /* AJRBezierPath+AJRIntersection.m */,
 				FA5EFBE720E1C603006C48B0 /* AJRBezierPath.h */,
 				FA5EFBE820E1C603006C48B0 /* AJRBezierPath.m */,
+				21FCD9C4270674A30049E558 /* AJRBezierPath.swift */,
 				FA5EFBE920E1C603006C48B0 /* AJRBezierPathFunctions.h */,
 				FA5EFBEA20E1C603006C48B0 /* AJRBezierPathFunctions.m */,
 				FA5EFBEB20E1C603006C48B0 /* AJRBezierPathP.h */,
@@ -963,6 +975,7 @@
 				FA4F23182209323900AB64C2 /* AJRPathAnalyzer.m in Sources */,
 				FA4F23192209323900AB64C2 /* AJRTrigonometry.m in Sources */,
 				FA07C8BA220FB18F0077A0B5 /* AJRGradient.swift in Sources */,
+				21FCD9CE270689A80049E558 /* AJRGraphicsUtilities.swift in Sources */,
 				FA07C8B3220EBBBB0077A0B5 /* AJRFont.swift in Sources */,
 				FA4F231A2209323900AB64C2 /* AJRImageUtilities.m in Sources */,
 				FA4F231B2209323900AB64C2 /* AJRPathEnumerator.m in Sources */,
@@ -981,6 +994,7 @@
 				FA4F23222209323900AB64C2 /* AJRBezierPathFunctions.m in Sources */,
 				FA4F23232209323900AB64C2 /* CATransaction+Extensions.m in Sources */,
 				FA08612122C842760021CCC5 /* AJROverlayTextMessageView.swift in Sources */,
+				21FCD9C6270674A30049E558 /* AJRBezierPath.swift in Sources */,
 				FA08612722C93ADF0021CCC5 /* AJRTextLayer.swift in Sources */,
 				FA07C8AE220EBB4B0077A0B5 /* AJRXView.swift in Sources */,
 				FA4F23242209323900AB64C2 /* AJRGraphicsUtilities.m in Sources */,
@@ -1008,6 +1022,7 @@
 				FA4F234D2209329300AB64C2 /* AJRPathAnalyzer.m in Sources */,
 				FA4F234E2209329300AB64C2 /* AJRTrigonometry.m in Sources */,
 				FA07C8BB220FB18F0077A0B5 /* AJRGradient.swift in Sources */,
+				21FCD9CF270689A80049E558 /* AJRGraphicsUtilities.swift in Sources */,
 				FA07C8B4220EBBBB0077A0B5 /* AJRFont.swift in Sources */,
 				FA4F234F2209329300AB64C2 /* AJRImageUtilities.m in Sources */,
 				FA4F23502209329300AB64C2 /* AJRPathEnumerator.m in Sources */,
@@ -1026,6 +1041,7 @@
 				FA4F23572209329300AB64C2 /* AJRBezierPathFunctions.m in Sources */,
 				FA4F23582209329300AB64C2 /* CATransaction+Extensions.m in Sources */,
 				FA08612222C842760021CCC5 /* AJROverlayTextMessageView.swift in Sources */,
+				21FCD9C7270674A30049E558 /* AJRBezierPath.swift in Sources */,
 				FA08612822C93ADF0021CCC5 /* AJRTextLayer.swift in Sources */,
 				FA07C8AF220EBB4B0077A0B5 /* AJRXView.swift in Sources */,
 				FA4F23592209329300AB64C2 /* AJRGraphicsUtilities.m in Sources */,
@@ -1053,6 +1069,7 @@
 				FA4F2382220932B600AB64C2 /* AJRPathAnalyzer.m in Sources */,
 				FA4F2383220932B600AB64C2 /* AJRTrigonometry.m in Sources */,
 				FA07C8BC220FB18F0077A0B5 /* AJRGradient.swift in Sources */,
+				21FCD9D0270689A80049E558 /* AJRGraphicsUtilities.swift in Sources */,
 				FA07C8B5220EBBBB0077A0B5 /* AJRFont.swift in Sources */,
 				FA4F2384220932B600AB64C2 /* AJRImageUtilities.m in Sources */,
 				FA4F2385220932B600AB64C2 /* AJRPathEnumerator.m in Sources */,
@@ -1071,6 +1088,7 @@
 				FA4F238C220932B600AB64C2 /* AJRBezierPathFunctions.m in Sources */,
 				FA4F238D220932B600AB64C2 /* CATransaction+Extensions.m in Sources */,
 				FA08612322C842760021CCC5 /* AJROverlayTextMessageView.swift in Sources */,
+				21FCD9C8270674A30049E558 /* AJRBezierPath.swift in Sources */,
 				FA08612922C93ADF0021CCC5 /* AJRTextLayer.swift in Sources */,
 				FA07C8B0220EBB4B0077A0B5 /* AJRXView.swift in Sources */,
 				FA4F238E220932B600AB64C2 /* AJRGraphicsUtilities.m in Sources */,
@@ -1086,6 +1104,7 @@
 				FAA826392526C217004B7A31 /* AJRImageUtilities.swift in Sources */,
 				FACEC3F822D297ED008AA6DB /* CGColorSpace+Extensions.swift in Sources */,
 				FA5EFBF520E1C603006C48B0 /* AJRBezierPath+AJRIntersection.m in Sources */,
+				21FCD9C5270674A30049E558 /* AJRBezierPath.swift in Sources */,
 				FA10398B225D89BA005B0D3B /* NSAttributedStringAdditions.swift in Sources */,
 				FA42F7A020D0841F001AF25E /* AJRColorUtilities.m in Sources */,
 				FAD6FD4522AC5B7400C8B5EB /* AJRTrigonometry.swift in Sources */,
@@ -1102,6 +1121,7 @@
 				FA08612B22C93C190021CCC5 /* AJROverlayTextMessageLayer.swift in Sources */,
 				FA10399C225EB2B6005B0D3B /* NSLayoutConstraint+Extensions.swift in Sources */,
 				FA07C8B2220EBBBB0077A0B5 /* AJRFont.swift in Sources */,
+				21FCD9CD270689A80049E558 /* AJRGraphicsUtilities.swift in Sources */,
 				FA5EFBFC20E1C603006C48B0 /* AJRIntersection.m in Sources */,
 				FA5EFC1820E1C762006C48B0 /* NSValue+Extensions.m in Sources */,
 				FA53D6452241BC6A003E02B1 /* AJRBlockDrawingView.swift in Sources */,

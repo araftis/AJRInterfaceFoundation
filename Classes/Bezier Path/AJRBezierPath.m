@@ -723,7 +723,6 @@ static NSImage *_ajrHack = nil;
 
 // Clipping paths
 - (void)addClip {
-    
     CGContextRef context = [[NSGraphicsContext currentContext] CGContext];
     
     if (_elementCount <= 1) return;
