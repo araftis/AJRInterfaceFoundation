@@ -130,7 +130,7 @@ public extension AJRBezierPath {
      - returns An array of rectangles that should not overlap with each other.
      */
     func cleanUp(rects: [AJRIntersectionRect]) -> [AJRIntersectionRect] {
-        var newRects = [AJRIntersectionRect](rects)
+        let newRects = [AJRIntersectionRect](rects)
 
         for index1 in stride(from: 0, to: rects.count, by: 1) {
             let rect1 = rects[index1]

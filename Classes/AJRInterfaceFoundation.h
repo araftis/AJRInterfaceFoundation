@@ -62,4 +62,3 @@ FOUNDATION_EXPORT const unsigned char AJRInterfaceFoundationVersionString[];
 #import <AJRInterfaceFoundation/CATransaction+Extensions.h>
 #import <AJRInterfaceFoundation/NSValue+Extensions.h>
 #import <AJRInterfaceFoundation/CATransaction+Extensions.h>
-#import <AJRInterfaceFoundation/AJRInterfaceFoundation-Swift.h>
