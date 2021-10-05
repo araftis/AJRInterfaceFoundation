@@ -76,9 +76,9 @@ public extension Double {
 }
 
 public func AJRArctan<T:BinaryFloatingPoint>(rise: T, run: T) throws -> T {
-   if (rise == 0.0) && (run == 0.0) {
-    throw AJRTrigonometryError.invalidParemeters(message: "A rise and run of 0.0 are invalid inputs to arctan.")
-   }
+    if (rise == 0.0) && (run == 0.0) {
+        throw AJRTrigonometryError.invalidParemeters(message: "A rise and run of 0.0 are invalid inputs to arctan.")
+    }
 
    if run == 0.0 {
       if rise >= 0.0 {

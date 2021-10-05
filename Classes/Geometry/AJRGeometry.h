@@ -207,3 +207,22 @@ extern BOOL AJRLineIntersection(AJRLine first, AJRLine second, BOOL limited, CGP
  @result The angle of the line. See the discussion for specifics.
  */
 #define AJRLineAngle(line) (AJRArctan((line).end.y - (line).start.y, (line).end.x - (line).start.x))
+
+/**
+ Computes the midpoint of the line
+
+ @param line The line who's midpoint you want.
+
+ @result The midpoint of the line.
+ */
+extern CGPoint AJRMidpoint(AJRLine line);
+
+/**
+ Computers the midpoint of the line defined by start and end. If start and end are equal, the return will also be equal.
+
+ @param start The start of the line.
+ @param end The end of the line.
+
+ @result The midpoint of the line defined by start and end.
+ */
+extern CGPoint AJRMidpoint2(CGPoint start, CGPoint end);

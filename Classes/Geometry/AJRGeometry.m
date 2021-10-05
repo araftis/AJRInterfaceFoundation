@@ -346,6 +346,14 @@ NSString *AJRStringFromLine(AJRLine line) {
     return [NSString stringWithFormat:@"{%.1f, %.1f}->{%.1f, %.1f}", line.start.x, line.start.y, line.end.x, line.end.y];
 }
 
+CGPoint AJRMidpoint(AJRLine line) {
+    return AJRMidpoint2(line.start, line.end);
+}
+
+CGPoint AJRMidpoint2(CGPoint start, CGPoint end) {
+    return (CGPoint){(start.x + end.x) / 2.0, (start.y + end.y) / 2.0};
+}
+
 BOOL AJRLineIntersection(AJRLine first, AJRLine second, BOOL limited, CGPoint *point) {
     double a1, a2, b1, b2, c1, c2; // Coefficients of line eqns.
     double r1, r2, r3, r4;         // 'Sign' values

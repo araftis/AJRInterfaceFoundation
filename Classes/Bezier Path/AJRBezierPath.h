@@ -306,9 +306,9 @@ typedef CGPoint (^AJRBezierPathPointTransform)(CGPoint point);
 
 #pragma mark - Enumerator for going over the edge. This is an easy way to flatten the path.
 
-- (AJRPathEnumerator *)pathEnumerator;
+@property (readonly) AJRPathEnumerator *pathEnumerator;
 - (void)enumerateWithBlock:(void (^)(NSBezierPathElement element, CGPoint *points, BOOL *stop))enumerationBlock;
-- (void)enumerateFlattenedPathWithBlock:(void (^)(AJRLine lineSegment, BOOL *stop))enumerationBlock;
+- (void)enumerateFlattenedPathWithBlock:(void (^)(AJRLine lineSegment, BOOL isNewSubpath, BOOL *stop))enumerationBlock;
 
 #pragma mark - Additonal bounds computations
 

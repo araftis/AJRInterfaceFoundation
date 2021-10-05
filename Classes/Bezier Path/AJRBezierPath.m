@@ -233,7 +233,7 @@ static CGFloat _ajrDefaultDashOffset = 0.0;
     [path moveToPoint:(CGPoint){rect.origin.x, rect.origin.y}];
     [path lineToPoint:(CGPoint){rect.origin.x + rect.size.width, rect.origin.y + rect.size.height}];
     [path moveToPoint:(CGPoint){rect.origin.x, rect.origin.y + rect.size.height}];
-    [path lineToPoint:(CGPoint){rect.origin.x + rect.size.width, rect.origin.y + rect.size.height}];
+    [path lineToPoint:(CGPoint){rect.origin.x + rect.size.width, rect.origin.y}];
     
     return path;
 }
@@ -800,6 +800,7 @@ static NSImage *_ajrHack = nil;
             CGContextSetLineWidth(context, _lineWidth);
         }
     }
+    CGContextSetFlatness(context, _flatness);
     
     AJRstroke(context, _points, _pointCount, _elements, _elementCount, _strokePointTransform);
 }
@@ -813,6 +814,7 @@ static NSImage *_ajrHack = nil;
 }
 
 + (void)strokeLineFromPoint:(CGPoint)point1 toPoint:(CGPoint)point2 {
+    NSBezierPath.defaultLineWidth = _ajrDefaultLineWidth;
     [NSBezierPath strokeLineFromPoint:point1 toPoint:point2];
 }
 
@@ -1354,9 +1356,9 @@ void AJRExpandRect(CGRect *rect, CGPoint *point) {
 #pragma mark - Path modifications
 
 - (id)bezierPathByFlatteningPath {
-    AJRBezierPath            *newPath = [[[self class] allocWithZone:nil] init];
-    AJRPathEnumerator        *enumerator = [self pathEnumerator];
-    AJRLine                    *line;
+    AJRBezierPath *newPath = [[[self class] allocWithZone:nil] init];
+    AJRPathEnumerator *enumerator = [self pathEnumerator];
+    AJRLine *line;
     
     [newPath setWindingRule:_windingRule];
     [newPath setLineJoinStyle:_lineJoinStyle];

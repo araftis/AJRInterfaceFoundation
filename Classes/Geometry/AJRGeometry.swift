@@ -178,10 +178,63 @@ extension CGRect : AJRUserDefaultProvider {
     
 }
 
+/**
+ Intersects the `first` with `second` return the point of intersection or `nil`. If `limited` is `true`, then the actual line segments must intersect, but if `limited`is `false`, then an intersection will be returned unless the lines are parallel.
+
+ - parameter first: One of the lines to intersect
+ - parameter second: The othee line to intersect.
+ - parameter limited: Determines whether or not we use line segment or full line intersection.
+
+ - returns: The point of intersection or `nil` if no intersection is found.
+ */
 public func AJRLineIntersection(first: AJRLine, second: AJRLine, limited: Bool) -> CGPoint? {
     var intersection = NSPoint.zero
     if AJRLineIntersection(first, second, limited, &intersection) {
         return intersection
     }
     return nil
+}
+
+public extension AJRLine {
+
+    /**
+     Intersects the receiver with `other` return the point of intersection or `nil`. If `limited` is `true`, then the actual line segments must intersect, but if `limited`is `false`, then an intersection will be returned unless the lines are parallel.
+
+     - parameter other: The line to intersect with.
+     - parameter limited: Determines whether or not we use line segment or full line intersection.
+
+     - returns: The point of intersection or `nil` if no intersection is found.
+     */
+    func intersect(with other: AJRLine, limited: Bool = true) -> CGPoint? {
+        return AJRLineIntersection(first: self, second: other, limited: limited)
+    }
+
+    /**
+     The rise of the line segment. This is a computed property, and saves you from having to do a bunch of inline math.
+     */
+    var rise : CGFloat {
+        return end.y - start.y
+    }
+
+    /**
+     The run of the line segment. This is a computed property, and saves you from having to do a bunch of inline math.
+     */
+    var run : CGFloat {
+        return end.x - start.x
+    }
+
+    /**
+     The angle of the line. This is a computed property and returns a value of 0 through 360.0 (note: not radians). It will correctly deal with a run of 0.
+     */
+    var angle : CGFloat {
+        return CGFloat(AJRArctan(Double(rise), Double(run)))
+    }
+
+    /**
+     The midpoint of the line.
+     */
+    var midpoint : CGPoint {
+        return AJRMidpoint(self)
+    }
+
 }

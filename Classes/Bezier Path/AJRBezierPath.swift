@@ -2,9 +2,6 @@
 //  AJRBezierPath.swift
 //  AJRInterfaceFoundation
 //
-//  Created by AJ Raftis on 9/30/21.
-//  Copyright © 2021 Alex Raftis. All rights reserved.
-//
 
 import Foundation
 
@@ -13,6 +10,8 @@ import Foundation
  */
 
 public extension AJRBezierPath {
+
+    static var hairLineWidth : CGFloat = 0.0
 
     func move<T: BinaryInteger>(to point: (T, T)) -> Void {
         move(to: CGPoint(x: CGFloat(point.0), y: CGFloat(point.1)))

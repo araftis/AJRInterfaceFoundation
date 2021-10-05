@@ -267,6 +267,10 @@
 		FA80617E2223FB7500D6D59F /* AJRGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA80617C2223FB7500D6D59F /* AJRGeometry.swift */; };
 		FA80617F2223FB7500D6D59F /* AJRGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA80617C2223FB7500D6D59F /* AJRGeometry.swift */; };
 		FA8061802223FB7500D6D59F /* AJRGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA80617C2223FB7500D6D59F /* AJRGeometry.swift */; };
+		FA86625926D1D18C005FB063 /* AJRBezierPath+Inscribed.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA86625826D1D18C005FB063 /* AJRBezierPath+Inscribed.swift */; };
+		FA86625A26D1D18C005FB063 /* AJRBezierPath+Inscribed.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA86625826D1D18C005FB063 /* AJRBezierPath+Inscribed.swift */; };
+		FA86625B26D1D18C005FB063 /* AJRBezierPath+Inscribed.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA86625826D1D18C005FB063 /* AJRBezierPath+Inscribed.swift */; };
+		FA86625C26D1D18C005FB063 /* AJRBezierPath+Inscribed.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA86625826D1D18C005FB063 /* AJRBezierPath+Inscribed.swift */; };
 		FA89258E21FA94D100246D46 /* CATransaction+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = FA89258C21FA94D000246D46 /* CATransaction+Extensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA89258F21FA94D100246D46 /* CATransaction+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = FA89258D21FA94D000246D46 /* CATransaction+Extensions.m */; };
 		FA95DE5222B47339005EC953 /* AJRInset+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA95DE5122B47339005EC953 /* AJRInset+Extensions.swift */; };
@@ -397,6 +401,7 @@
 		FA5EFC2220E1D093006C48B0 /* AJRGraphicsUtilities.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AJRGraphicsUtilities.m; sourceTree = "<group>"; };
 		FA7A8CE0228E100300D14301 /* CGContext+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGContext+Extensions.swift"; sourceTree = "<group>"; };
 		FA80617C2223FB7500D6D59F /* AJRGeometry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AJRGeometry.swift; sourceTree = "<group>"; };
+		FA86625826D1D18C005FB063 /* AJRBezierPath+Inscribed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AJRBezierPath+Inscribed.swift"; sourceTree = "<group>"; };
 		FA89258C21FA94D000246D46 /* CATransaction+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CATransaction+Extensions.h"; sourceTree = "<group>"; };
 		FA89258D21FA94D000246D46 /* CATransaction+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CATransaction+Extensions.m"; sourceTree = "<group>"; };
 		FA95DE5122B47339005EC953 /* AJRInset+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AJRInset+Extensions.swift"; sourceTree = "<group>"; };
@@ -601,6 +606,7 @@
 			children = (
 				FA5EFBE520E1C603006C48B0 /* AJRBezierPath+AJRExtensions.m */,
 				FA5EFBE620E1C603006C48B0 /* AJRBezierPath+AJRIntersection.m */,
+				FA86625826D1D18C005FB063 /* AJRBezierPath+Inscribed.swift */,
 				FA5EFBE720E1C603006C48B0 /* AJRBezierPath.h */,
 				FA5EFBE820E1C603006C48B0 /* AJRBezierPath.m */,
 				21FCD9C4270674A30049E558 /* AJRBezierPath.swift */,
@@ -995,6 +1001,7 @@
 				FA4F23232209323900AB64C2 /* CATransaction+Extensions.m in Sources */,
 				FA08612122C842760021CCC5 /* AJROverlayTextMessageView.swift in Sources */,
 				21FCD9C6270674A30049E558 /* AJRBezierPath.swift in Sources */,
+				FA86625A26D1D18C005FB063 /* AJRBezierPath+Inscribed.swift in Sources */,
 				FA08612722C93ADF0021CCC5 /* AJRTextLayer.swift in Sources */,
 				FA07C8AE220EBB4B0077A0B5 /* AJRXView.swift in Sources */,
 				FA4F23242209323900AB64C2 /* AJRGraphicsUtilities.m in Sources */,
@@ -1042,6 +1049,7 @@
 				FA4F23582209329300AB64C2 /* CATransaction+Extensions.m in Sources */,
 				FA08612222C842760021CCC5 /* AJROverlayTextMessageView.swift in Sources */,
 				21FCD9C7270674A30049E558 /* AJRBezierPath.swift in Sources */,
+				FA86625B26D1D18C005FB063 /* AJRBezierPath+Inscribed.swift in Sources */,
 				FA08612822C93ADF0021CCC5 /* AJRTextLayer.swift in Sources */,
 				FA07C8AF220EBB4B0077A0B5 /* AJRXView.swift in Sources */,
 				FA4F23592209329300AB64C2 /* AJRGraphicsUtilities.m in Sources */,
@@ -1089,6 +1097,7 @@
 				FA4F238D220932B600AB64C2 /* CATransaction+Extensions.m in Sources */,
 				FA08612322C842760021CCC5 /* AJROverlayTextMessageView.swift in Sources */,
 				21FCD9C8270674A30049E558 /* AJRBezierPath.swift in Sources */,
+				FA86625C26D1D18C005FB063 /* AJRBezierPath+Inscribed.swift in Sources */,
 				FA08612922C93ADF0021CCC5 /* AJRTextLayer.swift in Sources */,
 				FA07C8B0220EBB4B0077A0B5 /* AJRXView.swift in Sources */,
 				FA4F238E220932B600AB64C2 /* AJRGraphicsUtilities.m in Sources */,
@@ -1137,6 +1146,7 @@
 				FA5EFC0F20E1C6AF006C48B0 /* AJRGeometry.m in Sources */,
 				FA5EFBF720E1C603006C48B0 /* AJRBezierPath.m in Sources */,
 				FA07C8AD220EBB4B0077A0B5 /* AJRXView.swift in Sources */,
+				FA86625926D1D18C005FB063 /* AJRBezierPath+Inscribed.swift in Sources */,
 				FA5EFC1320E1C6AF006C48B0 /* AJRVector.m in Sources */,
 				FA5EFBF920E1C603006C48B0 /* AJRBezierPathFunctions.m in Sources */,
 				FA07C8B9220FB18F0077A0B5 /* AJRGradient.swift in Sources */,

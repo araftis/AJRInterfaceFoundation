@@ -1,33 +1,33 @@
 /*
-AJRPathEnumerator.m
-AJRInterfaceFoundation
+ AJRPathEnumerator.m
+ AJRInterfaceFoundation
 
-Copyright © 2021, AJ Raftis and AJRFoundation authors
-All rights reserved.
+ Copyright © 2021, AJ Raftis and AJRFoundation authors
+ All rights reserved.
 
-Redistribution and use in source and binary forms, with or without modification,
-are permitted provided that the following conditions are met:
+ Redistribution and use in source and binary forms, with or without modification,
+ are permitted provided that the following conditions are met:
 
-* Redistributions of source code must retain the above copyright notice, this 
-  list of conditions and the following disclaimer.
-* Redistributions in binary form must reproduce the above copyright notice, 
-  this list of conditions and the following disclaimer in the documentation 
-  and/or other materials provided with the distribution.
-* Neither the name of AJRInterfaceFoundation nor the names of its contributors may be 
-  used to endorse or promote products derived from this software without 
-  specific prior written permission.
+ * Redistributions of source code must retain the above copyright notice, this
+ list of conditions and the following disclaimer.
+ * Redistributions in binary form must reproduce the above copyright notice,
+ this list of conditions and the following disclaimer in the documentation
+ and/or other materials provided with the distribution.
+ * Neither the name of AJRInterfaceFoundation nor the names of its contributors may be
+ used to endorse or promote products derived from this software without
+ specific prior written permission.
 
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
-ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
-WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE 
-DISCLAIMED. IN NO EVENT SHALL AJ RAFTIS BE LIABLE FOR ANY DIRECT, INDIRECT, 
-INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
-LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
-PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF 
-LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
-OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF 
-ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*/
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ DISCLAIMED. IN NO EVENT SHALL AJ RAFTIS BE LIABLE FOR ANY DIRECT, INDIRECT,
+ INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+ LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+ PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+ LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+ OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
 
 #import "AJRBezierCurves.h"
 #import "AJRPathEnumerator.h"
@@ -36,9 +36,9 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define MAXSTACKSIZE    200
 
 typedef struct __ajrEdgeEnumeratorStackElement {
-    AJRBezierCurve  left;
-    AJRBezierCurve  right;
-    BOOL            usedLeft;
+    AJRBezierCurve left;
+    AJRBezierCurve right;
+    BOOL usedLeft;
 } _AJREdgeEnumeratorStackElement;
 
 #define STACK ((_AJREdgeEnumeratorStackElement *)_stack)
@@ -67,16 +67,16 @@ typedef struct __ajrEdgeEnumeratorStackElement {
 }
 
 - (id)initWithBezierPath:(AJRBezierPath *)aPath {
-	if ((self = [super init])) {
-		_path = aPath;
-		_elementIndex = -1;
-		_stack = NSZoneMalloc(nil, sizeof(_AJREdgeEnumeratorStackElement) * MAXSTACKSIZE);
-		_stackPosition = 0;
-		_error = 1.0;
-		
-		_flattenCurves = NO;
-		_dontFlattenCurves = NO;
-	}
+    if ((self = [super init])) {
+        _path = aPath;
+        _elementIndex = -1;
+        _stack = NSZoneMalloc(nil, sizeof(_AJREdgeEnumeratorStackElement) * MAXSTACKSIZE);
+        _stackPosition = 0;
+        _error = aPath.flatness;
+
+        _flattenCurves = NO;
+        _dontFlattenCurves = NO;
+    }
     return self;
 }
 
@@ -90,10 +90,10 @@ typedef struct __ajrEdgeEnumeratorStackElement {
 }
 
 - (void)_nextBezierLineSegment {
-    CGPoint            midpoint;
-    float            distance;
-    AJRLine            handleLine;
-    AJRBezierCurve    subcurve;
+    CGPoint midpoint;
+    float distance;
+    AJRLine handleLine;
+    AJRBezierCurve subcurve;
     
     if (_stackPosition == 0) {
         subcurve = _curve;
@@ -136,8 +136,12 @@ typedef struct __ajrEdgeEnumeratorStackElement {
 }
 
 - (AJRLine *)nextLineSegment {
-    BOOL    done = NO;
-    CGPoint    points[4];
+    return [self nextLineSegmentIsNewSubpath:NULL];
+}
+
+- (AJRLine *)nextLineSegmentIsNewSubpath:(BOOL *)isNewSubpath {
+    BOOL done = NO;
+    CGPoint points[4];
     
     if (_dontFlattenCurves) {
         [NSException raise:NSInternalInconsistencyException format:@"You called -nextLineSegment after have called -nextElementTypeWithPoints:. You can only call one per enumerator, not both."];
@@ -145,6 +149,7 @@ typedef struct __ajrEdgeEnumeratorStackElement {
     _flattenCurves = YES;
     
     _isMoveTo = NO;
+    AJRSetOutParameter(isNewSubpath, NO);
     
     if (_stackPosition == 0) {
         do {
@@ -155,6 +160,7 @@ typedef struct __ajrEdgeEnumeratorStackElement {
                     _isMoveTo = YES;
                     _lastPoint = points[0];
                     _moveToPoint = _lastPoint;
+                    AJRSetOutParameter(isNewSubpath, YES);
                     break;
                 case AJRBezierPathElementLineTo:
                     _line.start = _lastPoint;

@@ -288,7 +288,7 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 }
 
 - (void)moveToAngle:(CGFloat)degree length:(CGFloat)length {
-    CGPoint        current = [self currentPoint];
+    CGPoint current = [self currentPoint];
     
     [self moveToPoint:(CGPoint){current.x + (AJRCos(degree) * length), current.y + (AJRSin(degree) * length)}];
     
@@ -949,13 +949,14 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     }
 }
 
-- (void)enumerateFlattenedPathWithBlock:(void (^)(AJRLine lineSegment, BOOL *stop))enumerationBlock {
+- (void)enumerateFlattenedPathWithBlock:(void (^)(AJRLine lineSegment, BOOL isNewSubpath, BOOL *stop))enumerationBlock {
     AJRPathEnumerator *enumerator = [self pathEnumerator];
     AJRLine *line;
     BOOL stop = NO;
+    BOOL isNewSubpath = NO;
     
-    while ((line = [enumerator nextLineSegment]) && !stop) {
-        enumerationBlock(*line, &stop);
+    while ((line = [enumerator nextLineSegmentIsNewSubpath:&isNewSubpath]) && !stop) {
+        enumerationBlock(*line, isNewSubpath, &stop);
     }
 }
 
