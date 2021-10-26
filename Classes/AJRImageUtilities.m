@@ -34,6 +34,8 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #import "AJRColorUtilities.h"
 #import "AJRGraphicsUtilities.h"
 
+#import <ImageIO/ImageIO.h>
+
 #pragma mark - Generating Image Data
 
 NSData *AJRPNGDataFromCGImage(CGImageRef image, BOOL interlace) {
