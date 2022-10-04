@@ -125,7 +125,7 @@ static void FitCubic(CGPoint *points, NSInteger first, NSInteger last, AJRVector
  *  GenerateBezier :
  *  Use least-squares method to find Bezier control points for region.
  */
-static AJRBezierCurve GenerateBezier(CGPoint    *points, NSInteger first, NSInteger last, double *uPrime, AJRVector tHat1, AJRVector tHat2)
+static AJRBezierCurve GenerateBezier(CGPoint *points, NSInteger first, NSInteger last, double *uPrime, AJRVector tHat1, AJRVector tHat2)
 // points                Array of digitized points
 // first, last            Indices defining region
 // uPrime                Parameter values for region
@@ -163,7 +163,7 @@ static AJRBezierCurve GenerateBezier(CGPoint    *points, NSInteger first, NSInte
     for (i = 0; i < nPts; i++) {
         C[0][0] += AJRVectorDotProduct(A[i][0], A[i][0]);
         C[0][1] += AJRVectorDotProduct(A[i][0], A[i][1]);
-        /*             C[1][0] += AJRVectorDotProduct(&A[i][0], &A[i][1]);*/
+        /* C[1][0] += AJRVectorDotProduct(&A[i][0], &A[i][1]);*/
         C[1][0] = C[0][1];
         C[1][1] += AJRVectorDotProduct(A[i][1], A[i][1]);
         

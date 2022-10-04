@@ -126,6 +126,7 @@ extern CGRect AJRInsetRect(CGRect input, AJREdgeInsets insets, BOOL flipped);
 extern CGRect AJRNormalizeRect(CGRect rect);
 extern CGRect AJRNormalizeRectWithNonzeroArea(CGRect rect);
 extern double AJRDistanceBetweenPoints(CGPoint one, CGPoint two);
+extern CGPoint AJRRectMidpoint(CGRect rect);
 
 extern CGRect AJRUnionRectWithPoint(CGRect frame, CGPoint point);
 

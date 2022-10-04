@@ -13,29 +13,25 @@ from "Graphics Gems", Academic Press, 1990
 /******************/
 
 /* returns squared length of input vector */    
-double AJRVectorSquaredLength(AJRVector a) 
-{
+double AJRVectorSquaredLength(AJRVector a) {
    return (a.x * a.x) + (a.y * a.y);
 }
     
 /* returns length of input vector */
-double AJRVectorLength(AJRVector a) 
-{
+double AJRVectorLength(AJRVector a) {
    return sqrt(AJRVectorSquaredLength(a));
 }
     
 /* negates the input vector and returns it */
-AJRVector AJRVectorNegate(AJRVector v) 
-{
+AJRVector AJRVectorNegate(AJRVector v) {
     v.x = -v.x;
-   v.y = -v.y;
+    v.y = -v.y;
    
     return v;
 }
 
 /* normalizes the input vector and returns it */
-AJRVector AJRVectorNormalize(AJRVector v) 
-{
+AJRVector AJRVectorNormalize(AJRVector v) {
    double length = AJRVectorLength(v);
    
    if (length != 0.0) {
@@ -46,38 +42,35 @@ AJRVector AJRVectorNormalize(AJRVector v)
 }
 
 /* scales the input vector to the new length and returns it */
-AJRVector AJRVectorScale(AJRVector v, double newLength) 
-{
-   double length = AJRVectorLength(v);
+AJRVector AJRVectorScale(AJRVector v, double newLength) {
+    double length = AJRVectorLength(v);
 
-   if (length != 0.0) {
-      v.x *= newLength / length;
-      v.y *= newLength / length;
-   }
-   
+    if (length != 0.0) {
+        v.x *= newLength / length;
+        v.y *= newLength / length;
+    }
+
     return v;
 }
 
 /* return vector sum c = a+b */
-AJRVector AJRVectorAdd(AJRVector a, AJRVector b)
-{
-   AJRVector c;
+AJRVector AJRVectorAdd(AJRVector a, AJRVector b) {
+    AJRVector c;
 
-   c.x = a.x + b.x;
-   c.y = a.y + b.y;
+    c.x = a.x + b.x;
+    c.y = a.y + b.y;
     
-   return c;
+    return c;
 }
-    
+
 /* return vector difference c = a-b */
-AJRVector AJRVectorSubtract(AJRVector a, AJRVector b)
-{
-   AJRVector c;
+AJRVector AJRVectorSubtract(AJRVector a, AJRVector b) {
+    AJRVector c;
 
     c.x = a.x - b.x;
-   c.y = a.y - b.y;
+    c.y = a.y - b.y;
 
-   return c;
+    return c;
 }
 
 /* return the dot product of vectors a and b */
@@ -135,40 +128,39 @@ AJRVector AJRPerpendicularVector(AJRVector a)
 
 /* binary greatest common divisor by Silver and Terzian.  See Knuth */
 /* both inputs must be >= 0 */
-NSInteger AJRGreatestCommonDivisor(NSInteger u, NSInteger v)
-{
-   NSInteger k, t, f;
-   
+NSInteger AJRGreatestCommonDivisor(NSInteger u, NSInteger v) {
+    NSInteger k, t, f;
+
     if ((u < 0) || (v < 0)) return(1); /* error if u<0 or v<0 */
     k = 0;
-   f = 1;
+    f = 1;
     while ((0 == (u % 2)) && (0 == (v % 2))) {
         k++;
-      u >>= 1;
-      v >>= 1;
-      f *= 2;
-   }
+        u >>= 1;
+        v >>= 1;
+        f *= 2;
+    }
     if (u & 01) {
-      t = -v;
-      goto B4;
-   } else {
-      t = u;
-   }
-   
+        t = -v;
+        goto B4;
+    } else {
+        t = u;
+    }
+
 B3:
-      if (t > 0) {
-         t >>= 1;
-      } else {
-         t = -((-t) >> 1);
-      }
+    if (t > 0) {
+        t >>= 1;
+    } else {
+        t = -((-t) >> 1);
+    }
 B4:
-      if (0 == (t % 2)) goto B3;
+    if (0 == (t % 2)) goto B3;
 
     if (t > 0) u = t;
-   else v = -t;
-   
+    else v = -t;
+
     if (0 != (t = u - v)) goto B3;
-   
+
     return u * f;
 }    
 

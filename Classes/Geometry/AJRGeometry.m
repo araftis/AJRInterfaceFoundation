@@ -192,6 +192,10 @@ inline double AJRDistanceBetweenPoints(CGPoint one, CGPoint two) {
     return sqrt((one.x - two.x) * (one.x - two.x) + (one.y - two.y) * (one.y - two.y));
 }
 
+inline CGPoint AJRRectMidpoint(CGRect rect) {
+    return (CGPoint){NSMidX(rect), NSMidY(rect)};
+}
+
 inline CGRect AJRUnionRectWithPoint(CGRect frame, CGPoint point) {
     if (point.x < frame.origin.x) {
         frame.size.width += (frame.origin.x - point.x);
