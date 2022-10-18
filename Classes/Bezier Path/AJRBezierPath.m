@@ -449,16 +449,16 @@ static inline void AJR_UNUSED _ajrCheckFrame(CGRect *frame, CGPoint *point) {
     
     for (x = 0, max = [path elementCount]; x < max; x++) {
         switch ([path elementAtIndex:x associatedPoints:somePoints]) {
-            case NSMoveToBezierPathElement:
+            case NSBezierPathElementMoveTo:
                 [self moveToPoint:somePoints[0]];
                 break;
-            case NSLineToBezierPathElement:
+            case NSBezierPathElementLineTo:
                 [self lineToPoint:somePoints[0]];
                 break;
-            case NSCurveToBezierPathElement:
+            case NSBezierPathElementCurveTo:
                 [self curveToPoint:somePoints[2] controlPoint1:somePoints[0] controlPoint2:somePoints[1]];
                 break;
-            case NSClosePathBezierPathElement:
+            case NSBezierPathElementClosePath:
                 [self closePath];
                 break;
         }
@@ -1611,21 +1611,21 @@ void AJRExpandRect(CGRect *rect, CGPoint *point) {
         [coder encodeGroupForKey:@"elements" usingBlock:^{
             [self enumerateWithBlock:^(NSBezierPathElement element, CGPoint *points, BOOL *stop) {
                 switch (element) {
-                    case NSMoveToBezierPathElement: {
+                    case NSBezierPathElementMoveTo: {
                         CGPoint point = points[0];
                         [coder encodePoint:point forKey:@"moveTo"];
                         break;
                     }
-                    case NSLineToBezierPathElement: {
+                    case NSBezierPathElementLineTo: {
                         CGPoint point = points[0];
                         [coder encodePoint:point forKey:@"lineTo"];
                         break;
                     }
-                    case NSClosePathBezierPathElement:
+                    case NSBezierPathElementClosePath:
                         [coder encodeGroupForKey:@"close" usingBlock:^{
                         }];
                         break;
-                    case NSCurveToBezierPathElement: {
+                    case NSBezierPathElementCurveTo: {
                         CGPoint point = points[0];
                         CGPoint pointC0 = points[1];
                         CGPoint pointC1 = points[2];

@@ -35,12 +35,13 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #import "AJRGraphicsUtilities.h"
 
 #import <ImageIO/ImageIO.h>
+#import <UniformTypeIdentifiers/UniformTypeIdentifiers.h>
 
 #pragma mark - Generating Image Data
 
 NSData *AJRPNGDataFromCGImage(CGImageRef image, BOOL interlace) {
     NSMutableData *result = [NSMutableData data];
-    CGImageDestinationRef destination = CGImageDestinationCreateWithData((__bridge CFMutableDataRef)result, kUTTypePNG, 1, NULL);
+    CGImageDestinationRef destination = CGImageDestinationCreateWithData((__bridge CFMutableDataRef)result, (__bridge CFStringRef)UTTypePNG.identifier, 1, NULL);
     if (destination) {
         CGImageDestinationAddImage(destination, image, (__bridge CFDictionaryRef)@{(__bridge NSString *)kCGImagePropertyPNGInterlaceType:@(YES)});
         if (!CGImageDestinationFinalize(destination)) {
@@ -53,7 +54,7 @@ NSData *AJRPNGDataFromCGImage(CGImageRef image, BOOL interlace) {
 
 NSData *AJRJPEGDataFromCGImage(CGImageRef image, CGFloat compression) {
     NSMutableData *result = [NSMutableData data];
-    CGImageDestinationRef destination = CGImageDestinationCreateWithData((__bridge CFMutableDataRef)result, kUTTypeJPEG, 1, NULL);
+    CGImageDestinationRef destination = CGImageDestinationCreateWithData((__bridge CFMutableDataRef)result, (__bridge CFStringRef)UTTypeJPEG.identifier, 1, NULL);
     if (destination) {
         CGImageDestinationAddImage(destination, image, (__bridge CFDictionaryRef)@{(__bridge NSString *)kCGImageDestinationLossyCompressionQuality:@(compression)});
         if (!CGImageDestinationFinalize(destination)) {
@@ -66,7 +67,7 @@ NSData *AJRJPEGDataFromCGImage(CGImageRef image, CGFloat compression) {
 
 NSData * _Nullable AJRGIFDataFromCGImage(CGImageRef image, BOOL ditherTransparency) {
     NSMutableData *result = [NSMutableData data];
-    CGImageDestinationRef destination = CGImageDestinationCreateWithData((__bridge CFMutableDataRef)result, kUTTypeGIF, 1, NULL);
+    CGImageDestinationRef destination = CGImageDestinationCreateWithData((__bridge CFMutableDataRef)result, (__bridge CFStringRef)UTTypeGIF.identifier, 1, NULL);
     if (destination) {
         CGImageDestinationAddImage(destination, image, (__bridge CFDictionaryRef)@{(__bridge NSString *)kCGImagePropertyHasAlpha:@(ditherTransparency)});
         if (!CGImageDestinationFinalize(destination)) {
@@ -79,7 +80,7 @@ NSData * _Nullable AJRGIFDataFromCGImage(CGImageRef image, BOOL ditherTransparen
 
 NSData * _Nullable AJRBMPDataFromCGImage(CGImageRef image) {
     NSMutableData *result = [NSMutableData data];
-    CGImageDestinationRef destination = CGImageDestinationCreateWithData((__bridge CFMutableDataRef)result, kUTTypeBMP, 1, NULL);
+    CGImageDestinationRef destination = CGImageDestinationCreateWithData((__bridge CFMutableDataRef)result, (__bridge CFStringRef)UTTypeBMP.identifier, 1, NULL);
     if (destination) {
         CGImageDestinationAddImage(destination, image, NULL);
         if (!CGImageDestinationFinalize(destination)) {
