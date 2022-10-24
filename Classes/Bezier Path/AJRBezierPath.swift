@@ -42,3 +42,131 @@ public extension AJRBezierPath {
     }
     
 }
+
+///
+/// And some more extensions that make working with the bezier path enums nicer.
+///
+
+extension AJRWindingRule : AJRUserDefaultProvider, AJRXMLEncodableEnum {
+    
+    public static func userDefault(forKey key: String, from userDefaults: UserDefaults) -> AJRWindingRule? {
+        if let value = userDefaults.string(forKey: key) {
+            return AJRWindingRule(string: value)
+        }
+        return nil
+    }
+    
+    public static func setUserDefault(_ value: AJRWindingRule?, forKey key: String, into userDefaults: UserDefaults) {
+        if let value {
+            userDefaults.set(value.description, forKey: key)
+        } else {
+            userDefaults.removeObject(forKey: key)
+        }
+    }
+    
+    public static var allCases: [AJRWindingRule] = [.nonZero, .evenOdd]
+        
+    public var description: String {
+        switch self {
+        case .evenOdd: return "evenOdd"
+        case .nonZero: return "nonZero"
+        @unknown default:
+            preconditionFailure("Unknown case in AJRWindingRule. This shouldn't happen.")
+        }
+    }
+}
+
+extension AJRBezierPathElementType : AJRUserDefaultProvider, AJRXMLEncodableEnum {
+    
+    public static var allCases: [AJRBezierPathElementType] = [.setBoundingBox, .moveTo, .lineTo, .curveTo, .close]
+    
+    public static func userDefault(forKey key: String, from userDefaults: UserDefaults) -> AJRBezierPathElementType? {
+        if let value = userDefaults.string(forKey: key) {
+            return AJRBezierPathElementType(string: value)
+        }
+        return nil
+    }
+    
+    public static func setUserDefault(_ value: AJRBezierPathElementType?, forKey key: String, into userDefaults: UserDefaults) {
+        if let value {
+            userDefaults.set(value.description, forKey: key)
+        } else {
+            userDefaults.removeObject(forKey: key)
+        }
+    }
+    
+    public var description: String {
+        switch self {
+        case .setBoundingBox: return "setBoundingBox"
+        case .moveTo: return "moveTo"
+        case .lineTo: return "lineTo"
+        case .curveTo: return "curveTo"
+        case .close: return "close"
+        @unknown default:
+            preconditionFailure("Unknown case in \(type(of: self)). This shouldn't happen.")
+        }
+    }
+    
+}
+
+extension AJRLineCapStyle : AJRUserDefaultProvider, AJRXMLEncodableEnum {
+    
+    public static var allCases: [AJRLineCapStyle] = [.butt, .round, .square]
+    
+    public static func userDefault(forKey key: String, from userDefaults: UserDefaults) -> AJRLineCapStyle? {
+        if let value = userDefaults.string(forKey: key) {
+            return AJRLineCapStyle(string: value)
+        }
+        return nil
+    }
+    
+    public static func setUserDefault(_ value: AJRLineCapStyle?, forKey key: String, into userDefaults: UserDefaults) {
+        if let value {
+            userDefaults.set(value.description, forKey: key)
+        } else {
+            userDefaults.removeObject(forKey: key)
+        }
+    }
+    
+    public var description: String {
+        switch self {
+        case .butt: return "butt"
+        case .round: return "round"
+        case .square: return "square"
+        @unknown default:
+            preconditionFailure("Unknown case in \(type(of: self)). This shouldn't happen.")
+        }
+    }
+    
+}
+
+extension AJRLineJoinStyle : AJRUserDefaultProvider, AJRXMLEncodableEnum {
+    
+    public static var allCases: [AJRLineJoinStyle] = [.mitered, .round, .beveled]
+    
+    public static func userDefault(forKey key: String, from userDefaults: UserDefaults) -> AJRLineJoinStyle? {
+        if let value = userDefaults.string(forKey: key) {
+            return AJRLineJoinStyle(string: value)
+        }
+        return nil
+    }
+    
+    public static func setUserDefault(_ value: AJRLineJoinStyle?, forKey key: String, into userDefaults: UserDefaults) {
+        if let value {
+            userDefaults.set(value.description, forKey: key)
+        } else {
+            userDefaults.removeObject(forKey: key)
+        }
+    }
+    
+    public var description: String {
+        switch self {
+        case .mitered: return "mitered"
+        case .round: return "round"
+        case .beveled: return "beveled"
+        @unknown default:
+            preconditionFailure("Unknown case in \(type(of: self)). This shouldn't happen.")
+        }
+    }
+    
+}
