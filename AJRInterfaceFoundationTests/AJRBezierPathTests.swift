@@ -56,4 +56,17 @@ class AJRBezierPathTests: XCTestCase {
         }
     }
 
+    func testSetDashExtensions() throws {
+        let dash : [CGFloat] = [1.000000, 3.000000]
+        let path = AJRBezierPath()
+        var phase : CGFloat? = 0.0
+        
+        path.lineWidth = 2.0
+        path.setLineDash(dash, phase: 1.0)
+
+        let newDash = path.getLineDash(phase: &phase)
+        XCTAssert(dash == newDash)
+        XCTAssert(phase == 1.0)
+    }
+
 }

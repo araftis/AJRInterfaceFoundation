@@ -73,13 +73,33 @@ public extension AJRBezierPath {
               controlPoint2: CGPoint(x: CGFloat(cp2.0), y: CGFloat(cp2.1)))
     }
     
-    func setLineDash(_ dashes: [CGFloat]?, phase: CGFloat) -> Void {
+    func setLineDash(_ dashes: [CGFloat]?, phase: CGFloat = 0.0) -> Void {
         if let dashes {
-            let buffer = UnsafeMutablePointer<CGFloat>(mutating: dashes)
-            setLineDash(buffer, count: dashes.count, phase: phase)
+            var temp = dashes
+            temp.withUnsafeMutableBytes { buffer in
+                setLineDash(buffer.baseAddress?.assumingMemoryBound(to: CGFloat.self), count: dashes.count, phase: phase)
+            }
         } else {
             setLineDash(nil, count: 0, phase: 0.0)
         }
+    }
+    
+    func getLineDash(phase: inout CGFloat?) -> [CGFloat] {
+        var count : Int = 0
+        var dash : [CGFloat]
+        var fetchedPhase : CGFloat = 0.0
+        
+        getLineDash(nil, count: &count, phase: &fetchedPhase)
+        phase? = fetchedPhase
+        
+        dash = [CGFloat](repeating: 0.0, count: count)
+        let raw = UnsafeMutablePointer<CGFloat>.allocate(capacity: count)
+        getLineDash(raw, count: nil, phase: nil)
+        for x in 0 ..< count {
+            dash[x] = raw[x]
+        }
+        
+        return dash
     }
     
 }

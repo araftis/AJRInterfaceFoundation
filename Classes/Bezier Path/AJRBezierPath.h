@@ -177,7 +177,7 @@ typedef CGPoint (^AJRBezierPathPointTransform)(CGPoint point);
 @property (nonatomic,assign) CGFloat lineWidth;
 @property (nonatomic,assign) CGFloat miterLimit;
 - (void)setLineDash:(CGFloat * _Nullable)values count:(NSInteger)count phase:(CGFloat)phase;
-- (void)getLineDash:(CGFloat *)values count:(NSInteger *)count phase:(CGFloat *)phase;
+- (void)getLineDash:(nullable CGFloat *)values count:(nullable NSInteger *)count phase:(nullable CGFloat *)phase;
 
 @property (nonatomic,class,assign) AJRWindingRule defaultWindingRule;
 @property (nonatomic,class,assign) CGFloat defaultFlatness;

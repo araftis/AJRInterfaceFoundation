@@ -867,11 +867,11 @@ static NSImage *_ajrHack = nil;
 }
 
 - (void)getLineDash:(CGFloat *)values count:(NSInteger *)count phase:(CGFloat *)phase {
-    if (_dashValues) {
+    if (_dashValues && values) {
         memcpy(values, _dashValues, sizeof(CGFloat) * _dashCount);
     }
-    *count = _dashCount;
-    *phase = _dashOffset;
+    AJRSetOutParameter(count, _dashCount);
+    AJRSetOutParameter(phase, _dashOffset);
 }
 
 + (void)setDefaultWindingRule:(AJRWindingRule)aWindingRule {
