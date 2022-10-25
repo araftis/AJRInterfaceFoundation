@@ -96,7 +96,7 @@ public extension NSImage {
     }
     
     @objc(imageWithSize:scales:flipped:colorSpace:commands:)
-    class func image(size: CGSize, scales:[CGFloat], flipped: Bool, colorSpace: CGColorSpace, commands:@escaping (_ scale: CGFloat) -> Void) -> AJRImage? {
+    class func image(size: CGSize, scales:[CGFloat], flipped: Bool, colorSpace: CGColorSpace?, commands:@escaping (_ scale: CGFloat) -> Void) -> AJRImage? {
         var images = [NSBitmapImageRep]()
         
         for scale in scales {
