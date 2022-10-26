@@ -102,6 +102,18 @@ public extension AJRBezierPath {
         return dash
     }
     
+    // MARK: - Drawing Conveniences
+    
+    func stroke(color: AJRColor) {
+        color.set()
+        stroke()
+    }
+    
+    func fill(color: AJRColor) {
+        color.set()
+        fill()
+    }
+    
 }
 
 ///
