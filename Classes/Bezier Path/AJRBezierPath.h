@@ -346,4 +346,14 @@ typedef CGPoint (^AJRBezierPathPointTransform)(CGPoint point);
 
 @end
 
+
+@interface AJRBezierPath (Retype)
+
+/*!
+ This method is here solely to "convert" to NSBezierPath. We actually implement the exact same API, so we can be passed around as an NSBezierPath, but Swift doesn't like that, so this basicaly allows us to be "retyped".
+ */
+@property (nonatomic,readonly) NSBezierPath *asBezierPath;
+
+@end
+
 NS_ASSUME_NONNULL_END

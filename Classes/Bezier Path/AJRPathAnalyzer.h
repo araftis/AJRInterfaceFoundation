@@ -45,7 +45,7 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 @interface AJRPathAnalysisContour : NSObject
 
 @property (nonatomic,readonly,assign) CGRect bounds;
-@property (nonatomic,readonly,strong) NSArray *corners;
+@property (nonatomic,readonly,strong) NSArray<AJRPathAnalysisCorner *> *corners;
 
 @end
 
@@ -53,7 +53,7 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 @interface AJRPathAnalyzer : NSObject
 
 @property (nonatomic,readonly,strong) AJRBezierPath *path;
-@property (nonatomic,readonly,strong) NSArray *contours;
+@property (nonatomic,readonly,strong) NSArray<AJRPathAnalysisContour *> *contours;
 
 - (id)initWithPath:(AJRBezierPath *)path;
 

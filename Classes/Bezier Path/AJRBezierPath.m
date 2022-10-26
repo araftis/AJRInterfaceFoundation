@@ -1714,3 +1714,11 @@ void AJRExpandRect(CGRect *rect, CGPoint *point) {
 }
 
 @end
+
+@implementation AJRBezierPath (Retype)
+
+- (NSBezierPath *)asBezierPath {
+    return (NSBezierPath *)self;
+}
+
+@end
