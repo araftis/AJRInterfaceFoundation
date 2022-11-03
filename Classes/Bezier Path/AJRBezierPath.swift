@@ -48,11 +48,11 @@ public extension AJRBezierPath {
     }
     
     func moveTo<T: BinaryInteger>(x: T, y: T) -> Void {
-        move(to: CGPoint(x: CGFloat(x), y: CGFloat(x)))
+        move(to: CGPoint(x: CGFloat(x), y: CGFloat(y)))
     }
     
     func moveTo<T: BinaryFloatingPoint>(x: T, y: T) -> Void {
-        move(to: CGPoint(x: CGFloat(x), y: CGFloat(x)))
+        move(to: CGPoint(x: CGFloat(x), y: CGFloat(y)))
     }
     
     func line<T: BinaryInteger>(to point: (T, T)) -> Void {
