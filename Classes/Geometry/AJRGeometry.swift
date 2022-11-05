@@ -64,14 +64,36 @@ public extension CGPoint {
 
 public extension CGSize {
     
-    func scale(to newSize: CGSize, by method: AJRSizeScaling) -> CGSize {
+    mutating func swapWidthAndHeight() {
+        let temp = width
+        width = height
+        height = temp
+    }
+
+    var bySwappingWidthAndHeight : CGSize {
+        return CGSize(width: height, height: width)
+    }
+
+    mutating func scale(to newSize: CGSize, by method: AJRSizeScaling) {
+        let scaled = byScaling(to: newSize, by: method)
+        width = scaled.width
+        height = scaled.height
+    }
+
+    func byScaling(to newSize: CGSize, by method: AJRSizeScaling) -> CGSize {
         return AJRScaleSize(self, newSize, method)
     }
     
-    func scale(by scale: CGFloat) -> CGSize {
+    mutating func scale(by scale: CGFloat) {
+        let scaled = byScaling(by: scale)
+        width = scaled.width
+        height = scaled.height
+    }
+
+    func byScaling(by scale: CGFloat) -> CGSize {
         return AJRSizeByScaling(self, scale)
     }
-    
+
     init?(string: String) {
         let scanner = Scanner(string: string)
         
@@ -94,6 +116,14 @@ public extension CGRect {
         return AJRInsetRect(self, insets, flipped)
     }
     
+    mutating func center(in other: CGRect, method: AJRRectCentering) {
+        let scaled = byCentering(in: other, method: method)
+        self.origin.x = scaled.origin.x
+        self.origin.y = scaled.origin.y
+        self.size.width = scaled.size.width
+        self.size.height = scaled.size.height
+    }
+
     func byCentering(in containingRect: CGRect, method: AJRRectCentering) -> CGRect {
         return AJRRectByCenteringInRect(self, containingRect, method)
     }
