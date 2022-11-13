@@ -279,6 +279,8 @@
 		FA95DE5522B47339005EC953 /* AJRInset+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA95DE5122B47339005EC953 /* AJRInset+Extensions.swift */; };
 		FAA826392526C217004B7A31 /* AJRImageUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA826382526C217004B7A31 /* AJRImageUtilities.swift */; };
 		FAAAD95B223346D7002CA09C /* CATransaction+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAAD95A223346D7002CA09C /* CATransaction+Extensions.swift */; };
+		FABB135E292088AD002DD56B /* AJRMarkdownStyleSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABB135D292088AD002DD56B /* AJRMarkdownStyleSheet.swift */; };
+		FABB1360292088B6002DD56B /* AJRMarkdownStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABB135F292088B6002DD56B /* AJRMarkdownStyle.swift */; };
 		FACEC3F822D297ED008AA6DB /* CGColorSpace+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACEC3F722D297ED008AA6DB /* CGColorSpace+Extensions.swift */; };
 		FACEC3F922D297ED008AA6DB /* CGColorSpace+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACEC3F722D297ED008AA6DB /* CGColorSpace+Extensions.swift */; };
 		FACEC3FA22D297ED008AA6DB /* CGColorSpace+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACEC3F722D297ED008AA6DB /* CGColorSpace+Extensions.swift */; };
@@ -407,6 +409,8 @@
 		FA95DE5122B47339005EC953 /* AJRInset+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AJRInset+Extensions.swift"; sourceTree = "<group>"; };
 		FAA826382526C217004B7A31 /* AJRImageUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AJRImageUtilities.swift; sourceTree = "<group>"; };
 		FAAAD95A223346D7002CA09C /* CATransaction+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CATransaction+Extensions.swift"; sourceTree = "<group>"; };
+		FABB135D292088AD002DD56B /* AJRMarkdownStyleSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AJRMarkdownStyleSheet.swift; sourceTree = "<group>"; };
+		FABB135F292088B6002DD56B /* AJRMarkdownStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AJRMarkdownStyle.swift; sourceTree = "<group>"; };
 		FACEC3F722D297ED008AA6DB /* CGColorSpace+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGColorSpace+Extensions.swift"; sourceTree = "<group>"; };
 		FAD0BB90259400D600346E67 /* AJRInterfaceFoundationTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AJRInterfaceFoundationTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		FAD0BB91259400D600346E67 /* AJRBezierPathTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AJRBezierPathTests.swift; sourceTree = "<group>"; };
@@ -556,6 +560,7 @@
 				FA5EFC1420E1C761006C48B0 /* Extensions */,
 				FA5EFC0320E1C6AF006C48B0 /* Geometry */,
 				FA08612422C93AC70021CCC5 /* Layers */,
+				FABB135C29208897002DD56B /* Markdown */,
 				FA07C89C220EB8F90077A0B5 /* Views */,
 				FA4FE51320AD46690008257B /* AJRInterfaceFoundation.h */,
 				FA4FE53320AD46AB0008257B /* AJRImageUtilities.h */,
@@ -672,6 +677,15 @@
 				FA4FE51420AD46690008257B /* Info.plist */,
 			);
 			path = Cocoa;
+			sourceTree = "<group>";
+		};
+		FABB135C29208897002DD56B /* Markdown */ = {
+			isa = PBXGroup;
+			children = (
+				FABB135F292088B6002DD56B /* AJRMarkdownStyle.swift */,
+				FABB135D292088AD002DD56B /* AJRMarkdownStyleSheet.swift */,
+			);
+			path = Markdown;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1110,6 +1124,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FABB135E292088AD002DD56B /* AJRMarkdownStyleSheet.swift in Sources */,
 				FAA826392526C217004B7A31 /* AJRImageUtilities.swift in Sources */,
 				FACEC3F822D297ED008AA6DB /* CGColorSpace+Extensions.swift in Sources */,
 				FA5EFBF520E1C603006C48B0 /* AJRBezierPath+AJRIntersection.m in Sources */,
@@ -1123,6 +1138,7 @@
 				FA95DE5222B47339005EC953 /* AJRInset+Extensions.swift in Sources */,
 				FA07C89F220EB9250077A0B5 /* AJRColorView.swift in Sources */,
 				FA5EFBF420E1C603006C48B0 /* AJRBezierPath+AJRExtensions.m in Sources */,
+				FABB1360292088B6002DD56B /* AJRMarkdownStyle.swift in Sources */,
 				FA08612622C93ADF0021CCC5 /* AJRTextLayer.swift in Sources */,
 				FA80617D2223FB7500D6D59F /* AJRGeometry.swift in Sources */,
 				FA7A8CE1228E100300D14301 /* CGContext+Extensions.swift in Sources */,
