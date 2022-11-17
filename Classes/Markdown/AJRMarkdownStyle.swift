@@ -66,5 +66,10 @@ open class AJRMarkdownStyle : NSObject, NSCopying {
         new.insertNewlineAfter = insertNewlineAfter
         return new
     }
+    
+    public func copyStyle() -> AJRMarkdownStyle {
+        // If this forced typecast fails, we deserve to crash.
+        return self.copy() as! AJRMarkdownStyle
+    }
 
 }

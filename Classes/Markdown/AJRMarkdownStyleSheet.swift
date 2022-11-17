@@ -39,95 +39,64 @@ internal extension Array where Element == PresentationIntent.IntentType {
 @objcMembers
 open class AJRMarkdownStyleSheet : NSObject {
 
-    open var styles = [PresentationIntent.Kind:AJRMarkdownStyle]()
+    internal var styles = [PresentationIntent.Kind:AJRMarkdownStyle]()
 
-    public static var basic : AJRMarkdownStyleSheet = {
-        let styleSheet = AJRMarkdownStyleSheet()
-        var tabStops = [NSTextTab]()
-
-        // Creat 20 default tab stops at quarter inch intervals.
-        for i in 0 ..< 20 {
-            let tabStop = NSTextTab(textAlignment: .left, location: CGFloat(i + 1) * 0.25 * 72.0, options: [:])
-            tabStops.append(tabStop)
+    internal struct ListTracker {
+        internal var start : Int = 0
+        internal var end : Int = 0
+        internal var textLists = [NSTextList]()
+        internal var style : AJRMarkdownStyle
+        internal var lastItemRange : NSRange?
+        
+        init(style: AJRMarkdownStyle) {
+            self.style = style
         }
+    }
+    internal var currentList : ListTracker?
 
-        var style = AJRMarkdownStyle()
-        style.font = AJRFont.systemFont(ofSize: 13.0)
-        style.paragraphStyle.paragraphSpacing = 9.0
-        style.paragraphStyle.tabStops = tabStops
-        styleSheet.styles[.paragraph] = style
-
-        style = AJRMarkdownStyle()
-        style.font = AJRFont.boldSystemFont(ofSize: 24.0)
-        style.paragraphStyle.paragraphSpacing = 18.0
-        style.paragraphStyle.paragraphSpacingBefore = 9.0
-        style.paragraphStyle.headerLevel = 1
-        styleSheet.styles[.header(level: 1)] = style
-
-        style = AJRMarkdownStyle()
-        style.font = AJRFont.boldSystemFont(ofSize: 18.0)
-        style.paragraphStyle.paragraphSpacing = 9.0
-        style.paragraphStyle.paragraphSpacingBefore = 9.0
-        style.paragraphStyle.headerLevel = 2
-        styleSheet.styles[.header(level: 2)] = style
-
-        style = AJRMarkdownStyle()
-        style.font = AJRFont.boldSystemFont(ofSize: 15.0)
-        style.paragraphStyle.paragraphSpacing = 9.0
-        style.paragraphStyle.paragraphSpacingBefore = 9.0
-        style.paragraphStyle.headerLevel = 3
-        styleSheet.styles[.header(level: 3)] = style
-
-        style = AJRMarkdownStyle()
-        style.font = AJRFont.boldSystemFont(ofSize: 13.0)
-        style.paragraphStyle.paragraphSpacing = 9.0
-        style.paragraphStyle.paragraphSpacingBefore = 9.0
-        style.paragraphStyle.headerLevel = 4
-        styleSheet.styles[.header(level: 4)] = style
-
-        style = AJRMarkdownStyle()
-        style.font = AJRFont.systemFont(ofSize: 13.0)
-        style.paragraphStyle.paragraphSpacing = 9.0
-        style.paragraphStyle.tabStops = tabStops
-        styleSheet.styles[.unorderedList] = style
-
-        style = AJRMarkdownStyle()
-        style.font = AJRFont.systemFont(ofSize: 13.0)
-        style.paragraphStyle.paragraphSpacing = 9.0
-        style.paragraphStyle.tabStops = tabStops
-        styleSheet.styles[.orderedList] = style
-
-        return styleSheet
-    }()
-
-    internal var currentSpecialStart : Int?
-    internal var currentSpecialEnd : Int?
-    internal var currentTextLists : [NSTextList]?
-    internal var currentListStyle : AJRMarkdownStyle?
-
+    /**
+     Enumerates the attributed string and replaces the `PresentationIntent` objects with actual styles. As needed, this will also add newlines and other text to the string. For example, lists will add there item markers, such as '•' or '1.'.
+     
+     This method mostly enumerates the string looking for `PresentationIntent` attributes. It then calls `apply(to:range:kind:)` to actually apply the style. This also supports some of the basic logic necessary for applying the sytles to list presentations.
+     
+     After all styles have been applied, `fixAttributes(in:)` is called to cleanup the attributes in the strings.
+     
+     - parameter string: The string on which the style is applied.
+     */
     open func apply(to string: NSMutableAttributedString) -> Void {
         string.enumerateAttribute(.presentationIntentAttributeName, in: NSRange(location: 0, length: string.length)) { value, range, stop in
             if let value = value as? PresentationIntent {
-                //print("\(range): \(value)")
-                let components = value.components
                 var textRange = range
-
-                if components.listType != nil {
-                    self.apply(to: string, range: range, listIntent: value)
-                } else {
-                    if currentSpecialStart != nil {
-                        currentSpecialEnd = range.upperBound
-                        completeListIfNecessary(on: string)
-                    }
-                    for component in value.components {
-                        self.apply(to: string, range: &textRange, kind: component.kind)
-                    }
-                }
+                print("\(textRange) -> \(string.attributedSubstring(from: textRange).string)")
+                apply(to: string, range: &textRange, intent: value)
             }
         }
         string.fixAttributes(in: NSRange(location: 0, length: string.length))
     }
+    
+    open func apply(to string: NSMutableAttributedString,
+                    range: inout NSRange,
+                    intent: PresentationIntent) -> Void {
+        //print("\(range): \(value)")
+        let components = intent.components
 
+        if components.listType != nil {
+            self.apply(to: string, range: &range, listIntent: intent)
+        } else {
+            if currentList != nil {
+                // We can't use the normal "if let" or "if var" pattern here, because we have to modify the original.
+                currentList!.end = range.upperBound
+                completeList(on: string)
+            }
+            for component in intent.components {
+                self.apply(to: string, range: &range, kind: component.kind)
+            }
+        }
+    }
+
+    /**
+     This is the basic application of a style onto the string. I mostly just looks up the `AJRMarkdownStyle` object for the given intent. Likewise, if the style as `insertNewLineAfter` set to `true`, then a newline is inserted at the end of the range.
+     */
     open func apply(to string: NSMutableAttributedString,
                     range: inout NSRange,
                     kind: PresentationIntent.Kind) {
@@ -142,23 +111,23 @@ open class AJRMarkdownStyleSheet : NSObject {
         }
     }
 
+    // MARK: - Lists
+    
     open func apply(to string: NSMutableAttributedString,
-                    range: NSRange,
+                    range: inout NSRange,
                     listIntent: PresentationIntent) {
-        var textRange = range
-
-        if currentTextLists == nil {
-            currentTextLists = [NSTextList]()
-            currentSpecialStart = range.lowerBound
+        if currentList == nil {
+            // TODO: Probably not safe to force unwrap here.
             if listIntent.components.isOrderedList {
-                currentListStyle = styles[.orderedList]
+                currentList = ListTracker(style: styles[.orderedList]!)
             } else if listIntent.components.isUnorderedList {
-                currentListStyle = styles[.unorderedList]
+                currentList = ListTracker(style: styles[.unorderedList]!)
             }
+            currentList!.start = range.lowerBound
         }
 
         // Make sure we have an NSTextList for the current level.
-        if currentTextLists!.count < listIntent.indentationLevel {
+        if currentList!.textLists.count < listIntent.indentationLevel {
             var textList : NSTextList? = nil
             if listIntent.components.isOrderedList {
                 textList = NSTextList(markerFormat: .decimal, options: 0)
@@ -166,19 +135,22 @@ open class AJRMarkdownStyleSheet : NSObject {
                 textList = NSTextList(markerFormat: unorderedListMarker(forLevel: listIntent.indentationLevel), options: 0)
             }
             if let textList {
-                currentTextLists!.append(textList)
+                currentList!.textLists.append(textList)
             }
         }
 
         //apply(to: string, range: &textRange, kind: .paragraph)
-        string.insert(NSAttributedString(string: "\n"), at: textRange.upperBound)
-        textRange.length += 1
+        string.insert(NSAttributedString(string: "\n"), at: range.upperBound)
+        range.length += 1
 
         if let prefix = prefix(for: listIntent) {
-            let attributes = string.attributes(at: textRange.lowerBound, effectiveRange: nil)
-            string.insert(NSAttributedString(string: prefix, attributes: attributes), at: textRange.lowerBound)
-            textRange.length += string.length
+            let attributes = string.attributes(at: range.lowerBound, effectiveRange: nil)
+            string.insert(NSAttributedString(string: prefix, attributes: attributes), at: range.lowerBound)
+            range.length += prefix.count
         }
+
+        // Track where the last item in the list resides within the string.
+        currentList!.lastItemRange = range
     }
 
     open func prefix(for intent: PresentationIntent) -> String? {
@@ -203,24 +175,25 @@ open class AJRMarkdownStyleSheet : NSObject {
         return nil
     }
 
-    open func completeListIfNecessary(on string: NSMutableAttributedString) -> Void {
-        if let currentTextLists,
-           let currentSpecialStart,
-           let currentSpecialEnd,
-           let currentListStyle {
-            let style = currentListStyle.copy() as! AJRMarkdownStyle
-            let range = NSRange(location: currentSpecialStart, length: currentSpecialEnd - currentSpecialStart)
+    open func completeList(on string: NSMutableAttributedString) -> Void {
+        if let currentList {
+            let style = currentList.style.copyStyle()
+            let lastItemStyle = style.copyStyle()
+            let range = NSRange(location: currentList.start, length: currentList.end - currentList.start)
 
             // Modify the style, as needed
-            style.paragraphStyle.textLists = currentTextLists
+            style.paragraphStyle.paragraphSpacing = style.paragraphStyle.lineSpacing
+            style.paragraphStyle.textLists = currentList.textLists
 
             string.removeAttribute(.presentationIntentAttributeName, range: range)
             string.addAttributes(style.attributes, range: range)
+            
+            // Quick check...
+            if let lastRange = currentList.lastItemRange {
+                string.addAttribute(.paragraphStyle, value: lastItemStyle.paragraphStyle, range: lastRange)
+            }
 
-            self.currentTextLists = nil
-            self.currentListStyle = nil
-            self.currentSpecialStart = nil
-            self.currentSpecialEnd = nil
+            self.currentList = nil
         }
     }
 
@@ -256,6 +229,24 @@ open class AJRMarkdownStyleSheet : NSObject {
             index = unorderedListMarkers.count
         }
         return unorderedListMarkers[index - 1]
+    }
+    
+    // MARK: - Managing Styles
+    
+    open func addStyle(_ style: AJRMarkdownStyle, for intent: PresentationIntent.Kind) -> Void {
+        styles[intent] = style
+    }
+    
+    open func removeStyle(for intent: PresentationIntent.Kind) -> Void {
+        styles.removeValue(forKey: intent)
+    }
+    
+    open func style(for intent: PresentationIntent.Kind) -> AJRMarkdownStyle? {
+        return styles[intent]
+    }
+    
+    open subscript(_ intent: PresentationIntent.Kind) -> AJRMarkdownStyle? {
+        return styles[intent]
     }
 
 }

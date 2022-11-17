@@ -32,6 +32,7 @@
 		21FCD9CE270689A80049E558 /* AJRGraphicsUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FCD9CC270689A80049E558 /* AJRGraphicsUtilities.swift */; };
 		21FCD9CF270689A80049E558 /* AJRGraphicsUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FCD9CC270689A80049E558 /* AJRGraphicsUtilities.swift */; };
 		21FCD9D0270689A80049E558 /* AJRGraphicsUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FCD9CC270689A80049E558 /* AJRGraphicsUtilities.swift */; };
+		21FFE3192926A8F900A79F8F /* AJRMarkdownStyleSheet+Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FFE3182926A8F900A79F8F /* AJRMarkdownStyleSheet+Styles.swift */; };
 		FA07C898220EB8AE0077A0B5 /* AJRColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA07C897220EB8AE0077A0B5 /* AJRColor.swift */; };
 		FA07C899220EB8AE0077A0B5 /* AJRColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA07C897220EB8AE0077A0B5 /* AJRColor.swift */; };
 		FA07C89A220EB8AE0077A0B5 /* AJRColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA07C897220EB8AE0077A0B5 /* AJRColor.swift */; };
@@ -333,6 +334,7 @@
 /* Begin PBXFileReference section */
 		21FCD9C4270674A30049E558 /* AJRBezierPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AJRBezierPath.swift; sourceTree = "<group>"; };
 		21FCD9CC270689A80049E558 /* AJRGraphicsUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AJRGraphicsUtilities.swift; sourceTree = "<group>"; };
+		21FFE3182926A8F900A79F8F /* AJRMarkdownStyleSheet+Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AJRMarkdownStyleSheet+Styles.swift"; sourceTree = "<group>"; };
 		FA07C897220EB8AE0077A0B5 /* AJRColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AJRColor.swift; sourceTree = "<group>"; };
 		FA07C89E220EB9250077A0B5 /* AJRColorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AJRColorView.swift; sourceTree = "<group>"; };
 		FA07C8A6220EBB050077A0B5 /* AJRView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AJRView.swift; sourceTree = "<group>"; };
@@ -684,6 +686,7 @@
 			children = (
 				FABB135F292088B6002DD56B /* AJRMarkdownStyle.swift */,
 				FABB135D292088AD002DD56B /* AJRMarkdownStyleSheet.swift */,
+				21FFE3182926A8F900A79F8F /* AJRMarkdownStyleSheet+Styles.swift */,
 			);
 			path = Markdown;
 			sourceTree = "<group>";
@@ -1136,6 +1139,7 @@
 				FA5EFC0D20E1C6AF006C48B0 /* AJRBezierCurves.m in Sources */,
 				FA59099D217E96420007D278 /* AJRInset.m in Sources */,
 				FA95DE5222B47339005EC953 /* AJRInset+Extensions.swift in Sources */,
+				21FFE3192926A8F900A79F8F /* AJRMarkdownStyleSheet+Styles.swift in Sources */,
 				FA07C89F220EB9250077A0B5 /* AJRColorView.swift in Sources */,
 				FA5EFBF420E1C603006C48B0 /* AJRBezierPath+AJRExtensions.m in Sources */,
 				FABB1360292088B6002DD56B /* AJRMarkdownStyle.swift in Sources */,
