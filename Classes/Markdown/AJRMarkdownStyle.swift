@@ -9,7 +9,7 @@
 import AJRFoundation
 
 @objcMembers
-open class AJRMarkdownStyle : NSObject {
+open class AJRMarkdownStyle : NSObject, NSCopying {
 
     var attributes = [NSAttributedString.Key:Any]()
 
@@ -53,6 +53,18 @@ open class AJRMarkdownStyle : NSObject {
         self.font = AJRFont.userFont(ofSize: 13.0) ?? AJRFont.systemFont(ofSize: 13.0)
         self.foregroundColor = AJRColor.black
         self.backgroundColor = AJRColor.clear
+    }
+
+    // MARK: - NSCopying
+
+    public func copy(with zone: NSZone? = nil) -> Any {
+        let new = AJRMarkdownStyle()
+        new.attributes = attributes
+        if let styleCopy = (attributes[.paragraphStyle] as? NSParagraphStyle)?.mutableCopy() as? NSMutableParagraphStyle {
+            new.attributes[.paragraphStyle] = styleCopy
+        }
+        new.insertNewlineAfter = insertNewlineAfter
+        return new
     }
 
 }
