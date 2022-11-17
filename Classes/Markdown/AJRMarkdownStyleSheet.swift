@@ -34,6 +34,10 @@ internal extension Array where Element == PresentationIntent.IntentType {
         return contains { $0.kind == .unorderedList }
     }
 
+    var isHorizontalRule : Bool {
+        return contains { $0.kind == .thematicBreak }
+    }
+
 }
 
 @objcMembers
@@ -67,7 +71,6 @@ open class AJRMarkdownStyleSheet : NSObject {
         string.enumerateAttribute(.presentationIntentAttributeName, in: NSRange(location: 0, length: string.length)) { value, range, stop in
             if let value = value as? PresentationIntent {
                 var textRange = range
-                print("\(textRange) -> \(string.attributedSubstring(from: textRange).string)")
                 apply(to: string, range: &textRange, intent: value)
             }
         }
@@ -82,6 +85,8 @@ open class AJRMarkdownStyleSheet : NSObject {
 
         if components.listType != nil {
             self.apply(to: string, range: &range, listIntent: intent)
+        } else if components.isHorizontalRule {
+            self.apply(to: string, range: &range, thematicBreakIntent: intent)
         } else {
             if currentList != nil {
                 // We can't use the normal "if let" or "if var" pattern here, because we have to modify the original.
@@ -117,13 +122,18 @@ open class AJRMarkdownStyleSheet : NSObject {
                     range: inout NSRange,
                     listIntent: PresentationIntent) {
         if currentList == nil {
-            // TODO: Probably not safe to force unwrap here.
+            var listStyle : AJRMarkdownStyle? = nil
             if listIntent.components.isOrderedList {
-                currentList = ListTracker(style: styles[.orderedList]!)
+                listStyle = styles[.orderedList]
             } else if listIntent.components.isUnorderedList {
-                currentList = ListTracker(style: styles[.unorderedList]!)
+                listStyle = styles[.unorderedList]
             }
-            currentList!.start = range.lowerBound
+            if let listStyle {
+                currentList = ListTracker(style: listStyle)
+                currentList!.start = range.lowerBound
+            } else {
+                AJRLog.warning("Trying to apply styles to list ")
+            }
         }
 
         // Make sure we have an NSTextList for the current level.
@@ -150,7 +160,7 @@ open class AJRMarkdownStyleSheet : NSObject {
         }
 
         // Track where the last item in the list resides within the string.
-        currentList!.lastItemRange = range
+        currentList?.lastItemRange = range
     }
 
     open func prefix(for intent: PresentationIntent) -> String? {
@@ -184,6 +194,7 @@ open class AJRMarkdownStyleSheet : NSObject {
             // Modify the style, as needed
             style.paragraphStyle.paragraphSpacing = style.paragraphStyle.lineSpacing
             style.paragraphStyle.textLists = currentList.textLists
+            lastItemStyle.paragraphStyle.textLists = currentList.textLists
 
             string.removeAttribute(.presentationIntentAttributeName, range: range)
             string.addAttributes(style.attributes, range: range)
@@ -229,6 +240,25 @@ open class AJRMarkdownStyleSheet : NSObject {
             index = unorderedListMarkers.count
         }
         return unorderedListMarkers[index - 1]
+    }
+    
+    // MARK: - Thematic Breaks
+    
+    open func apply(to string: NSMutableAttributedString,
+                    range: inout NSRange,
+                    thematicBreakIntent: PresentationIntent) {
+        if let style = style(for: .thematicBreak) {
+            let attachmentString = NSMutableAttributedString(attachment: style.createHorizontalRuleAttachment())
+            attachmentString.append(NSAttributedString(string: " \n", attributes: style.attributes))
+            let oldLength = range.length
+            let newLength = attachmentString.length
+            
+            string.replaceCharacters(in: range, with: attachmentString)
+            
+            range.length += (newLength - oldLength)
+        } else {
+            AJRLog.warning("No style defined for thematicBreak.")
+        }
     }
     
     // MARK: - Managing Styles

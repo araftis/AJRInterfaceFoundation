@@ -46,6 +46,8 @@ open class AJRMarkdownStyle : NSObject, NSCopying {
         }
     }
     var insertNewlineAfter = true
+    
+    var horizonalRuleAttachment : AJRMarkdownHorizontalRuleCell? = nil
 
     public override init() {
         super.init()
@@ -55,6 +57,16 @@ open class AJRMarkdownStyle : NSObject, NSCopying {
         self.backgroundColor = AJRColor.clear
     }
 
+    // MARK: - Conveniences
+    
+    open func createHorizontalRuleAttachment() -> NSTextAttachment {
+        let attachment = NSTextAttachment()
+        if let horizonalRuleAttachment {
+            attachment.attachmentCell = horizonalRuleAttachment.copyHorizontalRule()
+        }
+        return attachment
+    }
+    
     // MARK: - NSCopying
 
     public func copy(with zone: NSZone? = nil) -> Any {
@@ -64,6 +76,7 @@ open class AJRMarkdownStyle : NSObject, NSCopying {
             new.attributes[.paragraphStyle] = styleCopy
         }
         new.insertNewlineAfter = insertNewlineAfter
+        new.horizonalRuleAttachment = horizonalRuleAttachment?.copyHorizontalRule()
         return new
     }
     
