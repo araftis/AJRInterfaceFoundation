@@ -48,8 +48,9 @@ open class AJRMarkdownStyleSheet : NSObject {
     internal struct ListTracker {
         internal var start : Int = 0
         internal var end : Int = 0
-        internal var textLists = [NSTextList]()
         internal var style : AJRMarkdownStyle
+        internal var lastLevel : Int = 0
+        internal var lastStyle : AJRMarkdownStyle?
         internal var lastItemRange : NSRange?
         
         init(style: AJRMarkdownStyle) {
@@ -74,7 +75,8 @@ open class AJRMarkdownStyleSheet : NSObject {
                 apply(to: string, range: &textRange, intent: value)
             }
         }
-        string.fixAttributes(in: NSRange(location: 0, length: string.length))
+        string.removeAttribute(.presentationIntentAttributeName, range: string.allRange)
+        string.fixAttributes(in: string.allRange)
     }
     
     open func apply(to string: NSMutableAttributedString,
@@ -106,11 +108,12 @@ open class AJRMarkdownStyleSheet : NSObject {
                     range: inout NSRange,
                     kind: PresentationIntent.Kind) {
         if let style = styles[kind] {
-            string.addAttributes(style.attributes, range: range)
+            string.removeAttribute(.presentationIntentAttributeName, range: range)
             if style.insertNewlineAfter {
                 string.insert(NSAttributedString(string: "\n"), at: range.upperBound)
                 range.length += 1
             }
+            string.addAttributes(style.attributes, range: range)
         } else {
             AJRLog.warning("No style for \(kind): \(string[range].string)")
         }
@@ -132,24 +135,10 @@ open class AJRMarkdownStyleSheet : NSObject {
                 currentList = ListTracker(style: listStyle)
                 currentList!.start = range.lowerBound
             } else {
-                AJRLog.warning("Trying to apply styles to list ")
+                AJRLog.warning("No style for \(listIntent)")
             }
         }
 
-        // Make sure we have an NSTextList for the current level.
-        if currentList!.textLists.count < listIntent.indentationLevel {
-            var textList : NSTextList? = nil
-            if listIntent.components.isOrderedList {
-                textList = NSTextList(markerFormat: .decimal, options: 0)
-            } else if listIntent.components.isUnorderedList {
-                textList = NSTextList(markerFormat: unorderedListMarker(forLevel: listIntent.indentationLevel), options: 0)
-            }
-            if let textList {
-                currentList!.textLists.append(textList)
-            }
-        }
-
-        //apply(to: string, range: &textRange, kind: .paragraph)
         string.insert(NSAttributedString(string: "\n"), at: range.upperBound)
         range.length += 1
 
@@ -157,6 +146,15 @@ open class AJRMarkdownStyleSheet : NSObject {
             let attributes = string.attributes(at: range.lowerBound, effectiveRange: nil)
             string.insert(NSAttributedString(string: prefix, attributes: attributes), at: range.lowerBound)
             range.length += prefix.count
+        }
+
+        if currentList != nil {
+            let style = currentList!.style
+            if currentList!.lastLevel != listIntent.indentationLevel {
+                currentList!.lastLevel = listIntent.indentationLevel
+                currentList!.lastStyle = copy(listStyle: style, for: listIntent)
+            }
+            string.addAttributes(currentList!.lastStyle!.attributes, range: range)
         }
 
         // Track where the last item in the list resides within the string.
@@ -174,38 +172,66 @@ open class AJRMarkdownStyleSheet : NSObject {
             marker = unorderedListMarkerString(forLevel: intent.indentationLevel)
         }
         if let marker {
-            var prefix = ""
-            for _ in 0 ..< intent.indentationLevel {
-                prefix += "\t"
-            }
-            prefix += marker
-            prefix += "\t"
-            return prefix
+            return "\t\(marker)\t"
         }
         return nil
     }
 
-    open func completeList(on string: NSMutableAttributedString) -> Void {
-        if let currentList {
-            let style = currentList.style.copyStyle()
-            let lastItemStyle = style.copyStyle()
-            let range = NSRange(location: currentList.start, length: currentList.end - currentList.start)
+    open func copy(listStyle: AJRMarkdownStyle, for intent: PresentationIntent) -> AJRMarkdownStyle {
+        let new = listStyle.copyStyle()
+        var tabStops = new.paragraphStyle.tabStops ?? []
 
-            // Modify the style, as needed
-            style.paragraphStyle.paragraphSpacing = style.paragraphStyle.lineSpacing
-            style.paragraphStyle.textLists = currentList.textLists
-            lastItemStyle.paragraphStyle.textLists = currentList.textLists
-
-            string.removeAttribute(.presentationIntentAttributeName, range: range)
-            string.addAttributes(style.attributes, range: range)
-            
-            // Quick check...
-            if let lastRange = currentList.lastItemRange {
-                string.addAttribute(.paragraphStyle, value: lastItemStyle.paragraphStyle, range: lastRange)
+        if tabStops.count < intent.indentationLevel - 1 {
+            for i in 1 ... intent.indentationLevel - 1 {
+                tabStops.append(NSTextTab(textAlignment: .left, location: CGFloat(i + intent.indentationLevel) * 0.25))
             }
+        } else {
+            tabStops.removeFirst(intent.indentationLevel - 1)
+            while tabStops.count < intent.indentationLevel + 1 {
+                if let last = tabStops.last {
+                    tabStops.append(NSTextTab(textAlignment: .left, location: last.location + 0.25))
+                }
+            }
+        }
+        new.paragraphStyle.tabStops = tabStops
+
+        var textLists = [NSTextList]()
+        for i in 1 ... intent.indentationLevel {
+            if intent.components.isOrderedList {
+                textLists.append(NSTextList(markerFormat: .decimal, options: 0))
+            } else if intent.components.isUnorderedList {
+                textLists.append(NSTextList(markerFormat: unorderedListMarker(forLevel: i), options: 0))
+            }
+        }
+        new.paragraphStyle.textLists = textLists
+
+        let stop = tabStops[1]
+        new.paragraphStyle.headIndent = stop.location
+
+        return new
+    }
+
+    open func completeList(on string: NSMutableAttributedString) -> Void {
+//        if let currentList {
+//            let style = currentList.style.copyStyle()
+//            let lastItemStyle = style.copyStyle()
+//            let range = NSRange(location: currentList.start, length: currentList.end - currentList.start)
+
+//            // Modify the style, as needed
+//            style.paragraphStyle.paragraphSpacing = style.paragraphStyle.lineSpacing
+//            style.paragraphStyle.textLists = currentList.textLists
+//            lastItemStyle.paragraphStyle.textLists = currentList.textLists
+
+//            string.removeAttribute(.presentationIntentAttributeName, range: range)
+//            string.addAttributes(style.attributes, range: range)
+//
+//            // Quick check...
+//            if let lastRange = currentList.lastItemRange {
+//                string.addAttribute(.paragraphStyle, value: lastItemStyle.paragraphStyle, range: lastRange)
+//            }
 
             self.currentList = nil
-        }
+//        }
     }
 
     // MARK: - Unordered List Markers
@@ -249,7 +275,8 @@ open class AJRMarkdownStyleSheet : NSObject {
                     thematicBreakIntent: PresentationIntent) {
         if let style = style(for: .thematicBreak) {
             let attachmentString = NSMutableAttributedString(attachment: style.createHorizontalRuleAttachment())
-            attachmentString.append(NSAttributedString(string: " \n", attributes: style.attributes))
+            attachmentString.append(NSAttributedString(string: "\n"))
+            attachmentString.addAttributes(style.attributes, range: attachmentString.allRange)
             let oldLength = range.length
             let newLength = attachmentString.length
             

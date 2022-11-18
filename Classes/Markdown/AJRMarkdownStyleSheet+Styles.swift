@@ -19,8 +19,7 @@ public extension AJRMarkdownStyleSheet {
         
         // Creat 20 default tab stops at quarter inch intervals.
         for i in 0 ..< 20 {
-            let tabStop = NSTextTab(textAlignment: .natural, location: CGFloat(i + 1) * 0.25 * 72.0, options: [:])
-            tabStops.append(tabStop)
+            tabStops.append(NSTextTab(textAlignment: .left, location: CGFloat(i + 1) * 0.25 * 72.0, options: [:]))
         }
         
         var style = AJRMarkdownStyle()

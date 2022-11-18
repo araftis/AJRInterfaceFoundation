@@ -29,17 +29,17 @@ open class AJRMarkdownStyle : NSObject, NSCopying {
             attributes[.font] = newValue
         }
     }
-    var foregroundColor : AJRColor {
+    var foregroundColor : AJRColor? {
         get {
-            return attributes[.foregroundColor] as! AJRColor
+            return attributes[.foregroundColor] as? AJRColor
         }
         set {
             attributes[.foregroundColor] = newValue
         }
     }
-    var backgroundColor : AJRColor {
+    var backgroundColor : AJRColor? {
         get {
-            return attributes[.backgroundColor] as! AJRColor
+            return attributes[.backgroundColor] as? AJRColor
         }
         set {
             attributes[.backgroundColor] = newValue
@@ -52,9 +52,10 @@ open class AJRMarkdownStyle : NSObject, NSCopying {
     public override init() {
         super.init()
         self.paragraphStyle = NSMutableParagraphStyle()
+        self.paragraphStyle.alignment = .left
+        self.paragraphStyle.tighteningFactorForTruncation = 0.0
+        self.paragraphStyle.allowsDefaultTighteningForTruncation = false
         self.font = AJRFont.userFont(ofSize: 13.0) ?? AJRFont.systemFont(ofSize: 13.0)
-        self.foregroundColor = AJRColor.black
-        self.backgroundColor = AJRColor.clear
     }
 
     // MARK: - Conveniences
