@@ -1078,7 +1078,7 @@
     [self closePath];
 }
 
-- (void)appendBezierPathWithPolygonInRect:(CGRect)arcBounds sides:(NSInteger)sides starPercent:(CGFloat)starPercent offset:(CGFloat)offset NS_SWIFT_NAME(appendPolygon(in:sides:starPercent:offset:)) {
+- (void)appendBezierPathWithPolygonInRect:(CGRect)arcBounds sides:(NSInteger)sides starPercent:(CGFloat)starPercent offset:(CGFloat)offset {
     CGFloat angle = offset;
     CGFloat step = 360.0 / sides;
     CGFloat halfStep = step / 2.0;
