@@ -127,19 +127,29 @@ public extension AJRBezierPath {
         
         return dash
     }
-    
+
+}
+
+@objc
+public extension AJRBezierPath {
     // MARK: - Drawing Conveniences
-    
+
+    @objc(strokeWithColor:)
     func stroke(color: AJRColor) {
-        color.set()
-        stroke()
+        AJRGetCurrentContext()?.drawWithSavedGraphicsState {
+            color.set()
+            stroke()
+        }
     }
     
+    @objc(fillWithColor:)
     func fill(color: AJRColor) {
-        color.set()
-        fill()
+        AJRGetCurrentContext()?.drawWithSavedGraphicsState {
+            color.set()
+            fill()
+        }
     }
-    
+
 }
 
 ///

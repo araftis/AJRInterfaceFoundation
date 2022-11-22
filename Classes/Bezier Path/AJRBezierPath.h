@@ -113,6 +113,7 @@ typedef CGPoint (^AJRBezierPathPointTransform)(CGPoint point);
 }
 
 #pragma mark - Creation
+
 + (instancetype)bezierPath;
 + (instancetype)bezierPathWithRect:(CGRect)rect;
 + (instancetype)bezierPathWithOvalInRect:(CGRect)rect;
@@ -120,6 +121,7 @@ typedef CGPoint (^AJRBezierPathPointTransform)(CGPoint point);
 + (instancetype)bezierPathWithRoundedRect:(NSRect)rect xRadius:(CGFloat)xRadius yRadius:(CGFloat)yRadius;
 
 #pragma mark - Appending paths and some common shapes
+
 - (void)appendBezierPath:(AJRBezierPath *)path;
 - (void)appendBezierPathWithArcWithCenter:(CGPoint)center radius:(CGFloat)radius startAngle:(CGFloat)startAngle endAngle:(CGFloat)endAngle clockwise:(BOOL)clockwise NS_SWIFT_NAME(appendArc(withCenter:radius:startAngle:endAngle:clockwise:));
 - (void)appendBezierPathWithArcWithCenter:(CGPoint)center radius:(CGFloat)radius startAngle:(CGFloat)startAngle endAngle:(CGFloat)endAngle NS_SWIFT_NAME(appendArc(withCenter:radius:startAngle:endAngle:));
@@ -132,11 +134,13 @@ typedef CGPoint (^AJRBezierPathPointTransform)(CGPoint point);
 - (void)appendBezierPathWithRoundedRect:(NSRect)rect xRadius:(CGFloat)xRadius yRadius:(CGFloat)yRadius NS_SWIFT_NAME(appendRoundedRect(_:xRadius:yRadius:));
 
 #pragma mark - Clipping paths
+
 - (void)addClip;
 - (void)setClip;
 + (void)clipRect:(CGRect)rect;
 
 #pragma mark - Drawing paths
+
 - (void)fill;
 - (void)stroke;
 + (void)drawPackedGlyphs:(const char *)packedGlyphs atPoint:(CGPoint)aPoint;
@@ -145,6 +149,7 @@ typedef CGPoint (^AJRBezierPathPointTransform)(CGPoint point);
 + (void)strokeRect:(CGRect)rect;
 
 #pragma mark - Setting attributes
+
 @property (nonatomic,assign) AJRWindingRule windingRule;
 @property (nonatomic,assign) CGFloat flatness;
 @property (nonatomic,assign) AJRLineCapStyle lineCapStyle;
@@ -164,6 +169,7 @@ typedef CGPoint (^AJRBezierPathPointTransform)(CGPoint point);
 + (void)getDefaultLineDash:(CGFloat *)values count:(NSInteger *)count phase:(CGFloat *)phase;
 
 #pragma mark - Hit detection
+
 - (BOOL)isHitByPath:(AJRBezierPath *)aBezierPath;
 - (BOOL)isHitByPoint:(CGPoint)aPoint;
 - (BOOL)isHitByRect:(CGRect)rect;
@@ -172,6 +178,7 @@ typedef CGPoint (^AJRBezierPathPointTransform)(CGPoint point);
 - (BOOL)isStrokeHitByRect:(CGRect)rect;
 
 #pragma mark - Contructing paths
+
 - (void)curveToPoint:(CGPoint)aPoint controlPoint1:(CGPoint)controlPoint1 controlPoint2:(CGPoint)controlPoint2;
 - (void)lineToPoint:(CGPoint)aPoint;
 - (void)moveToPoint:(CGPoint)aPoint;
@@ -182,15 +189,18 @@ typedef CGPoint (^AJRBezierPathPointTransform)(CGPoint point);
 - (void)closePath;
 
 #pragma mark - Removing Elements
+
 - (void)removeLastElement;
 
 #pragma mark - Querying paths
+
 @property (nonatomic,readonly) BOOL isEmpty;
 @property (nonatomic,readonly) CGRect bounds;
 @property (nonatomic,readonly) CGRect controlPointBounds;
 @property (nonatomic,readonly) CGPoint currentPoint;
 
 #pragma mark - Accessing elements of a path
+
 - (NSInteger)pathElementIndexForPointIndex:(NSInteger)index;
 - (CGPoint)pointAtIndex:(NSInteger)index;
 @property (nonatomic,readonly) NSInteger pointCount;
@@ -202,10 +212,12 @@ typedef CGPoint (^AJRBezierPathPointTransform)(CGPoint point);
 - (void)setAssociatedPoints:(CGPoint *)points atIndex:(NSInteger)index;
 
 #pragma mark - Path modifications
+
 - (id)bezierPathByFlatteningPath;
 - (id)bezierPathByReversingPath;
 
 #pragma mark - Applying transformations
+
 - (void)transformUsingAffineTransform:(NSAffineTransform *)transform;
 
 @end
