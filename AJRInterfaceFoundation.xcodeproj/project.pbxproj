@@ -292,6 +292,10 @@
 		FAD6FD4622AC5B7400C8B5EB /* AJRTrigonometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD6FD4422AC5B7400C8B5EB /* AJRTrigonometry.swift */; };
 		FAD6FD4722AC5B7400C8B5EB /* AJRTrigonometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD6FD4422AC5B7400C8B5EB /* AJRTrigonometry.swift */; };
 		FAD6FD4822AC5B7400C8B5EB /* AJRTrigonometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD6FD4422AC5B7400C8B5EB /* AJRTrigonometry.swift */; };
+		FAE5139729552C6000F292F6 /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE5139629552C6000F292F6 /* URL+Extensions.swift */; };
+		FAE5139829552C6000F292F6 /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE5139629552C6000F292F6 /* URL+Extensions.swift */; };
+		FAE5139929552C6000F292F6 /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE5139629552C6000F292F6 /* URL+Extensions.swift */; };
+		FAE5139A29552C6000F292F6 /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE5139629552C6000F292F6 /* URL+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -419,6 +423,7 @@
 		FAD0BB90259400D600346E67 /* AJRInterfaceFoundationTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AJRInterfaceFoundationTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		FAD0BB91259400D600346E67 /* AJRBezierPathTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AJRBezierPathTests.swift; sourceTree = "<group>"; };
 		FAD6FD4422AC5B7400C8B5EB /* AJRTrigonometry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AJRTrigonometry.swift; sourceTree = "<group>"; };
+		FAE5139629552C6000F292F6 /* URL+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -671,6 +676,7 @@
 				FA10399B225EB2B6005B0D3B /* NSLayoutConstraint+Extensions.swift */,
 				FA5EFC1520E1C761006C48B0 /* NSValue+Extensions.h */,
 				FA5EFC1620E1C761006C48B0 /* NSValue+Extensions.m */,
+				FAE5139629552C6000F292F6 /* URL+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -987,6 +993,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA4F23102209323900AB64C2 /* AJRBezierPath+AJRIntersection.m in Sources */,
+				FAE5139829552C6000F292F6 /* URL+Extensions.swift in Sources */,
 				FA10398C225D89BA005B0D3B /* NSAttributedStringAdditions.swift in Sources */,
 				FA4F23112209323900AB64C2 /* AJRColorUtilities.m in Sources */,
 				FA4F23122209323900AB64C2 /* AJRBezierCurves.m in Sources */,
@@ -1035,6 +1042,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA4F23452209329300AB64C2 /* AJRBezierPath+AJRIntersection.m in Sources */,
+				FAE5139929552C6000F292F6 /* URL+Extensions.swift in Sources */,
 				FA10398D225D89BA005B0D3B /* NSAttributedStringAdditions.swift in Sources */,
 				FA4F23462209329300AB64C2 /* AJRColorUtilities.m in Sources */,
 				FA4F23472209329300AB64C2 /* AJRBezierCurves.m in Sources */,
@@ -1083,6 +1091,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA4F237A220932B600AB64C2 /* AJRBezierPath+AJRIntersection.m in Sources */,
+				FAE5139A29552C6000F292F6 /* URL+Extensions.swift in Sources */,
 				FA10398E225D89BA005B0D3B /* NSAttributedStringAdditions.swift in Sources */,
 				FA4F237B220932B600AB64C2 /* AJRColorUtilities.m in Sources */,
 				FA4F237C220932B600AB64C2 /* AJRBezierCurves.m in Sources */,
@@ -1173,6 +1182,7 @@
 				FA86625926D1D18C005FB063 /* AJRBezierPath+Inscribed.swift in Sources */,
 				FA5EFC1320E1C6AF006C48B0 /* AJRVector.m in Sources */,
 				FA5EFBF920E1C603006C48B0 /* AJRBezierPathFunctions.m in Sources */,
+				FAE5139729552C6000F292F6 /* URL+Extensions.swift in Sources */,
 				FA07C8B9220FB18F0077A0B5 /* AJRGradient.swift in Sources */,
 				FA89258F21FA94D100246D46 /* CATransaction+Extensions.m in Sources */,
 				FA07C8A7220EBB050077A0B5 /* AJRView.swift in Sources */,
@@ -1449,6 +1459,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INSTALL_PATH = "@rpath";
 				LD_NO_PIE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -1508,6 +1519,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INSTALL_PATH = "@rpath";
 				LD_NO_PIE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
