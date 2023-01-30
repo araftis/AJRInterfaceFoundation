@@ -65,6 +65,20 @@ public extension UIImage {
         return image
     }
     
+    var imageRect : CGRect {
+        return CGRect(origin: .zero, size: size)
+    }
+
+    @objc(drawAtPoint:operation:)
+    func draw(at where: CGPoint, operation: UICompositingOperation) {
+        draw(at: `where`, from: imageRect, operation: operation, fraction: 1.0)
+    }
+
+    @objc(drawAtPoint:operation:fraction:)
+    func draw(at where: CGPoint, operation: UICompositingOperation, fraction: CGFloat) {
+        draw(at: `where`, from: imageRect, operation: operation, fraction: fraction)
+    }
+
 }
 
 #endif
@@ -76,6 +90,7 @@ import AppKit
 public typealias AJRImage = NSImage
 
 @available(OSX 10.12, *)
+@objc
 public extension NSImage {
     
     class func image(named name:String, in bundle:Bundle?) -> AJRImage? {
@@ -117,6 +132,20 @@ public extension NSImage {
         }
         
         return finalImage
+    }
+
+    var imageRect : CGRect {
+        return CGRect(origin: .zero, size: size)
+    }
+
+    @objc(drawAtPoint:operation:)
+    func draw(at where: CGPoint, operation: NSCompositingOperation) {
+        draw(at: `where`, from: imageRect, operation: operation, fraction: 1.0)
+    }
+
+    @objc(drawAtPoint:operation:fraction:)
+    func draw(at where: CGPoint, operation: NSCompositingOperation, fraction: CGFloat) {
+        draw(at: `where`, from: imageRect, operation: operation, fraction: fraction)
     }
     
 }
