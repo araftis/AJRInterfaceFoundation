@@ -1,6 +1,6 @@
 #  License
 
-Copyright © 2022, AJ Raftis and AJRInterfaceFoundation authors
+Copyright © 2023, AJ Raftis and AJRInterfaceFoundation authors
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
