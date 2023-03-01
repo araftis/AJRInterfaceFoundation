@@ -70,7 +70,8 @@ public func AJRSystemFont(ofSize fontSize:CGFloat, weight:CGFloat) -> CTFont? {
     #if os(iOS) || os(tvOS) || os(watchOS)
     let font = UIFont.systemFont(ofSize:fontSize, weight:weight)
     return CTFontCreateWithName(font.fontName as CFString?, fontSize, nil)
-    #else
+    #endif
+    #if os(macOS)
     if #available(OSX 10.11, *) {
         return NSFont.systemFont(ofSize:fontSize, weight:NSFont.Weight(rawValue: weight))
     } else {
