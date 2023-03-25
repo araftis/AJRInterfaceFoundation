@@ -70,6 +70,10 @@
 		FA08612C22C93C190021CCC5 /* AJROverlayTextMessageLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA08612A22C93C190021CCC5 /* AJROverlayTextMessageLayer.swift */; };
 		FA08612D22C93C190021CCC5 /* AJROverlayTextMessageLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA08612A22C93C190021CCC5 /* AJROverlayTextMessageLayer.swift */; };
 		FA08612E22C93C190021CCC5 /* AJROverlayTextMessageLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA08612A22C93C190021CCC5 /* AJROverlayTextMessageLayer.swift */; };
+		FA09819429CE77780076BAA5 /* AJRPathEnumerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA09819329CE77780076BAA5 /* AJRPathEnumerator.swift */; };
+		FA09819529CE77780076BAA5 /* AJRPathEnumerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA09819329CE77780076BAA5 /* AJRPathEnumerator.swift */; };
+		FA09819629CE77780076BAA5 /* AJRPathEnumerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA09819329CE77780076BAA5 /* AJRPathEnumerator.swift */; };
+		FA09819729CE77780076BAA5 /* AJRPathEnumerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA09819329CE77780076BAA5 /* AJRPathEnumerator.swift */; };
 		FA10398B225D89BA005B0D3B /* NSAttributedStringAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10398A225D89BA005B0D3B /* NSAttributedStringAdditions.swift */; };
 		FA10398C225D89BA005B0D3B /* NSAttributedStringAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10398A225D89BA005B0D3B /* NSAttributedStringAdditions.swift */; };
 		FA10398D225D89BA005B0D3B /* NSAttributedStringAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10398A225D89BA005B0D3B /* NSAttributedStringAdditions.swift */; };
@@ -350,6 +354,7 @@
 		FA08611F22C842760021CCC5 /* AJROverlayTextMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AJROverlayTextMessageView.swift; sourceTree = "<group>"; };
 		FA08612522C93ADF0021CCC5 /* AJRTextLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AJRTextLayer.swift; sourceTree = "<group>"; };
 		FA08612A22C93C190021CCC5 /* AJROverlayTextMessageLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AJROverlayTextMessageLayer.swift; sourceTree = "<group>"; };
+		FA09819329CE77780076BAA5 /* AJRPathEnumerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AJRPathEnumerator.swift; sourceTree = "<group>"; };
 		FA10398A225D89BA005B0D3B /* NSAttributedStringAdditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSAttributedStringAdditions.swift; sourceTree = "<group>"; };
 		FA10399B225EB2B6005B0D3B /* NSLayoutConstraint+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Extensions.swift"; sourceTree = "<group>"; };
 		FA2876F42610227D00F5BBE8 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -652,6 +657,7 @@
 				FA95DE5122B47339005EC953 /* AJRInset+Extensions.swift */,
 				FA5EFC1A20E1C7E9006C48B0 /* AJRPathEnumerator.h */,
 				FA5EFC1920E1C7E9006C48B0 /* AJRPathEnumerator.m */,
+				FA09819329CE77780076BAA5 /* AJRPathEnumerator.swift */,
 				FA5EFC0820E1C6AF006C48B0 /* AJRTrigonometry.h */,
 				FA5EFC0920E1C6AF006C48B0 /* AJRTrigonometry.m */,
 				FAD6FD4422AC5B7400C8B5EB /* AJRTrigonometry.swift */,
@@ -1026,6 +1032,7 @@
 				FA4F23212209323900AB64C2 /* AJRVector.m in Sources */,
 				FA4F23222209323900AB64C2 /* AJRBezierPathFunctions.m in Sources */,
 				FA4F23232209323900AB64C2 /* CATransaction+Extensions.m in Sources */,
+				FA09819529CE77780076BAA5 /* AJRPathEnumerator.swift in Sources */,
 				FA08612122C842760021CCC5 /* AJROverlayTextMessageView.swift in Sources */,
 				21FCD9C6270674A30049E558 /* AJRBezierPath.swift in Sources */,
 				FA86625A26D1D18C005FB063 /* AJRBezierPath+Inscribed.swift in Sources */,
@@ -1075,6 +1082,7 @@
 				FA4F23562209329300AB64C2 /* AJRVector.m in Sources */,
 				FA4F23572209329300AB64C2 /* AJRBezierPathFunctions.m in Sources */,
 				FA4F23582209329300AB64C2 /* CATransaction+Extensions.m in Sources */,
+				FA09819629CE77780076BAA5 /* AJRPathEnumerator.swift in Sources */,
 				FA08612222C842760021CCC5 /* AJROverlayTextMessageView.swift in Sources */,
 				21FCD9C7270674A30049E558 /* AJRBezierPath.swift in Sources */,
 				FA86625B26D1D18C005FB063 /* AJRBezierPath+Inscribed.swift in Sources */,
@@ -1124,6 +1132,7 @@
 				FA4F238B220932B600AB64C2 /* AJRVector.m in Sources */,
 				FA4F238C220932B600AB64C2 /* AJRBezierPathFunctions.m in Sources */,
 				FA4F238D220932B600AB64C2 /* CATransaction+Extensions.m in Sources */,
+				FA09819729CE77780076BAA5 /* AJRPathEnumerator.swift in Sources */,
 				FA08612322C842760021CCC5 /* AJROverlayTextMessageView.swift in Sources */,
 				21FCD9C8270674A30049E558 /* AJRBezierPath.swift in Sources */,
 				FA86625C26D1D18C005FB063 /* AJRBezierPath+Inscribed.swift in Sources */,
@@ -1141,6 +1150,7 @@
 			files = (
 				FABB135E292088AD002DD56B /* AJRMarkdownStyleSheet.swift in Sources */,
 				FAA826392526C217004B7A31 /* AJRImageUtilities.swift in Sources */,
+				FA09819429CE77780076BAA5 /* AJRPathEnumerator.swift in Sources */,
 				FACEC3F822D297ED008AA6DB /* CGColorSpace+Extensions.swift in Sources */,
 				FA5EFBF520E1C603006C48B0 /* AJRBezierPath+AJRIntersection.m in Sources */,
 				21FCD9C5270674A30049E558 /* AJRBezierPath.swift in Sources */,

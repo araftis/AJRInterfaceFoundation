@@ -36,7 +36,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class AJRPathEnumerator, AJRMutableBezierRangeArray;
+@class AJRPathEnumerator, AJRMutableBezierRangeArray, AJRIntersection;
 
 #define AJRHairLineWidth (CGFloat)0.0
 
@@ -48,7 +48,7 @@ typedef NS_ENUM(NSInteger, AJRBezierPathElementType)  {
     AJRBezierPathElementClose = NSBezierPathElementClosePath
 };
 
-typedef NS_ENUM(NSInteger, AJRWindingRule)  {
+typedef NS_ENUM(NSUInteger, AJRWindingRule)  {
     AJRWindingRuleNonZero = NSWindingRuleNonZero,
     AJRWindingRuleEvenOdd = NSWindingRuleEvenOdd
 };
@@ -68,6 +68,24 @@ typedef NS_ENUM(NSInteger, AJRLineJoinStyle)  {
 extern void AJRExpandRect(CGRect *rect, CGPoint *point);
 
 typedef CGPoint (^AJRBezierPathPointTransform)(CGPoint point);
+
+
+/*!
+ Defines basic path expectations. This is mainly used where either a `AJRBezierPath` or an `NSBezierPath` can be passed as a parameter.
+ */
+@protocol AJRBezierPathProtocol <NSObject>
+
+@property (nonatomic,readonly) NSInteger elementCount;
+@property (nonatomic,readonly) AJRPathEnumerator *pathEnumerator;
+@property (nonatomic,readonly) CGPathRef CGPath;
+@property (nonatomic,readonly) NSWindingRule windingRule;
+@property (nonatomic,readonly) CGFloat flatness;
+
+- (NSBezierPathElement)elementAtIndex:(NSInteger)index;
+- (NSBezierPathElement)elementAtIndex:(NSInteger)index associatedPoints:(CGPoint *)points;
+
+@end
+
 
 @interface NSArray (_AJRBezierPathExtensions)
 
@@ -247,6 +265,9 @@ typedef CGPoint (^AJRBezierPathPointTransform)(CGPoint point);
 
 - (void)appendBezierPathWithPolygonInRect:(CGRect)rect sides:(NSInteger)sides starPercent:(CGFloat)starPercent offset:(CGFloat)offset NS_SWIFT_NAME(appendPolygon(in:sides:starPercent:offset:));
 
+- (void)appendBezierPathWithString:(NSString *)string font:(NSFont *)font NS_SWIFT_NAME(appendString(_:font:));
+- (void)appendBezierPathWithAttributedString:(NSAttributedString *)string NS_SWIFT_NAME(appendAttributedString(_:));
+
 #pragma mark - Contructing Paths
 
 - (void)lineToAngle:(CGFloat)degree length:(CGFloat)length;
@@ -321,25 +342,64 @@ typedef CGPoint (^AJRBezierPathPointTransform)(CGPoint point);
 
 @interface AJRBezierPath (AJRIntersection)
 
-// Returns an array of AJRIntersection objects of all points on line intersecting our path. If the line segment does not intersect our path, return nil. The intersections are not sorted. If you'd like them sorted in a certain order from a certain point in space, call sortFromPoint: or sortedArrayFromPoint: on NSMutableArray or NSArray respectfully. error represents the amount of "flatness" to treat curves with. If error is 0.0, the current flatness, as set by +setFlatness is used.
-- (NSArray *)intersectionsWithLine:(AJRLine)line error:(double)error;
+/*!
+ Returns an array of AJRIntersection objects of all points on line intersecting our path. If the line segment does not intersect our path, return nil. The intersections are not sorted. If you'd like them sorted in a certain order from a certain point in space, call sortFromPoint: or sortedArrayFromPoint: on NSMutableArray or NSArray respectfully. error represents the amount of "flatness" to treat curves with. If error is 0.0, the current flatness, as set by +setFlatness is used.
+
+ @param line The line to intersect across the path.
+ @param error The error value for flattening the path.
+
+ @returns An array of the intersections. If no intersections, then the array will be empty.
+ */
+- (NSArray<AJRIntersection *> *)intersectionsWithLine:(AJRLine)line error:(double)error;
 
 - (NSArray *)subrectanglesContainedInRect:(CGRect)proposedRect error:(CGFloat)error lineSweep:(NSLineSweepDirection)sweepDirection minimumSize:(CGFloat)minSize;
 
-- (id)pathByUnioningWithPath:(id)path;
-- (id)pathByIntersectingWithPath:(id)path;
-- (id)pathBySubtractingPath:(id)path;
-- (id)pathByExclusivelyIntersectingPath:(id)path;
+- (AJRBezierPath *)pathByUnioningWithPath:(id <AJRBezierPathProtocol>)path NS_SWIFT_NAME(unioning(with:));
+- (AJRBezierPath *)pathByIntersectingWithPath:(id <AJRBezierPathProtocol>)path NS_SWIFT_NAME(intersecting(with:));
+- (AJRBezierPath *)pathBySubtractingPath:(id <AJRBezierPathProtocol>)path NS_SWIFT_NAME(subtracting(with:));
+- (AJRBezierPath *)pathByExclusivelyIntersectingPath:(id <AJRBezierPathProtocol>)path NS_SWIFT_NAME(exclusivelyIntersecting(with:));
+
+- (AJRBezierPath *)pathByNormalizingPath;
+@property (nonatomic,readonly) NSArray<AJRBezierPath *> *separateComponents;
 
 @end
 
+extern id <AJRBezierPathProtocol> _Nullable AJRBezierPathByUnioningPaths(NSArray<id <AJRBezierPathProtocol>> *paths);
+extern id <AJRBezierPathProtocol> _Nullable AJRBezierPathByIntersectingPaths(NSArray<id <AJRBezierPathProtocol>> *paths);
+extern id <AJRBezierPathProtocol> _Nullable AJRBezierPathBySubtractingPaths(NSArray<id <AJRBezierPathProtocol>> *paths);
+extern id <AJRBezierPathProtocol> _Nullable AJRBezierPathBySymmetricDifferenceOfPaths(NSArray<id <AJRBezierPathProtocol>> *paths);
+extern id <AJRBezierPathProtocol> _Nullable AJRBezierPathByNormalizingPath(id <AJRBezierPathProtocol> path);
+extern NSArray *AJRBezierPathGetSubcomponents(id <AJRBezierPathProtocol> path);
 
-@interface AJRBezierPath (Retype)
+@interface AJRBezierPath (Retype) <AJRBezierPathProtocol>
 
 /*!
  This method is here solely to "convert" to NSBezierPath. We actually implement the exact same API, so we can be passed around as an NSBezierPath, but Swift doesn't like that, so this basicaly allows us to be "retyped".
  */
 @property (nonatomic,readonly) NSBezierPath *asBezierPath;
+
+/*!
+ Builds and returns a CGPath based on the receiver. This is useful for interoperating with some of the underlying CoreGraphics libraries.
+ */
+@property (nonatomic,readonly) CGPathRef CGPath;
+
+/*!
+ Returns a new bezier path created from the supplied CGPath.
+
+ This basically just creates an empty path and then calls `-[AJRBezierPath appendBezierPathWithCGPath:]`.
+
+ @param path The CoreGraphic's CGPath.
+
+ @return The newly created NSBezierPath.
+ */
++ (AJRBezierPath *)bezierPathWithCGPath:(CGPathRef)path;
+
+/*!
+ Appends `path` to the receiver.
+
+ @param path The path to append.
+ */
+- (void)appendBezierPathWithCGPath:(CGPathRef)path;
 
 @end
 

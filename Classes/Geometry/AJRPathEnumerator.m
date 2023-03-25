@@ -62,17 +62,18 @@ typedef struct __ajrEdgeEnumeratorStackElement {
     BOOL _isMoveTo:1;
 }
 
-+ (id)enumeratorWithBezierPath:(AJRBezierPath *)aPath {
-    return [[self allocWithZone:NSDefaultMallocZone()] initWithBezierPath:aPath];
++ (id)enumeratorWithBezierPath:(id <AJRBezierPathProtocol>)path {
+    return [[self allocWithZone:NSDefaultMallocZone()] initWithBezierPath:path];
 }
 
-- (id)initWithBezierPath:(AJRBezierPath *)aPath {
+- (id)initWithBezierPath:(id <AJRBezierPathProtocol>)path {
     if ((self = [super init])) {
-        _path = aPath;
-        _elementIndex = -1;
+        _path = path;
+        // We were using -1 here, because for AJRBezierPath meant we enumerating the setboundingbox, but NSBezierPath doesn't support doing that, and we want to work with both.
+        _elementIndex = 0;
         _stack = NSZoneMalloc(nil, sizeof(_AJREdgeEnumeratorStackElement) * MAXSTACKSIZE);
         _stackPosition = 0;
-        _error = aPath.flatness;
+        _error = path.flatness;
 
         _flattenCurves = NO;
         _dontFlattenCurves = NO;
@@ -153,7 +154,6 @@ typedef struct __ajrEdgeEnumeratorStackElement {
     
     if (_stackPosition == 0) {
         do {
-            _elementIndex++;
             if (_elementIndex == [_path elementCount]) return NULL;
             switch ([_path elementAtIndex:_elementIndex associatedPoints:points]) {
                 case AJRBezierPathElementMoveTo:
@@ -186,6 +186,7 @@ typedef struct __ajrEdgeEnumeratorStackElement {
                 default:
                     break;
             }
+            _elementIndex++;
         } while (!done);
     } else {
         [self _nextBezierLineSegment];

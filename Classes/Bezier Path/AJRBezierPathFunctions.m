@@ -43,7 +43,7 @@ void AJRbuildpath(CGContextRef context,
     NSUInteger pointIndex = 0;
     NSUInteger elementIndex = 0;
     CGPoint p1, p2, p3;
-    
+
     CGContextBeginPath(context);
     for (elementIndex = 0; elementIndex < elementCount; elementIndex++) {
         switch (elements[elementIndex]) {
@@ -72,6 +72,45 @@ void AJRbuildpath(CGContextRef context,
                 break;
         }
     }
+}
+
+CGPathRef AJRcreatepath(CGPoint *points, NSUInteger pointCount,
+                         AJRBezierPathElementType *elements, NSUInteger elementCount,
+                         AJRBezierPathPointTransform pointTransform) {
+    NSUInteger pointIndex = 0;
+    NSUInteger elementIndex = 0;
+    CGPoint p1, p2, p3;
+
+    CGMutablePathRef path = CGPathCreateMutable();
+    for (elementIndex = 0; elementIndex < elementCount; elementIndex++) {
+        switch (elements[elementIndex]) {
+            case AJRBezierPathElementSetBoundingBox:
+                pointIndex += 2;
+                break;
+            case AJRBezierPathElementMoveTo:
+                p1 = TRANSFORM(points[pointIndex]);
+                CGPathMoveToPoint(path, NULL, p1.x, p1.y);
+                pointIndex += 1;
+                break;
+            case AJRBezierPathElementLineTo:
+                p1 = TRANSFORM(points[pointIndex]);
+                CGPathAddLineToPoint(path, NULL, p1.x, p1.y);
+                pointIndex += 1;
+                break;
+            case AJRBezierPathElementCurveTo:
+                p1 = TRANSFORM(points[pointIndex]);
+                p2 = TRANSFORM(points[pointIndex + 1]);
+                p3 = TRANSFORM(points[pointIndex + 2]);
+                CGPathAddCurveToPoint(path, NULL, p1.x, p1.y, p2.x, p2.y, p3.x, p3.y);
+                pointIndex += 3;
+                break;
+            case AJRBezierPathElementClose:
+                CGPathCloseSubpath(path);
+                break;
+        }
+    }
+
+    return path;
 }
 
 void AJRstroke(CGContextRef context,

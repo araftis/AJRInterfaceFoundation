@@ -40,6 +40,10 @@ extern void AJRbuildpath(CGContextRef context,
                         AJRBezierPathElementType *elements, NSUInteger elementCount,
                         _Nullable AJRBezierPathPointTransform pointTransform);
 
+extern CGPathRef AJRcreatepath(CGPoint *points, NSUInteger pointCount,
+                               AJRBezierPathElementType *elements, NSUInteger elementCount,
+                               _Nullable AJRBezierPathPointTransform pointTransform);
+
 extern void AJRstroke(CGContextRef context,
                      CGPoint *points, NSUInteger pointCount,
                      AJRBezierPathElementType *elements, NSUInteger elementCount,

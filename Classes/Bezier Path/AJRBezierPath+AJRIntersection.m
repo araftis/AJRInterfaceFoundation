@@ -191,20 +191,114 @@
     return [NSArray array];
 }
 
-- (id)pathByUnioningWithPath:(id)path {
-    return path;
+- (AJRBezierPath *)pathByUnioningWithPath:(id <AJRBezierPathProtocol>)path {
+    return (AJRBezierPath *)AJRBezierPathByUnioningPaths(@[self, path]);
 }
 
-- (id)pathByIntersectingWithPath:(id)path {
-    return path;
+- (AJRBezierPath *)pathByIntersectingWithPath:(id <AJRBezierPathProtocol>)path {
+    return (AJRBezierPath *)AJRBezierPathByIntersectingPaths(@[self, path]);
 }
 
-- (id)pathBySubtractingPath:(id)path {
-    return path;
+- (AJRBezierPath *)pathBySubtractingPath:(id <AJRBezierPathProtocol>)path {
+    return (AJRBezierPath *)AJRBezierPathBySubtractingPaths(@[self, path]);
 }
 
-- (id)pathByExclusivelyIntersectingPath:(id)path {
-    return path;
+- (AJRBezierPath *)pathByExclusivelyIntersectingPath:(id <AJRBezierPathProtocol>)path {
+    return (AJRBezierPath *)AJRBezierPathBySubtractingPaths(@[self, path]);
+}
+
+- (AJRBezierPath *)pathByNormalizingPath {
+    return (AJRBezierPath *)AJRBezierPathByNormalizingPath(self);
+}
+
+- (NSArray<AJRBezierPath *> *)separateComponents {
+    return (NSArray<AJRBezierPath *> *)AJRBezierPathGetSubcomponents(self);
 }
 
 @end
+
+static id <AJRBezierPathProtocol> _AJRBezierPathUsingOperation(NSArray<id <AJRBezierPathProtocol>> *paths, CGPathRef (^block)(CGPathRef path1, CGPathRef _Nullable path2)) {
+    if (paths.count == 0) {
+        return nil;
+    } else if (paths.count == 1) {
+        // This happens when we're doing an operation on a single path, like when normalizing.
+        CGPathRef intermediate = block(paths[0].CGPath, NULL);
+        id <AJRBezierPathProtocol> result = [[paths[0] class] bezierPathWithCGPath:intermediate];
+        CGPathRelease(intermediate);
+        return result;
+    } else {
+        CGPathRef leftPath = CGPathRetain(paths[0].CGPath);
+        Class finalClass = paths[0].class;
+
+        for (NSInteger x = 1; x < paths.count; x++) {
+            CGPathRef intermediate = block(leftPath, paths[x].CGPath);
+            CGPathRelease(leftPath);
+            leftPath = intermediate;
+        }
+
+        id <AJRBezierPathProtocol> result = [finalClass bezierPathWithCGPath:leftPath];
+        CGPathRelease(leftPath);
+
+        return result;
+    }
+}
+
+
+id <AJRBezierPathProtocol> AJRBezierPathByUnioningPaths(NSArray<id <AJRBezierPathProtocol>> *paths) {
+    if (paths.count) {
+        NSWindingRule rule = paths[0].windingRule;
+        return _AJRBezierPathUsingOperation(paths, ^CGPathRef(CGPathRef path1, CGPathRef path2) {
+            return CGPathCreateCopyByUnioningPath(path1, path2, rule == AJRWindingRuleEvenOdd);
+        });
+    }
+    return nil;
+}
+
+id <AJRBezierPathProtocol> AJRBezierPathByIntersectingPaths(NSArray<id <AJRBezierPathProtocol>> *paths) {
+    if (paths.count) {
+        NSWindingRule rule = paths[0].windingRule;
+        return _AJRBezierPathUsingOperation(paths, ^CGPathRef(CGPathRef path1, CGPathRef path2) {
+            return CGPathCreateCopyByIntersectingPath(path1, path2, rule == AJRWindingRuleEvenOdd);
+        });
+    }
+    return nil;
+}
+
+id <AJRBezierPathProtocol> AJRBezierPathBySubtractingPaths(NSArray<id <AJRBezierPathProtocol>> *paths) {
+    if (paths.count) {
+        NSWindingRule rule = paths[0].windingRule;
+        return _AJRBezierPathUsingOperation(paths, ^CGPathRef(CGPathRef path1, CGPathRef path2) {
+            return CGPathCreateCopyBySubtractingPath(path1, path2, rule == AJRWindingRuleEvenOdd);
+        });
+    }
+    return nil;
+}
+
+id <AJRBezierPathProtocol> AJRBezierPathBySymmetricDifferenceOfPaths(NSArray<id <AJRBezierPathProtocol>> *paths) {
+    if (paths.count) {
+        NSWindingRule rule = paths[0].windingRule;
+        return _AJRBezierPathUsingOperation(paths, ^CGPathRef(CGPathRef path1, CGPathRef path2) {
+            return CGPathCreateCopyBySymmetricDifferenceOfPath(path1, path2, rule == AJRWindingRuleEvenOdd);
+        });
+    }
+    return nil;
+}
+
+id <AJRBezierPathProtocol> AJRBezierPathByNormalizingPath(id <AJRBezierPathProtocol> path) {
+    return _AJRBezierPathUsingOperation(@[path], ^CGPathRef(CGPathRef path1, CGPathRef path2) {
+        return CGPathCreateCopyByNormalizing(path1, path.windingRule == NSWindingRuleEvenOdd);
+    });
+    return nil;
+}
+
+NSArray *AJRBezierPathGetSubcomponents(id <AJRBezierPathProtocol> path) {
+    NSMutableArray<AJRBezierPath *> *components = [NSMutableArray array];
+    CFArrayRef subpaths = CGPathCreateSeparateComponents(path.CGPath, path.windingRule == NSWindingRuleEvenOdd);
+
+    for (NSInteger x = 0; x < CFArrayGetCount(subpaths); x++) {
+        [components addObject:[path.class bezierPathWithCGPath:CFArrayGetValueAtIndex(subpaths, x)]];
+    }
+    CFRelease(subpaths);
+
+    return components;
+}

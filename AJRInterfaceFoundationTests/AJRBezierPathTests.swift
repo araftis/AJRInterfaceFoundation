@@ -69,4 +69,36 @@ class AJRBezierPathTests: XCTestCase {
         XCTAssert(phase == 1.0)
     }
 
+    func testEnumeration() throws {
+        let path = AJRBezierPath()
+
+        path.move(to: CGPoint(x: 297.000000, y: 352.000000))
+        path.line(to: CGPoint(x: 297.010000, y: 352.000000))
+        path.line(to: CGPoint(x: 297.010000, y: 368.700000))
+        path.line(to: CGPoint(x: 297.000000, y: 368.700000))
+        path.close()
+        path.move(to: CGPoint(x: 297.000000, y: 352.000000))
+
+        let enumerator = path.pathEnumerator
+        var points : [CGPoint] = [.zero, .zero, .zero]
+        while let element = enumerator.nextElement(withPoints: &points) {
+            print("element: \(element): \(points)")
+        }
+    }
+
+    func testBounds() throws {
+        let path = AJRBezierPath()
+        let frame = CGRect(x: 360.0, y: 180.0, width: 68, height: 90)
+        let cornerRadius : CGFloat = 5
+
+        path.move(to: (frame.minX, frame.maxY))
+        path.appendArc(boundedBy: CGRect(x: frame.minX, y: frame.minY, width: cornerRadius, height: cornerRadius), startAngle: 180, endAngle: 270, clockwise: false)
+        path.appendArc(boundedBy: CGRect(x: frame.maxX - cornerRadius, y: frame.minY, width: cornerRadius, height: cornerRadius), startAngle: 270, endAngle: 0, clockwise: false)
+        path.line(to: (frame.maxX, frame.maxY))
+        path.close();
+
+        print("path: \(path)")
+        print("bounds: \(path.bounds)")
+    }
+
 }

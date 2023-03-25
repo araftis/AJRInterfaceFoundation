@@ -1113,6 +1113,77 @@
     [self closePath];
 }
 
+static NSTextView *_textView = nil;
+
+- (void)appendBezierPathWithString:(NSString *)string font:(NSFont *)font {
+    NSRange range;
+    NSLayoutManager *lm;
+    CGGlyph *glyphs;
+    NSSize advancement;
+    NSInteger x;
+    NSPoint where = [self currentPoint];
+
+    if (_textView == nil) {
+        _textView = [[NSTextView alloc] init];
+        [_textView setRichText:NO];
+        [[_textView layoutManager] setBackgroundLayoutEnabled:NO];
+    }
+
+    [_textView setString:string];
+    [_textView setFont:font];
+
+    lm = [_textView layoutManager];
+    range = [lm glyphRangeForCharacterRange:(NSRange){0, [string length]} actualCharacterRange:NULL];
+
+    glyphs = (CGGlyph *)NSZoneMalloc(nil, sizeof(CGGlyph) * (range.length * 2));
+    [lm getGlyphsInRange:range glyphs:glyphs properties:NULL characterIndexes:NULL bidiLevels:NULL];
+
+    for (x = 0; x < range.length; x++) {
+        [self appendBezierPathWithCGGlyph:glyphs[x] inFont:font];
+        advancement = [font advancementForGlyph:glyphs[x]];
+        where.x += advancement.width;
+        where.y += advancement.height;
+        [self moveToPoint:where];
+    }
+
+    NSZoneFree(nil, glyphs);
+}
+
+- (void)appendBezierPathWithAttributedString:(NSAttributedString *)string {
+    NSLayoutManager *lm;
+
+    if (_textView == nil) {
+        _textView = [[NSTextView alloc] init];
+        [_textView setRichText:NO];
+        [[_textView layoutManager] setBackgroundLayoutEnabled:NO];
+    }
+
+    [[_textView textStorage] replaceCharactersInRange:(NSRange){0, 0} withAttributedString:string];
+
+    lm = [_textView layoutManager];
+
+    [[_textView textStorage] enumerateAttribute:NSFontAttributeName inRange:(NSRange){0, [string length]} options:0 usingBlock:^(NSFont *font, NSRange subrange, BOOL *stop) {
+        NSRange range = [lm glyphRangeForCharacterRange:subrange actualCharacterRange:NULL];
+        NSPoint where = [self currentPoint];
+        NSSize advancement;
+
+        CGGlyph *glyphs = (CGGlyph *)NSZoneMalloc(nil, sizeof(CGGlyph) * (range.length * 2));
+        [lm getGlyphsInRange:range glyphs:glyphs properties:NULL characterIndexes:NULL bidiLevels:NULL];
+
+        for (NSInteger x = 0; x < range.length; x++) {
+            [self appendBezierPathWithCGGlyph:glyphs[x] inFont:font];
+            advancement = [font advancementForGlyph:glyphs[x]];
+            where.x += advancement.width;
+            where.y += advancement.height;
+            [self moveToPoint:where];
+        }
+
+        NSZoneFree(nil, glyphs);
+    }];
+}
+
+
+
 void AJRPathToBezierIterator(void *info, const CGPathElement *element) {
     NSBezierPath *path = (__bridge NSBezierPath *)info;
     

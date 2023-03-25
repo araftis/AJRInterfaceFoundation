@@ -46,7 +46,7 @@ NS_ASSUME_NONNULL_BEGIN
 
  @param path The path to enumerate.
  */
-+ (id)enumeratorWithBezierPath:(AJRBezierPath *)path;
++ (id)enumeratorWithBezierPath:(id <AJRBezierPathProtocol>)path;
 
 /*!
  Initializes an enumerator with the provided path.
@@ -57,12 +57,12 @@ NS_ASSUME_NONNULL_BEGIN
 
  @param path The path to enumerate.
  */
-- (id)initWithBezierPath:(AJRBezierPath *)path;
+- (id)initWithBezierPath:(id <AJRBezierPathProtocol>)path;
 
 /*!
  The path we're enumerator. This can only be set at the time of creation.
  */
-@property (nonatomic,readonly) AJRBezierPath *path;
+@property (nonatomic,readonly) id <AJRBezierPathProtocol> path;
 
 /*!
  Returns the next line segment by calling -[nextLineSergmentIsNewSubpath:NULL].
@@ -88,7 +88,7 @@ NS_ASSUME_NONNULL_BEGIN
 
  @result The type of the next element or NULL if there are no more elements in the path.
  */
-- (nullable AJRBezierPathElementType *)nextElementWithPoints:(CGPoint *)points;
+- (nullable AJRBezierPathElementType *)nextElementWithPoints:(CGPoint *)points NS_SWIFT_NAME(_nextElement(withPoints:));
 
 /*! Error value used when flattening bezier curves. This is derived from the initializing input path. */
 @property (nonatomic, assign) double error;

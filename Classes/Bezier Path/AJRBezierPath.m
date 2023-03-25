@@ -969,7 +969,20 @@ CGContextRef AJRHitTestContext(void) {
 
 - (BOOL)isHitByPath:(AJRBezierPath *)path {
     // Maybe find a better way to do this? Right now, I'm just checking to see if the path's bounds intersect.
-    return NSIntersectsRect(self.bounds, path.bounds);
+    CGPathRef path1;
+    CGPathRef path2;
+    // NOTE: It's a bit heavy handed to get teh stroke path, but in the case where the path's width or height is 0, the CGPathIntersectsPath() function will return NO, even thought the "line" of the path does, in fact, intersect. This is because, presumably, the method is based on fills.
+    if (self.isClosed) {
+        path1 = self.CGPath;
+    } else {
+        path1 = self.bezierPathFromStrokedPath.CGPath;
+    }
+    if (path.isClosed) {
+        path2 = path.CGPath;
+    } else {
+        path2 = path.bezierPathFromStrokedPath.CGPath;
+    }
+    return CGPathIntersectsPath(path1, path2, NO);
 }
 
 - (BOOL)isHitByPoint:(CGPoint)aPoint {
@@ -1293,7 +1306,7 @@ void AJRExpandRect(CGRect *rect, CGPoint *point) {
 }
 
 - (AJRBezierPathElementType)elementAtIndex:(NSInteger)index associatedPoints:(CGPoint *)somePoints {
-    NSUInteger        offset;
+    NSUInteger offset;
     
     if (index + 1 >= _elementCount) {
         [NSException raise:NSRangeException format:@"Index %ld is out of range [0..%lu]", index, _elementCount - 1];
@@ -1719,6 +1732,20 @@ void AJRExpandRect(CGRect *rect, CGPoint *point) {
 
 - (NSBezierPath *)asBezierPath {
     return (NSBezierPath *)self;
+}
+
+- (CGPathRef)CGPath {
+    return AJRcreatepath(_points, _pointCount, _elements, _elementCount, NULL);
+}
+
++ (AJRBezierPath *)bezierPathWithCGPath:(CGPathRef)path {
+    AJRBezierPath *newPath = [AJRBezierPath bezierPath];
+    [newPath appendBezierPathWithCGPath:path];
+    return newPath;
+}
+
+- (void)appendBezierPathWithCGPath:(CGPathRef)path {
+    CGPathApply(path, (__bridge void *)self, AJRPathToBezierIterator);
 }
 
 @end
