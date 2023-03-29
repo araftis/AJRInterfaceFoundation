@@ -52,7 +52,7 @@ class AJRBezierPathTests: XCTestCase {
             }
             let newPath = try? AJRXMLUnarchiver.unarchivedObject(with: data)
             XCTAssert(newPath != nil)
-            XCTAssert(path.isEqual(to: newPath))
+            XCTAssert(path.isEqual(newPath))
         }
     }
 

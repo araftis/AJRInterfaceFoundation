@@ -234,6 +234,10 @@
 		FA53D6482241BC6A003E02B1 /* AJRBlockDrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA53D6442241BC6A003E02B1 /* AJRBlockDrawingView.swift */; };
 		FA59099C217E96420007D278 /* AJRInset.h in Headers */ = {isa = PBXBuildFile; fileRef = FA59099A217E96420007D278 /* AJRInset.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA59099D217E96420007D278 /* AJRInset.m in Sources */ = {isa = PBXBuildFile; fileRef = FA59099B217E96420007D278 /* AJRInset.m */; };
+		FA5D2D7729D3C4EF00E54D45 /* CGFloat+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5D2D7629D3C4EF00E54D45 /* CGFloat+Extensions.swift */; };
+		FA5D2D7829D3C4EF00E54D45 /* CGFloat+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5D2D7629D3C4EF00E54D45 /* CGFloat+Extensions.swift */; };
+		FA5D2D7929D3C4EF00E54D45 /* CGFloat+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5D2D7629D3C4EF00E54D45 /* CGFloat+Extensions.swift */; };
+		FA5D2D7A29D3C4EF00E54D45 /* CGFloat+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5D2D7629D3C4EF00E54D45 /* CGFloat+Extensions.swift */; };
 		FA5EFBF420E1C603006C48B0 /* AJRBezierPath+AJRExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5EFBE520E1C603006C48B0 /* AJRBezierPath+AJRExtensions.m */; };
 		FA5EFBF520E1C603006C48B0 /* AJRBezierPath+AJRIntersection.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5EFBE620E1C603006C48B0 /* AJRBezierPath+AJRIntersection.m */; };
 		FA5EFBF620E1C603006C48B0 /* AJRBezierPath.h in Headers */ = {isa = PBXBuildFile; fileRef = FA5EFBE720E1C603006C48B0 /* AJRBezierPath.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -383,6 +387,7 @@
 		FA53D6442241BC6A003E02B1 /* AJRBlockDrawingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AJRBlockDrawingView.swift; sourceTree = "<group>"; };
 		FA59099A217E96420007D278 /* AJRInset.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AJRInset.h; sourceTree = "<group>"; };
 		FA59099B217E96420007D278 /* AJRInset.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AJRInset.m; sourceTree = "<group>"; };
+		FA5D2D7629D3C4EF00E54D45 /* CGFloat+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extensions.swift"; sourceTree = "<group>"; };
 		FA5EFBE520E1C603006C48B0 /* AJRBezierPath+AJRExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AJRBezierPath+AJRExtensions.m"; sourceTree = "<group>"; };
 		FA5EFBE620E1C603006C48B0 /* AJRBezierPath+AJRIntersection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AJRBezierPath+AJRIntersection.m"; sourceTree = "<group>"; };
 		FA5EFBE720E1C603006C48B0 /* AJRBezierPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJRBezierPath.h; sourceTree = "<group>"; };
@@ -678,6 +683,7 @@
 				FA4F23B922094D1000AB64C2 /* CGColorExtensions.swift */,
 				FACEC3F722D297ED008AA6DB /* CGColorSpace+Extensions.swift */,
 				FA7A8CE0228E100300D14301 /* CGContext+Extensions.swift */,
+				FA5D2D7629D3C4EF00E54D45 /* CGFloat+Extensions.swift */,
 				FA10398A225D89BA005B0D3B /* NSAttributedStringAdditions.swift */,
 				FA10399B225EB2B6005B0D3B /* NSLayoutConstraint+Extensions.swift */,
 				FA5EFC1520E1C761006C48B0 /* NSValue+Extensions.h */,
@@ -1020,6 +1026,7 @@
 				FA4F231B2209323900AB64C2 /* AJRPathEnumerator.m in Sources */,
 				FAD6FD4622AC5B7400C8B5EB /* AJRTrigonometry.swift in Sources */,
 				FA4F231C2209323900AB64C2 /* AJRImage.swift in Sources */,
+				FA5D2D7829D3C4EF00E54D45 /* CGFloat+Extensions.swift in Sources */,
 				FA10399D225EB2B6005B0D3B /* NSLayoutConstraint+Extensions.swift in Sources */,
 				FA4F231D2209323900AB64C2 /* AJRXMLCoder+Extensions.m in Sources */,
 				FA95DE5322B47339005EC953 /* AJRInset+Extensions.swift in Sources */,
@@ -1070,6 +1077,7 @@
 				FA4F23502209329300AB64C2 /* AJRPathEnumerator.m in Sources */,
 				FAD6FD4722AC5B7400C8B5EB /* AJRTrigonometry.swift in Sources */,
 				FA4F23512209329300AB64C2 /* AJRImage.swift in Sources */,
+				FA5D2D7929D3C4EF00E54D45 /* CGFloat+Extensions.swift in Sources */,
 				FA10399E225EB2B6005B0D3B /* NSLayoutConstraint+Extensions.swift in Sources */,
 				FA4F23522209329300AB64C2 /* AJRXMLCoder+Extensions.m in Sources */,
 				FA95DE5422B47339005EC953 /* AJRInset+Extensions.swift in Sources */,
@@ -1120,6 +1128,7 @@
 				FA4F2385220932B600AB64C2 /* AJRPathEnumerator.m in Sources */,
 				FAD6FD4822AC5B7400C8B5EB /* AJRTrigonometry.swift in Sources */,
 				FA4F2386220932B600AB64C2 /* AJRImage.swift in Sources */,
+				FA5D2D7A29D3C4EF00E54D45 /* CGFloat+Extensions.swift in Sources */,
 				FA10399F225EB2B6005B0D3B /* NSLayoutConstraint+Extensions.swift in Sources */,
 				FA4F2387220932B600AB64C2 /* AJRXMLCoder+Extensions.m in Sources */,
 				FA95DE5522B47339005EC953 /* AJRInset+Extensions.swift in Sources */,
@@ -1179,6 +1188,7 @@
 				FA53D6452241BC6A003E02B1 /* AJRBlockDrawingView.swift in Sources */,
 				FA5EFBFE20E1C603006C48B0 /* AJRPathAnalyzer.m in Sources */,
 				FA5EFC1120E1C6AF006C48B0 /* AJRTrigonometry.m in Sources */,
+				FA5D2D7729D3C4EF00E54D45 /* CGFloat+Extensions.swift in Sources */,
 				FA08612022C842760021CCC5 /* AJROverlayTextMessageView.swift in Sources */,
 				FA4FE53620AD46AB0008257B /* AJRImageUtilities.m in Sources */,
 				FA5EFC1B20E1C7E9006C48B0 /* AJRPathEnumerator.m in Sources */,
