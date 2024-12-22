@@ -49,5 +49,5 @@ public extension CGContext {
         block()
         self.endTransparencyLayer()
     }
-    
+
 }

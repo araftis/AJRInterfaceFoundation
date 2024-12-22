@@ -31,7 +31,6 @@
 
 #import "AJRBezierPathP.h"
 
-#import "AJRXMLCoder+Extensions.h"
 #import "AJRBezierCurves.h"
 #import "AJRBezierPathFunctions.h"
 #import "AJRGraphicsUtilities.h"
@@ -39,8 +38,11 @@
 #import "AJRPathEnumerator.h"
 
 #import <AJRFoundation/AJRFoundation.h>
+#import <AJRInterfaceFoundation/AJRInterfaceFoundation-Swift.h>
 
-extern void CGContextResetClip(CGContextRef context);
+//extern void CGContextResetClip(CGContextRef context);
+
+const CGFloat AJRHairLineWidth = 0.0;
 
 @implementation AJRBezierPath
 
@@ -101,10 +103,10 @@ static CGFloat _ajrDefaultDashOffset = 0.0;
     if (_currentMaxElements != max) {
         _currentMaxElements = max;
         if (!_elements) {
-            _elements = NSZoneMalloc(nil, _currentMaxElements * sizeof(AJRBezierPathElementType));
+            _elements = NSZoneMalloc(nil, _currentMaxElements * sizeof(AJRBezierPathElement));
             _elementToPointIndex = NSZoneMalloc(nil, _currentMaxElements * sizeof(NSUInteger));
         } else {
-            _elements = NSZoneRealloc(nil, _elements, _currentMaxElements * sizeof(AJRBezierPathElementType));
+            _elements = NSZoneRealloc(nil, _elements, _currentMaxElements * sizeof(AJRBezierPathElement));
             _elementToPointIndex = NSZoneRealloc(nil, _elementToPointIndex, _currentMaxElements * sizeof(NSUInteger));
         }
     }
@@ -253,7 +255,7 @@ static CGFloat _ajrDefaultDashOffset = 0.0;
     
     memcpy(_elements + _elementCount,
            path->_elements + 1,
-           sizeof(AJRBezierPathElementType) * (path->_elementCount - 1));
+           sizeof(AJRBezierPathElement) * (path->_elementCount - 1));
     memcpy(_elementToPointIndex + _elementCount,
            path->_elementToPointIndex + 1,
            sizeof(NSUInteger) * (path->_elementCount - 1));
@@ -455,8 +457,11 @@ static inline void AJR_UNUSED _ajrCheckFrame(CGRect *frame, CGPoint *point) {
             case NSBezierPathElementLineTo:
                 [self lineToPoint:somePoints[0]];
                 break;
-            case NSBezierPathElementCurveTo:
+            case NSBezierPathElementCubicCurveTo:
                 [self curveToPoint:somePoints[2] controlPoint1:somePoints[0] controlPoint2:somePoints[1]];
+                break;
+            case NSBezierPathElementQuadraticCurveTo:
+                [self curveToPoint:somePoints[1] controlPoint:somePoints[0]];
                 break;
             case NSBezierPathElementClosePath:
                 [self closePath];
@@ -493,10 +498,10 @@ static NSImage *_ajrHack = nil;
     
     [self _increaseOperationCountBy:6];
     _elements[_elementCount + 0] = AJRBezierPathElementMoveTo;
-    _elements[_elementCount + 1] = AJRBezierPathElementCurveTo;
-    _elements[_elementCount + 2] = AJRBezierPathElementCurveTo;
-    _elements[_elementCount + 3] = AJRBezierPathElementCurveTo;
-    _elements[_elementCount + 4] = AJRBezierPathElementCurveTo;
+    _elements[_elementCount + 1] = AJRBezierPathElementCubicCurveTo;
+    _elements[_elementCount + 2] = AJRBezierPathElementCubicCurveTo;
+    _elements[_elementCount + 3] = AJRBezierPathElementCubicCurveTo;
+    _elements[_elementCount + 4] = AJRBezierPathElementCubicCurveTo;
     _elements[_elementCount + 5] = AJRBezierPathElementClose;
     
     [self _increaseCoordinateCountBy:13];
@@ -651,13 +656,13 @@ static NSImage *_ajrHack = nil;
         bezierBounds.size.height = yDiameter;
 
         _elements[_elementCount + 0] = AJRBezierPathElementMoveTo;
-        _elements[_elementCount + 1] = AJRBezierPathElementCurveTo;
+        _elements[_elementCount + 1] = AJRBezierPathElementCubicCurveTo;
         _elements[_elementCount + 2] = AJRBezierPathElementLineTo;
-        _elements[_elementCount + 3] = AJRBezierPathElementCurveTo;
+        _elements[_elementCount + 3] = AJRBezierPathElementCubicCurveTo;
         _elements[_elementCount + 4] = AJRBezierPathElementLineTo;
-        _elements[_elementCount + 5] = AJRBezierPathElementCurveTo;
+        _elements[_elementCount + 5] = AJRBezierPathElementCubicCurveTo;
         _elements[_elementCount + 6] = AJRBezierPathElementLineTo;
-        _elements[_elementCount + 7] = AJRBezierPathElementCurveTo;
+        _elements[_elementCount + 7] = AJRBezierPathElementCubicCurveTo;
         _elements[_elementCount + 8] = AJRBezierPathElementClose;
         _elementToPointIndex[_elementCount + 8] = _pointCount + 0;
 
@@ -1035,7 +1040,7 @@ CGContextRef AJRHitTestContext(void) {
     
     [self _increaseOperationCountBy:1];
     [self _increaseCoordinateCountBy:3];
-    _elements[_elementCount + offset] = AJRBezierPathElementCurveTo;
+    _elements[_elementCount + offset] = AJRBezierPathElementCubicCurveTo;
     _elementToPointIndex[_elementCount + offset] = _pointCount;
     _points[_pointCount + 0] = controlPoint1;
     _points[_pointCount + 1] = controlPoint2;
@@ -1043,6 +1048,29 @@ CGContextRef AJRHitTestContext(void) {
     _elementCount++;
     _pointCount += 3;
     
+    if (offset == -1) {
+        _elements[_elementCount - 1] = AJRBezierPathElementClose;
+        _elementToPointIndex[_elementCount - 1] = _moveToOffset;
+    }
+}
+
+- (void)curveToPoint:(CGPoint)aPoint controlPoint:(CGPoint)controlPoint {
+    NSInteger offset;
+
+    [self _intersectPointWithBounds:aPoint forMoveTo:NO];
+    [self _intersectPointWithBounds:controlPoint forMoveTo:NO];
+
+    offset = _elements[_elementCount - 1] == AJRBezierPathElementClose ? -1 : 0;
+
+    [self _increaseOperationCountBy:1];
+    [self _increaseCoordinateCountBy:2];
+    _elements[_elementCount + offset] = AJRBezierPathElementQuadraticCurveTo;
+    _elementToPointIndex[_elementCount + offset] = _pointCount;
+    _points[_pointCount + 0] = controlPoint;
+    _points[_pointCount + 1] = aPoint;
+    _elementCount++;
+    _pointCount += 2;
+
     if (offset == -1) {
         _elements[_elementCount - 1] = AJRBezierPathElementClose;
         _elementToPointIndex[_elementCount - 1] = _moveToOffset;
@@ -1160,9 +1188,13 @@ CGContextRef AJRHitTestContext(void) {
             _elementCount--;
             _pointCount--;
             break;
-        case AJRBezierPathElementCurveTo:
+        case AJRBezierPathElementCubicCurveTo:
             _elementCount--;
             _pointCount -= 3;
+            break;
+        case AJRBezierPathElementQuadraticCurveTo:
+            _elementCount--;
+            _pointCount -= 2;
             break;
         case AJRBezierPathElementClose:
             _elementCount--;
@@ -1249,8 +1281,11 @@ void AJRExpandRect(CGRect *rect, CGPoint *point) {
             case AJRBezierPathElementLineTo:
                 if (index < _elementToPointIndex[x] + 1) return AJRBezierPathElementLineTo;
                 break;
-            case AJRBezierPathElementCurveTo:
-                if (index < _elementToPointIndex[x] + 3) return AJRBezierPathElementCurveTo;
+            case AJRBezierPathElementCubicCurveTo:
+                if (index < _elementToPointIndex[x] + 3) return AJRBezierPathElementCubicCurveTo;
+                break;
+            case AJRBezierPathElementQuadraticCurveTo:
+                if (index < _elementToPointIndex[x] + 2) return AJRBezierPathElementQuadraticCurveTo;
                 break;
             case AJRBezierPathElementClose:
                 break;
@@ -1297,7 +1332,7 @@ void AJRExpandRect(CGRect *rect, CGPoint *point) {
     return _elementCount - 1;
 }
 
-- (AJRBezierPathElementType)elementAtIndex:(NSInteger)index {
+- (AJRBezierPathElement)elementAtIndex:(NSInteger)index {
     if (index + 1 >= _elementCount) {
         [NSException raise:NSRangeException format:@"Index %ld is out of range [0..%lu]", index, _elementCount - 1];
     }
@@ -1305,7 +1340,7 @@ void AJRExpandRect(CGRect *rect, CGPoint *point) {
     return _elements[index + 1];
 }
 
-- (AJRBezierPathElementType)elementAtIndex:(NSInteger)index associatedPoints:(CGPoint *)somePoints {
+- (AJRBezierPathElement)elementAtIndex:(NSInteger)index associatedPoints:(CGPoint *)somePoints {
     NSUInteger offset;
     
     if (index + 1 >= _elementCount) {
@@ -1324,10 +1359,14 @@ void AJRExpandRect(CGRect *rect, CGPoint *point) {
         case AJRBezierPathElementLineTo:
             somePoints[0] = _points[offset];
             break;
-        case AJRBezierPathElementCurveTo:
+        case AJRBezierPathElementCubicCurveTo:
             somePoints[0] = _points[offset];
             somePoints[1] = _points[offset + 1];
             somePoints[2] = _points[offset + 2];
+            break;
+        case AJRBezierPathElementQuadraticCurveTo:
+            somePoints[0] = _points[offset];
+            somePoints[1] = _points[offset + 1];
             break;
         case AJRBezierPathElementClose:
             break;
@@ -1356,10 +1395,14 @@ void AJRExpandRect(CGRect *rect, CGPoint *point) {
         case AJRBezierPathElementLineTo:
             _points[offset] = somePoints[0];
             break;
-        case AJRBezierPathElementCurveTo:
+        case AJRBezierPathElementCubicCurveTo:
             _points[offset] = somePoints[0];
             _points[offset + 1] = somePoints[1];
             _points[offset + 2] = somePoints[2];
+            break;
+        case AJRBezierPathElementQuadraticCurveTo:
+            _points[offset] = somePoints[0];
+            _points[offset + 1] = somePoints[1];
             break;
         case AJRBezierPathElementClose:
             break;
@@ -1433,13 +1476,16 @@ void AJRExpandRect(CGRect *rect, CGPoint *point) {
                     case AJRBezierPathElementLineTo:
                         [newPath lineToPoint:_points[_elementToPointIndex[x - 1]]];
                         break;
-                    case AJRBezierPathElementCurveTo:
+                    case AJRBezierPathElementCubicCurveTo:
                         [newPath lineToPoint:_points[_elementToPointIndex[x - 1] + 2]];
+                        break;
+                    case AJRBezierPathElementQuadraticCurveTo:
+                        [newPath lineToPoint:_points[_elementToPointIndex[x - 1] + 1]];
                         break;
                     case AJRBezierPathElementClose: break;
                 }
                 break;
-            case AJRBezierPathElementCurveTo:
+            case AJRBezierPathElementCubicCurveTo:
                 if (nextRequiresMoveTo) {
                     [newPath moveToPoint:_points[_elementToPointIndex[x] + 2]];
                     nextRequiresMoveTo = NO;
@@ -1456,10 +1502,41 @@ void AJRExpandRect(CGRect *rect, CGPoint *point) {
                                 controlPoint1:_points[_elementToPointIndex[x] + 1]
                                 controlPoint2:_points[_elementToPointIndex[x] + 0]];
                         break;
-                    case AJRBezierPathElementCurveTo:
+                    case AJRBezierPathElementCubicCurveTo:
                         [newPath curveToPoint:_points[_elementToPointIndex[x - 1] + 2]
                                 controlPoint1:_points[_elementToPointIndex[x] + 1]
                                 controlPoint2:_points[_elementToPointIndex[x] + 0]];
+                        break;
+                    case AJRBezierPathElementQuadraticCurveTo:
+                        [newPath curveToPoint:_points[_elementToPointIndex[x - 1] + 1]
+                                controlPoint1:_points[_elementToPointIndex[x] + 1]
+                                controlPoint2:_points[_elementToPointIndex[x] + 0]];
+                        break;
+                    case AJRBezierPathElementClose: break;
+                }
+                break;
+            case AJRBezierPathElementQuadraticCurveTo:
+                if (nextRequiresMoveTo) {
+                    [newPath moveToPoint:_points[_elementToPointIndex[x] + 1]];
+                    nextRequiresMoveTo = NO;
+                }
+                switch (_elements[x - 1]) {
+                    case AJRBezierPathElementSetBoundingBox: break;
+                    case AJRBezierPathElementMoveTo:
+                        [newPath curveToPoint:_points[_elementToPointIndex[x - 1]]
+                                 controlPoint:_points[_elementToPointIndex[x] + 1]];
+                        break;
+                    case AJRBezierPathElementLineTo:
+                        [newPath curveToPoint:_points[_elementToPointIndex[x - 1]]
+                                 controlPoint:_points[_elementToPointIndex[x] + 1]];
+                        break;
+                    case AJRBezierPathElementCubicCurveTo:
+                        [newPath curveToPoint:_points[_elementToPointIndex[x - 1] + 2]
+                                 controlPoint:_points[_elementToPointIndex[x] + 1]];
+                        break;
+                    case AJRBezierPathElementQuadraticCurveTo:
+                        [newPath curveToPoint:_points[_elementToPointIndex[x - 1] + 1]
+                                 controlPoint:_points[_elementToPointIndex[x] + 1]];
                         break;
                     case AJRBezierPathElementClose: break;
                 }
@@ -1491,10 +1568,14 @@ void AJRExpandRect(CGRect *rect, CGPoint *point) {
             case AJRBezierPathElementLineTo:
                 _points[_elementToPointIndex[x]] = [transform transformPoint:_points[_elementToPointIndex[x]]];
                 break;
-            case AJRBezierPathElementCurveTo:
+            case AJRBezierPathElementCubicCurveTo:
                 _points[_elementToPointIndex[x] + 0] = [transform transformPoint:_points[_elementToPointIndex[x] + 0]];
                 _points[_elementToPointIndex[x] + 1] = [transform transformPoint:_points[_elementToPointIndex[x] + 1]];
                 _points[_elementToPointIndex[x] + 2] = [transform transformPoint:_points[_elementToPointIndex[x] + 2]];
+                break;
+            case AJRBezierPathElementQuadraticCurveTo:
+                _points[_elementToPointIndex[x] + 0] = [transform transformPoint:_points[_elementToPointIndex[x] + 0]];
+                _points[_elementToPointIndex[x] + 1] = [transform transformPoint:_points[_elementToPointIndex[x] + 1]];
                 break;
             case AJRBezierPathElementClose:
                 break;
@@ -1574,6 +1655,7 @@ void AJRExpandRect(CGRect *rect, CGPoint *point) {
             [self closePath];
         }];
         __block NSPoint end, c0, c1;
+        __block BOOL isQuadratic = NO;
         [coder decodeGroupForKey:@"curveTo" usingBlock:^{
             [coder decodeDoubleForKey:@"x" setter:^(double value) {
                 end.x = value;
@@ -1593,8 +1675,20 @@ void AJRExpandRect(CGRect *rect, CGPoint *point) {
             [coder decodeDoubleForKey:@"c1y" setter:^(double value) {
                 c1.y = value;
             }];
+            [coder decodeDoubleForKey:@"cx" setter:^(double value) {
+                c0.y = value;
+                isQuadratic = YES;
+            }];
+            [coder decodeDoubleForKey:@"cy" setter:^(double value) {
+                c0.y = value;
+                isQuadratic = YES;
+            }];
         } setter:^{
-            [self curveToPoint:end controlPoint1:c0 controlPoint2:c1];
+            if (isQuadratic) {
+                [self curveToPoint:end controlPoint:c0];
+            } else {
+                [self curveToPoint:end controlPoint1:c0 controlPoint2:c1];
+            }
         }];
     } setter:^{
         // Do nothing?
@@ -1638,7 +1732,7 @@ void AJRExpandRect(CGRect *rect, CGPoint *point) {
                         [coder encodeGroupForKey:@"close" usingBlock:^{
                         }];
                         break;
-                    case NSBezierPathElementCurveTo: {
+                    case NSBezierPathElementCubicCurveTo: {
                         CGPoint point = points[0];
                         CGPoint pointC0 = points[1];
                         CGPoint pointC1 = points[2];
@@ -1649,6 +1743,17 @@ void AJRExpandRect(CGRect *rect, CGPoint *point) {
                             [coder encodeString:[AJRXMLCoderGetFloatFormatter() stringFromNumber:@(pointC0.y)] forKey:@"c0y"];
                             [coder encodeString:[AJRXMLCoderGetFloatFormatter() stringFromNumber:@(pointC1.x)] forKey:@"c1x"];
                             [coder encodeString:[AJRXMLCoderGetFloatFormatter() stringFromNumber:@(pointC1.y)] forKey:@"c1y"];
+                        }];
+                        break;
+                    }
+                    case NSBezierPathElementQuadraticCurveTo: {
+                        CGPoint point = points[0];
+                        CGPoint controlPoint = points[1];
+                        [coder encodeGroupForKey:@"curveTo" usingBlock:^{
+                            [coder encodeString:[AJRXMLCoderGetFloatFormatter() stringFromNumber:@(point.x)] forKey:@"x"];
+                            [coder encodeString:[AJRXMLCoderGetFloatFormatter() stringFromNumber:@(point.y)] forKey:@"y"];
+                            [coder encodeString:[AJRXMLCoderGetFloatFormatter() stringFromNumber:@(controlPoint.x)] forKey:@"cx"];
+                            [coder encodeString:[AJRXMLCoderGetFloatFormatter() stringFromNumber:@(controlPoint.y)] forKey:@"cy"];
                         }];
                         break;
                     }
@@ -1680,7 +1785,7 @@ void AJRExpandRect(CGRect *rect, CGPoint *point) {
     
     memcpy(new->_points, _points, sizeof(CGPoint) * _pointCount);
     new->_pointCount = _pointCount;
-    memcpy(new->_elements, _elements, sizeof(AJRBezierPathElementType) * _elementCount);
+    memcpy(new->_elements, _elements, sizeof(AJRBezierPathElement) * _elementCount);
     memcpy(new->_elementToPointIndex, _elementToPointIndex, sizeof(NSUInteger) * _elementCount);
     new->_elementCount = _elementCount;
     

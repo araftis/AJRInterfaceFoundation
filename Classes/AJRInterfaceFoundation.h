@@ -58,7 +58,4 @@ FOUNDATION_EXPORT const unsigned char AJRInterfaceFoundationVersionString[];
 #import <AJRInterfaceFoundation/AJRTrigonometry.h>
 #import <AJRInterfaceFoundation/AJRVector.h>
 #import <AJRInterfaceFoundation/AJRVertex.h>
-#import <AJRInterfaceFoundation/AJRXMLCoder+Extensions.h>
-#import <AJRInterfaceFoundation/CATransaction+Extensions.h>
 #import <AJRInterfaceFoundation/NSValue+Extensions.h>
-#import <AJRInterfaceFoundation/CATransaction+Extensions.h>

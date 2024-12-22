@@ -33,25 +33,10 @@
 #import <AJRFoundation/AJRFoundation.h>
 #import <AJRInterfaceFoundation/AJRTrigonometry.h>
 
-typedef struct _ajrPoint2 {
-    double        x;
-    double        y;
-} AJRPoint2;
-
-typedef struct _ajrSize2 {
-    double        width;
-    double        height;
-} AJRSize2;
-
 typedef struct _ajrLine {
     CGPoint        start;
     CGPoint        end;
 } AJRLine;
-
-typedef struct AJRLine2 {
-    AJRPoint2        start;
-    AJRPoint2        end;
-} AJRLine2;
 
 typedef struct _ajrRectAdjustment {
     CGFloat        minX;
@@ -60,13 +45,6 @@ typedef struct _ajrRectAdjustment {
     CGFloat        maxY;
 } AJRRectAdjustment;
 
-typedef struct _ajrRectAdjustment2 {
-    double        minX;
-    double        maxX;
-    double        minY;
-    double        maxY;
-} AJRRectAdjustment2;
-
 typedef struct _ajrBezierCurve {
     CGPoint    start;
     CGPoint    handle1;
@@ -74,12 +52,11 @@ typedef struct _ajrBezierCurve {
     CGPoint    end;
 } AJRBezierCurve;
 
-typedef struct _ajrBezierCurve2 {
-    AJRPoint2    start;
-    AJRPoint2    handle1;
-    AJRPoint2    handle2;
-    AJRPoint2    end;
-} AJRBezierCurve2;
+typedef struct _ajrQuadraticCurve {
+    CGPoint    start;
+    CGPoint    controlPoint;
+    CGPoint    end;
+} AJRQuadraticCurve;
 
 #define AJRSameSigns(a, b)    \
 (((a < 0.0) && (b < 0.0)) || ((a > 0.0) && (b > 0.0)))
@@ -90,6 +67,9 @@ typedef NS_ENUM(NSInteger, AJRRectCentering) {
     AJRRectCenteringFitWidth,
     AJRRectCenteringFitHeight,
     AJRRectCenteringFitWidthAndHeight,
+    AJRRectCenteringFitWidthDown,
+    AJRRectCenteringFitHeightDown,
+    AJRRectCenteringFitWidthAndHeightDown,
     AJRRectCenteringScaleWidth,
     AJRRectCenteringScaleHeight,
     AJRRectCenteringScaleWidthAndHeight,

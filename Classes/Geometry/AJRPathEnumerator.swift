@@ -10,7 +10,7 @@ import Foundation
 
 public extension AJRPathEnumerator {
 
-    func nextElement(withPoints points: inout [CGPoint]) -> AJRBezierPathElementType? {
+    func nextElement(withPoints points: inout [CGPoint]) -> AJRBezierPathElement? {
         assert(points.count >= 3, "points must contain at least three points")
         if let next = _nextElement(withPoints: &points) {
             return next.pointee

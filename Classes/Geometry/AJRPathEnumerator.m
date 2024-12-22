@@ -49,7 +49,7 @@ typedef struct __ajrEdgeEnumeratorStackElement {
     
     NSInteger _elementIndex;
     AJRLine _line;
-    AJRBezierPathElementType _elementType;
+    AJRBezierPathElement _elementType;
     AJRBezierCurve _curve;
     CGPoint _lastPoint;
     CGPoint _moveToPoint;
@@ -57,9 +57,9 @@ typedef struct __ajrEdgeEnumeratorStackElement {
     void *_stack;
     NSInteger _stackPosition;
     
-    BOOL _flattenCurves:1;
-    BOOL _dontFlattenCurves:1;
-    BOOL _isMoveTo:1;
+    BOOL _flattenCurves;
+    BOOL _dontFlattenCurves;
+    BOOL _isMoveTo;
 }
 
 + (id)enumeratorWithBezierPath:(id <AJRBezierPathProtocol>)path {
@@ -168,7 +168,7 @@ typedef struct __ajrEdgeEnumeratorStackElement {
                     _lastPoint = _line.end;
                     done = YES;
                     break;
-                case AJRBezierPathElementCurveTo:
+                case AJRBezierPathElementCubicCurveTo:
                     _curve.start = _lastPoint;
                     _curve.handle1 = points[0];
                     _curve.handle2 = points[1];
@@ -176,6 +176,16 @@ typedef struct __ajrEdgeEnumeratorStackElement {
                     [self _nextBezierLineSegment];
                     _lastPoint = points[2];
                     done = YES;
+                    break;
+                case AJRBezierPathElementQuadraticCurveTo:
+//                    _curve.start = _lastPoint;
+//                    _curve.handle1 = points[0];
+//                    _curve.handle2 = points[1];
+//                    _curve.end = points[2];
+//                    [self _nextBezierLineSegment];
+//                    _lastPoint = points[2];
+//                    done = YES;
+                    // TODO: Handle flattening quadratic curves.
                     break;
                 case AJRBezierPathElementClose:
                     _line.start = _lastPoint;
@@ -195,7 +205,7 @@ typedef struct __ajrEdgeEnumeratorStackElement {
     return &_line;
 }
 
-- (AJRBezierPathElementType *)nextElementWithPoints:(CGPoint *)somePoints {
+- (AJRBezierPathElement *)nextElementWithPoints:(CGPoint *)somePoints {
     if (_flattenCurves) {
         [NSException raise:NSInternalInconsistencyException format:@"You called -nextElementWithPoints: after have called -nextLineSegment. You can only call one per enumerator, not both."];
     }
@@ -204,13 +214,15 @@ typedef struct __ajrEdgeEnumeratorStackElement {
     if (_elementIndex == [_path elementCount]) return NULL;
     
     _isMoveTo = NO;
-    switch (_elementType = [_path elementAtIndex:_elementIndex associatedPoints:somePoints]) {
+    switch (_elementType = (AJRBezierPathElement)[_path elementAtIndex:_elementIndex associatedPoints:somePoints]) {
         case AJRBezierPathElementMoveTo:
             _isMoveTo = YES;
             break;
         case AJRBezierPathElementLineTo:
             break;
-        case AJRBezierPathElementCurveTo:
+        case AJRBezierPathElementCubicCurveTo:
+            break;
+        case AJRBezierPathElementQuadraticCurveTo:
             break;
         case AJRBezierPathElementClose:
             break;
@@ -243,8 +255,8 @@ typedef struct __ajrEdgeEnumeratorStackElement {
     return _elementIndex - 1;
 }
 
-- (AJRBezierPathElementType)elementType {
-    return [_path elementAtIndex:_elementIndex];
+- (AJRBezierPathElement)elementType {
+    return (AJRBezierPathElement)[_path elementAtIndex:_elementIndex];
 }
 
 - (BOOL)isMoveToLineSegment {

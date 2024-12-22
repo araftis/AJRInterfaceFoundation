@@ -38,14 +38,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class AJRPathEnumerator, AJRMutableBezierRangeArray, AJRIntersection;
 
-#define AJRHairLineWidth (CGFloat)0.0
+extern const CGFloat AJRHairLineWidth;
 
-typedef NS_ENUM(NSInteger, AJRBezierPathElementType)  {
+typedef NS_ENUM(NSInteger, AJRBezierPathElement)  {
     AJRBezierPathElementSetBoundingBox = -1,
     AJRBezierPathElementMoveTo = NSBezierPathElementMoveTo,
     AJRBezierPathElementLineTo = NSBezierPathElementLineTo,
-    AJRBezierPathElementCurveTo = NSBezierPathElementCurveTo,
-    AJRBezierPathElementClose = NSBezierPathElementClosePath
+    AJRBezierPathElementCubicCurveTo = NSBezierPathElementCubicCurveTo,
+    AJRBezierPathElementClose = NSBezierPathElementClosePath,
+    AJRBezierPathElementQuadraticCurveTo = NSBezierPathElementQuadraticCurveTo,
 };
 
 typedef NS_ENUM(NSUInteger, AJRWindingRule)  {
@@ -106,7 +107,7 @@ typedef CGPoint (^AJRBezierPathPointTransform)(CGPoint point);
 @interface AJRBezierPath : NSObject <NSCoding, NSCopying, AJRXMLCoding> {
 	CGPoint *_points;
 	NSUInteger _pointCount;
-	AJRBezierPathElementType *_elements;
+	AJRBezierPathElement *_elements;
 	NSUInteger *_elementToPointIndex;
 	NSUInteger _elementCount;
 	
@@ -198,6 +199,7 @@ typedef CGPoint (^AJRBezierPathPointTransform)(CGPoint point);
 #pragma mark - Contructing paths
 
 - (void)curveToPoint:(CGPoint)aPoint controlPoint1:(CGPoint)controlPoint1 controlPoint2:(CGPoint)controlPoint2;
+- (void)curveToPoint:(CGPoint)aPoint controlPoint:(CGPoint)controlPoint1;
 - (void)lineToPoint:(CGPoint)aPoint;
 - (void)moveToPoint:(CGPoint)aPoint;
 - (void)relativeCurveToPoint:(CGPoint)aPoint controlPoint1:(CGPoint)controlPoint1 controlPoint2:(CGPoint)controlPoint2;
@@ -225,8 +227,8 @@ typedef CGPoint (^AJRBezierPathPointTransform)(CGPoint point);
 - (NSInteger)pointIndexForPathElementIndex:(NSInteger)index;
 - (void)setPointAtIndex:(NSInteger)index toPoint:(CGPoint)aPoint;
 @property (nonatomic,readonly) NSInteger elementCount;
-- (AJRBezierPathElementType)elementAtIndex:(NSInteger)index;
-- (AJRBezierPathElementType)elementAtIndex:(NSInteger)index associatedPoints:(CGPoint *)points;
+- (AJRBezierPathElement)elementAtIndex:(NSInteger)index;
+- (AJRBezierPathElement)elementAtIndex:(NSInteger)index associatedPoints:(CGPoint *)points;
 - (void)setAssociatedPoints:(CGPoint *)points atIndex:(NSInteger)index;
 
 #pragma mark - Path modifications
@@ -286,9 +288,9 @@ typedef CGPoint (^AJRBezierPathPointTransform)(CGPoint point);
 - (CGPoint)lastPoint;
 - (void)movePointAtIndex:(NSInteger)index byDelta:(CGPoint)aDelta;
 - (NSInteger)lastDrawingElementIndex;
-- (AJRBezierPathElementType)elementTypeAtIndex:(NSInteger)index ajrsociatedLineSegment:(AJRLine *)lineSegment;
-- (AJRBezierPathElementType)lastElementType;
-- (AJRBezierPathElementType)lastDrawingElementType;
+- (AJRBezierPathElement)elementTypeAtIndex:(NSInteger)index associatedLineSegment:(AJRLine *)lineSegment;
+- (AJRBezierPathElement)lastElementType;
+- (AJRBezierPathElement)lastDrawingElementType;
 - (NSUInteger)moveToIndexForElementAtIndex:(NSInteger)index;
 - (BOOL)isElementAtIndexInClosedSubpath:(NSInteger)elementIndex;
 

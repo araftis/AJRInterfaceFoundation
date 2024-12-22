@@ -78,7 +78,9 @@
 + (NSArray *)intersectionsForLine:(AJRLine)line withCircleAt:(CGPoint)origin radius:(double)radius;
 // Returns the intersections of a bezier curve with a line. This will produce one to three intersections. If the curve does not intersection the line segment, then nil is returned.
 + (NSArray *)intersectionsForCurve:(AJRBezierCurve)curve withLine:(AJRLine)line error:(double)error;
++ (NSArray *)intersectionsForQuadraticCurve:(AJRQuadraticCurve)curve withLine:(AJRLine)line error:(double)error;
 + (id)intersectionForCurve:(AJRBezierCurve)curve withPoint:(CGPoint)aPoint;
++ (id)intersectionForQuadraticCurve:(AJRQuadraticCurve)curve withPoint:(CGPoint)aPoint;
 
 + (id)intersectionForLine:(AJRLine)line1 withPerpendicularLineThroughPoint:(CGPoint)aPoint;
 

@@ -138,7 +138,7 @@
         
         first = NO;
         
-        _elements[_elementCount + offset] = AJRBezierPathElementCurveTo;
+        _elements[_elementCount + offset] = AJRBezierPathElementCubicCurveTo;
         _elementToPointIndex[_elementCount + offset] = _pointCount;
         
         _points[_pointCount + 0] = bezier.handle1;
@@ -225,7 +225,7 @@
         
         first = NO;
         
-        _elements[_elementCount + offset] = AJRBezierPathElementCurveTo;
+        _elements[_elementCount + offset] = AJRBezierPathElementCubicCurveTo;
         _elementToPointIndex[_elementCount + offset] = _pointCount;
         
         _points[_pointCount + 0] = bezier.handle1;
@@ -330,7 +330,7 @@
         [self _increaseOperationCountBy:closePath ? 2 : 1];
         
         memmove(_points + startingPointIndex + 1, _points + startingPointIndex, sizeof(CGPoint) * ((_pointCount - startingPointIndex) + 0));
-        memmove(_elements + elementIndex + (closePath ? 2 : 1), _elements + elementIndex, sizeof(AJRBezierPathElementType) * (_elementCount - elementIndex));
+        memmove(_elements + elementIndex + (closePath ? 2 : 1), _elements + elementIndex, sizeof(AJRBezierPathElement) * (_elementCount - elementIndex));
         memmove(_elementToPointIndex + elementIndex + (closePath ? 2 : 1), _elementToPointIndex + elementIndex, sizeof(NSUInteger) * (_elementCount - elementIndex));
         
         if (elementIndex == 1) {
@@ -381,7 +381,7 @@
     }
     
     if (_elements[elementIndex] == AJRBezierPathElementClose) {
-        if (_elements[elementIndex - 1] == AJRBezierPathElementCurveTo) {
+        if (_elements[elementIndex - 1] == AJRBezierPathElementCubicCurveTo) {
             startingPointIndex = _elementToPointIndex[elementIndex - 1] + 3;
         } else {
             startingPointIndex = _elementToPointIndex[elementIndex - 1] + 1;
@@ -394,7 +394,7 @@
     [self _increaseOperationCountBy:1];
     
     memmove(_points + startingPointIndex + 1, _points + startingPointIndex, sizeof(CGPoint) * ((_pointCount - startingPointIndex) + 0));
-    memmove(_elements + elementIndex + 1, _elements + elementIndex, sizeof(AJRBezierPathElementType) * ((_elementCount - elementIndex) + 0));
+    memmove(_elements + elementIndex + 1, _elements + elementIndex, sizeof(AJRBezierPathElement) * ((_elementCount - elementIndex) + 0));
     memmove(_elementToPointIndex + elementIndex + 1, _elementToPointIndex + elementIndex, sizeof(NSUInteger) * ((_elementCount - elementIndex) + 0));
     
     _points[startingPointIndex] = point;
@@ -429,7 +429,7 @@
     }
     
     if (_elements[elementIndex] == AJRBezierPathElementClose) {
-        if (_elements[elementIndex - 1] == AJRBezierPathElementCurveTo) {
+        if (_elements[elementIndex - 1] == AJRBezierPathElementCubicCurveTo) {
             startingPointIndex = _elementToPointIndex[elementIndex - 1] + 3;
         } else {
             startingPointIndex = _elementToPointIndex[elementIndex - 1] + 1;
@@ -442,13 +442,13 @@
     [self _increaseOperationCountBy:1];
     
     memmove(_points + startingPointIndex + 3, _points + startingPointIndex, sizeof(CGPoint) * (_pointCount - startingPointIndex));
-    memmove(_elements + elementIndex + 1, _elements + elementIndex, sizeof(AJRBezierPathElementType) * (_elementCount - elementIndex));
+    memmove(_elements + elementIndex + 1, _elements + elementIndex, sizeof(AJRBezierPathElement) * (_elementCount - elementIndex));
     memmove(_elementToPointIndex + elementIndex + 1, _elementToPointIndex + elementIndex, sizeof(NSUInteger) * (_elementCount - elementIndex));
     
     _points[startingPointIndex] = control1;
     _points[startingPointIndex + 1] = control2;
     _points[startingPointIndex + 2] = point;
-    _elements[elementIndex] = AJRBezierPathElementCurveTo;
+    _elements[elementIndex] = AJRBezierPathElementCubicCurveTo;
     _elementToPointIndex[elementIndex] = startingPointIndex;
     
     _elementCount++;
@@ -475,7 +475,7 @@
     switch (_elements[elementIndex]) {
         case AJRBezierPathElementSetBoundingBox:
         case AJRBezierPathElementMoveTo:
-            [NSException raise:NSInvalidArgumentException format:@"You can only split _elements of type AJRBezierPathElementLineTo, AJRBezierPathElementCurveTo, or AJRBezierPathElementClose."];
+            [NSException raise:NSInvalidArgumentException format:@"You can only split _elements of type AJRBezierPathElementLineTo, AJRBezierPathElementCubicCurveTo, or AJRBezierPathElementClose."];
             break;
         case AJRBezierPathElementLineTo:
         case AJRBezierPathElementClose:
@@ -483,7 +483,7 @@
             point2 = _points[_elementToPointIndex[elementIndex - 1]];
             [self insertLineToPoint:(CGPoint){(point1.x + point2.x) / 2.0, (point1.y + point2.y) / 2.0} atIndex:elementIndex - 1];
             break;
-        case AJRBezierPathElementCurveTo:
+        case AJRBezierPathElementCubicCurveTo:
             curve.start = _points[_elementToPointIndex[elementIndex] - 1];
             curve.handle1 = _points[_elementToPointIndex[elementIndex] + 0];
             curve.handle2 = _points[_elementToPointIndex[elementIndex] + 1];
@@ -493,6 +493,10 @@
             _points[_elementToPointIndex[elementIndex] + 1] = left.handle2;
             _points[_elementToPointIndex[elementIndex] + 2] = left.end;
             [self insertCurveToPoint:right.end controlPoint1:right.handle1 controlPoint2:right.handle2 atIndex:elementIndex /* This is really plus 1 */];
+            break;
+        case AJRBezierPathElementQuadraticCurveTo:
+            // TODO: Make this work!
+            AJRLogError(@"Can't yet split a quadratic path segment.");
             break;
     }
     
@@ -519,7 +523,7 @@
     return _elementCount - ([self isClosed] ? 3 : 2);
 }
 
-- (AJRBezierPathElementType)elementTypeAtIndex:(NSInteger)index ajrsociatedLineSegment:(AJRLine *)lineSegment {
+- (AJRBezierPathElement)elementTypeAtIndex:(NSInteger)index associatedLineSegment:(AJRLine *)lineSegment {
     if (index + 1 >= _elementCount) {
         [NSException raise:NSRangeException format:@"Index %ld is out of range [0..%lu]", index, _elementCount - 1];
     }
@@ -534,8 +538,11 @@
         case AJRBezierPathElementLineTo:
             lineSegment->start = _points[_elementToPointIndex[index]];
             break;
-        case AJRBezierPathElementCurveTo:
+        case AJRBezierPathElementCubicCurveTo:
             lineSegment->start = _points[_elementToPointIndex[index] + 2];
+            break;
+        case AJRBezierPathElementQuadraticCurveTo:
+            lineSegment->start = _points[_elementToPointIndex[index] + 1];
             break;
         case AJRBezierPathElementClose:
             lineSegment->start = _points[_elementToPointIndex[index]];
@@ -552,7 +559,10 @@
         case AJRBezierPathElementLineTo:
             lineSegment->end = _points[_elementToPointIndex[index + 1]];
             break;
-        case AJRBezierPathElementCurveTo:
+        case AJRBezierPathElementCubicCurveTo:
+            lineSegment->end = _points[_elementToPointIndex[index + 1]];
+            break;
+        case AJRBezierPathElementQuadraticCurveTo:
             lineSegment->end = _points[_elementToPointIndex[index + 1]];
             break;
         case AJRBezierPathElementClose:
@@ -563,11 +573,11 @@
     return _elements[index + 1];
 }
 
-- (AJRBezierPathElementType)lastElementType {
+- (AJRBezierPathElement)lastElementType {
     return _elements[_elementCount - 1];
 }
 
-- (AJRBezierPathElementType)lastDrawingElementType {
+- (AJRBezierPathElement)lastDrawingElementType {
     if (_elements[_elementCount - 1] == AJRBezierPathElementClose) {
         return _elements[_elementCount - 2];
     }
@@ -599,7 +609,7 @@
                 }
                 break;
             case AJRBezierPathElementLineTo:
-            case AJRBezierPathElementCurveTo:
+            case AJRBezierPathElementCubicCurveTo:
                 break;
             case AJRBezierPathElementClose:
                 return YES;
@@ -723,7 +733,7 @@
                  _points[_elementToPointIndex[x] + 0].y];
                 currentPoint = _points[_elementToPointIndex[x] + 0];
                 break;
-            case AJRBezierPathElementCurveTo:
+            case AJRBezierPathElementCubicCurveTo:
                 //[string appendFormat:@"        gsave /Times-Roman 12 selectfont 0 setgray %.6f %.6f moveto (%d) dup stringwidth pop 2 div neg 0 rmoveto show grestore\n", _points[_elementToPointIndex[x] + 2].x, _points[_elementToPointIndex[x] + 2].y, x - 1];
                 [string appendFormat:@"        %.3f %.3f %.3f %.3f %.3f %.3f curveto\n",
                  _points[_elementToPointIndex[x] + 0].x,
@@ -733,6 +743,10 @@
                  _points[_elementToPointIndex[x] + 2].x,
                  _points[_elementToPointIndex[x] + 2].y];
                 currentPoint = _points[_elementToPointIndex[x] + 2];
+                break;
+            case AJRBezierPathElementQuadraticCurveTo:
+                // TODO: See if there's someway we can approximate this with a bezier segment.
+                AJRLogWarning(@"PostScript doesn't support quadratic line segments, so the path cannot be fully represented as a PostScript path.");
                 break;
             case AJRBezierPathElementClose:
                 //[string appendFormat:@"        gsave /Times-Roman 12 selectfont 0 setgray %.6f 11 add %.6f moveto ((%d)) dup stringwidth pop 2 div neg 0 rmoveto show grestore\n", moveTo.x, moveTo.y, x - 1];
@@ -781,12 +795,18 @@
             [NSException raise:NSInvalidArgumentException format:@"Cannot change a moveTo to a curveTo"];
             break;
         case AJRBezierPathElementLineTo:
-            _elements[elementIndex] = AJRBezierPathElementCurveTo;
+            _elements[elementIndex] = AJRBezierPathElementCubicCurveTo;
             [self _insertPoints:2 atElementIndex:elementIndex];
             _points[_elementToPointIndex[elementIndex] + 0] = control1;
             _points[_elementToPointIndex[elementIndex] + 1] = control2;
             break;
-        case AJRBezierPathElementCurveTo:
+        case AJRBezierPathElementCubicCurveTo:
+            _points[_elementToPointIndex[elementIndex] + 0] = control1;
+            _points[_elementToPointIndex[elementIndex] + 1] = control2;
+            break;
+        case AJRBezierPathElementQuadraticCurveTo:
+            // TODO: This is going to take more thought, as this is probably wrong.
+            [self _insertPoints:1 atElementIndex:elementIndex];
             _points[_elementToPointIndex[elementIndex] + 0] = control1;
             _points[_elementToPointIndex[elementIndex] + 1] = control2;
             break;
@@ -812,7 +832,7 @@
     
     switch (_elements[elementIndex]) {
         case AJRBezierPathElementMoveTo:
-            if ((elementIndex + 1 < _elementCount) && (_elements[elementIndex + 1] == AJRBezierPathElementCurveTo)) {
+            if ((elementIndex + 1 < _elementCount) && (_elements[elementIndex + 1] == AJRBezierPathElementCubicCurveTo)) {
                 pointsToRemove = 3;
             } else {
                 pointsToRemove = 1;
@@ -824,10 +844,10 @@
             pointsToRemove = 1;
             startingPointIndex = _elementToPointIndex[elementIndex];
             break;
-        case AJRBezierPathElementCurveTo:
+        case AJRBezierPathElementCubicCurveTo:
             pointsToRemove = 3;
             startingPointIndex = _elementToPointIndex[elementIndex];
-            if (_elements[elementIndex + 1] == AJRBezierPathElementCurveTo) {
+            if (_elements[elementIndex + 1] == AJRBezierPathElementCubicCurveTo) {
                 startingPointIndex++;
             }
             break;
@@ -844,7 +864,7 @@
         memmove(_points + startingPointIndex, _points + startingPointIndex + pointsToRemove, sizeof(CGPoint) * (_pointCount - (startingPointIndex + pointsToRemove)));
         _pointCount -= pointsToRemove;
     }
-    memmove(_elements + elementIndex, _elements + elementIndex + 1, sizeof(AJRBezierPathElementType) * (_elementCount - (elementIndex + 1)));
+    memmove(_elements + elementIndex, _elements + elementIndex + 1, sizeof(AJRBezierPathElement) * (_elementCount - (elementIndex + 1)));
     memmove(_elementToPointIndex + elementIndex, _elementToPointIndex + elementIndex + 1, sizeof(NSUInteger) * (_elementCount - (elementIndex + 1)));
     
     _elementCount--;
@@ -902,8 +922,16 @@
                 }
                 currentPoint = line.end;
                 break;
-            case AJRBezierPathElementCurveTo:
+            case AJRBezierPathElementCubicCurveTo:
                 intersection = [AJRIntersection intersectionForCurve:(AJRBezierCurve){currentPoint, _points[_elementToPointIndex[x] + 0], _points[_elementToPointIndex[x] + 1], _points[_elementToPointIndex[x] + 2]} withPoint:point];
+                if (AJRDistanceBetweenPoints(point, [intersection point]) < error) {
+                    *t = [intersection t];
+                    return x - 1;
+                }
+                currentPoint = _points[_elementToPointIndex[x] + 2];
+                break;
+            case AJRBezierPathElementQuadraticCurveTo:
+                intersection = [AJRIntersection intersectionForQuadraticCurve:(AJRQuadraticCurve){currentPoint, _points[_elementToPointIndex[x] + 0], _points[_elementToPointIndex[x] + 1]} withPoint:point];
                 if (AJRDistanceBetweenPoints(point, [intersection point]) < error) {
                     *t = [intersection t];
                     return x - 1;
@@ -940,12 +968,12 @@
 
 - (void)enumerateWithBlock:(void (^)(NSBezierPathElement element, CGPoint *points, BOOL *stop))enumerationBlock {
     AJRPathEnumerator *enumerator = [self pathEnumerator];
-    AJRBezierPathElementType *element;
+    AJRBezierPathElement *element;
     CGPoint points[4];
     BOOL stop = NO;
     
     while ((element = [enumerator nextElementWithPoints:points]) && !stop) {
-        enumerationBlock(*element, points, &stop);
+        enumerationBlock((NSBezierPathElement)*element, points, &stop);
     }
 }
 
@@ -963,10 +991,10 @@
 - (NSString *)description {
     NSMutableString *string = [NSMutableString stringWithFormat:@"<%@: %p>:\n", [self class], self];
     AJRPathEnumerator *enumerator = [self pathEnumerator];
-    AJRBezierPathElementType *type;
+    AJRBezierPathElement *type;
     CGPoint somePoints[3];
     
-    while ((type = (AJRBezierPathElementType *)[enumerator nextElementWithPoints:somePoints]) != NULL) {
+    while ((type = (AJRBezierPathElement *)[enumerator nextElementWithPoints:somePoints]) != NULL) {
         switch (*type) {
             case AJRBezierPathElementSetBoundingBox:
                 [string appendFormat:@"   setboundingbox(%.6f, %.6f, %.6f, %.6f)\n",
@@ -981,11 +1009,16 @@
                 [string appendFormat:@"   lineto(%.6f, %.6f)\n",
                  somePoints[0].x, somePoints[0].y];
                 break;
-            case AJRBezierPathElementCurveTo:
+            case AJRBezierPathElementCubicCurveTo:
                 [string appendFormat:@"   curveto({%.6f, %.6f}, {%.6f, %.6f}, {%.6f, %.6f})\n",
                  somePoints[0].x, somePoints[0].y,
                  somePoints[1].x, somePoints[1].y,
                  somePoints[2].x, somePoints[2].y];
+                break;
+            case AJRBezierPathElementQuadraticCurveTo:
+                [string appendFormat:@"   curveto({%.6f, %.6f}, {%.6f, %.6f})\n",
+                 somePoints[0].x, somePoints[0].y,
+                 somePoints[1].x, somePoints[1].y];
                 break;
             case AJRBezierPathElementClose:
                 [string appendFormat:@"   closepath()\n"];
@@ -999,11 +1032,11 @@
 - (NSString *)javaDescriptionWithName:(NSString *)name {
     NSMutableString *string = [NSMutableString string];
     AJRPathEnumerator *enumerator = [self pathEnumerator];
-    AJRBezierPathElementType *type;
+    AJRBezierPathElement *type;
     CGPoint somePoints[3];
     
     [string appendFormat:@"        %@ = new GeneralPath();\n", name];
-    while ((type = (AJRBezierPathElementType *)[enumerator nextElementWithPoints:somePoints]) != NULL) {
+    while ((type = (AJRBezierPathElement *)[enumerator nextElementWithPoints:somePoints]) != NULL) {
         switch (*type) {
             case AJRBezierPathElementSetBoundingBox:
                 break;
@@ -1013,11 +1046,16 @@
             case AJRBezierPathElementLineTo:
                 [string appendFormat:@"        %@.lineTo((CGFloat)%.6f, (CGFloat)%.6f);\n", name, somePoints[0].x, somePoints[0].y];
                 break;
-            case AJRBezierPathElementCurveTo:
+            case AJRBezierPathElementCubicCurveTo:
                 [string appendFormat:@"        %@.curveTo((CGFloat)%.6f, (CGFloat)%.6f, (CGFloat)%.6f, (CGFloat)%.6f, (CGFloat)%.6f, (CGFloat)%.6f);\n", name,
                  somePoints[0].x, somePoints[0].y,
                  somePoints[1].x, somePoints[1].y,
                  somePoints[2].x, somePoints[2].y];
+                break;
+            case AJRBezierPathElementQuadraticCurveTo:
+                [string appendFormat:@"        %@.curveTo((CGFloat)%.6f, (CGFloat)%.6f, (CGFloat)%.6f, (CGFloat)%.6f);\n", name,
+                 somePoints[0].x, somePoints[0].y,
+                 somePoints[1].x, somePoints[1].y];
                 break;
             case AJRBezierPathElementClose:
                 [string appendFormat:@"        %@.closePath();\n", name];
@@ -1239,7 +1277,7 @@ void AJRPathToBezierIterator(void *info, const CGPathElement *element) {
             case AJRBezierPathElementLineTo:
                 newPoint = _points[_elementToPointIndex[x]];
                 break;
-            case AJRBezierPathElementCurveTo:
+            case AJRBezierPathElementCubicCurveTo:
                 // Just care about the end point, we don't need to worry about the control points.
                 newPoint = _points[_elementToPointIndex[x]];
                 break;
@@ -1260,7 +1298,7 @@ void AJRPathToBezierIterator(void *info, const CGPathElement *element) {
             case AJRBezierPathElementLineTo:
                 newPoint = _points[_elementToPointIndex[actualIndex]];
                 break;
-            case AJRBezierPathElementCurveTo:
+            case AJRBezierPathElementCubicCurveTo:
                 // Just care about the end point, we don't need to worry about the control points.
                 newPoint = _points[_elementToPointIndex[actualIndex]];
                 break;
@@ -1337,7 +1375,7 @@ void AJRPathToBezierIterator(void *info, const CGPathElement *element) {
             case AJRBezierPathElementLineTo:
                 CGContextAddLineToPoint(context, _points[_elementToPointIndex[x]].x, _points[_elementToPointIndex[x]].y);
                 break;
-            case AJRBezierPathElementCurveTo:
+            case AJRBezierPathElementCubicCurveTo:
                 CGContextAddCurveToPoint(context,
                                          _points[_elementToPointIndex[x] + 0].x, _points[_elementToPointIndex[x] + 0].y,
                                          _points[_elementToPointIndex[x] + 1].x, _points[_elementToPointIndex[x] + 1].y,
@@ -1382,13 +1420,16 @@ void AJRPathToBezierIterator(void *info, const CGPathElement *element) {
                     case AJRBezierPathElementLineTo:
                         CGContextAddLineToPoint(context, _points[_elementToPointIndex[x - 1]].x, _points[_elementToPointIndex[x  - 1]].y);
                         break;
-                    case AJRBezierPathElementCurveTo:
+                    case AJRBezierPathElementCubicCurveTo:
                         CGContextAddLineToPoint(context, _points[_elementToPointIndex[x - 1] + 2].x, _points[_elementToPointIndex[x  - 1] + 2].y);
+                        break;
+                    case AJRBezierPathElementQuadraticCurveTo:
+                        CGContextAddLineToPoint(context, _points[_elementToPointIndex[x - 1] + 1].x, _points[_elementToPointIndex[x  - 1] + 1].y);
                         break;
                     case AJRBezierPathElementClose: break;
                 }
                 break;
-            case AJRBezierPathElementCurveTo:
+            case AJRBezierPathElementCubicCurveTo:
                 if (nextRequiresMoveTo) {
                     CGContextMoveToPoint(context, _points[_elementToPointIndex[x] + 2].x, _points[_elementToPointIndex[x] + 2].y);
                     nextRequiresMoveTo = NO;
@@ -1407,11 +1448,49 @@ void AJRPathToBezierIterator(void *info, const CGPathElement *element) {
                                                  _points[_elementToPointIndex[x] + 0].x, _points[_elementToPointIndex[x] + 0].y,
                                                  _points[_elementToPointIndex[x - 1]].x, _points[_elementToPointIndex[x - 1]].y);
                         break;
-                    case AJRBezierPathElementCurveTo:
+                    case AJRBezierPathElementCubicCurveTo:
                         CGContextAddCurveToPoint(context,
                                                  _points[_elementToPointIndex[x] + 1].x, _points[_elementToPointIndex[x] + 1].y,
                                                  _points[_elementToPointIndex[x] + 0].x, _points[_elementToPointIndex[x] + 0].y,
                                                  _points[_elementToPointIndex[x - 1] + 2].x, _points[_elementToPointIndex[x - 1] + 2].y);
+                        break;
+                    case AJRBezierPathElementQuadraticCurveTo:
+                        // TODO: Verify this. It's almost certainly wrong.
+                        CGContextAddCurveToPoint(context,
+                                                 _points[_elementToPointIndex[x] + 1].x, _points[_elementToPointIndex[x] + 1].y,
+                                                 _points[_elementToPointIndex[x] + 0].x, _points[_elementToPointIndex[x] + 0].y,
+                                                 _points[_elementToPointIndex[x - 1] + 1].x, _points[_elementToPointIndex[x - 1] + 1].y);
+                        break;
+                    case AJRBezierPathElementClose: break;
+                }
+                break;
+            case AJRBezierPathElementQuadraticCurveTo:
+                // TODO: Verify this, it's almost certainly wrong.
+                if (nextRequiresMoveTo) {
+                    CGContextMoveToPoint(context, _points[_elementToPointIndex[x] + 2].x, _points[_elementToPointIndex[x] + 2].y);
+                    nextRequiresMoveTo = NO;
+                }
+                switch (_elements[x - 1]) {
+                    case AJRBezierPathElementSetBoundingBox: break;
+                    case AJRBezierPathElementMoveTo:
+                        CGContextAddQuadCurveToPoint(context,
+                                                 _points[_elementToPointIndex[x] + 1].x, _points[_elementToPointIndex[x] + 1].y,
+                                                 _points[_elementToPointIndex[x] + 0].x, _points[_elementToPointIndex[x] + 0].y);
+                        break;
+                    case AJRBezierPathElementLineTo:
+                        CGContextAddQuadCurveToPoint(context,
+                                                 _points[_elementToPointIndex[x] + 1].x, _points[_elementToPointIndex[x] + 1].y,
+                                                 _points[_elementToPointIndex[x] + 0].x, _points[_elementToPointIndex[x] + 0].y);
+                        break;
+                    case AJRBezierPathElementCubicCurveTo:
+                        CGContextAddQuadCurveToPoint(context,
+                                                 _points[_elementToPointIndex[x] + 1].x, _points[_elementToPointIndex[x] + 1].y,
+                                                 _points[_elementToPointIndex[x] + 0].x, _points[_elementToPointIndex[x] + 0].y);
+                        break;
+                    case AJRBezierPathElementQuadraticCurveTo:
+                        CGContextAddQuadCurveToPoint(context,
+                                                 _points[_elementToPointIndex[x] + 1].x, _points[_elementToPointIndex[x] + 1].y,
+                                                 _points[_elementToPointIndex[x] + 0].x, _points[_elementToPointIndex[x] + 0].y);
                         break;
                     case AJRBezierPathElementClose: break;
                 }

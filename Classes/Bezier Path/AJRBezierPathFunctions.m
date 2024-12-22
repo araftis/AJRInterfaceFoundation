@@ -38,7 +38,7 @@
 
 void AJRbuildpath(CGContextRef context,
                  CGPoint *points, NSUInteger pointCount,
-                 AJRBezierPathElementType *elements, NSUInteger elementCount,
+                 AJRBezierPathElement *elements, NSUInteger elementCount,
                  AJRBezierPathPointTransform pointTransform) {
     NSUInteger pointIndex = 0;
     NSUInteger elementIndex = 0;
@@ -60,12 +60,18 @@ void AJRbuildpath(CGContextRef context,
                 CGContextAddLineToPoint(context, p1.x, p1.y);
                 pointIndex += 1;
                 break;
-            case AJRBezierPathElementCurveTo:
+            case AJRBezierPathElementCubicCurveTo:
                 p1 = TRANSFORM(points[pointIndex]);
                 p2 = TRANSFORM(points[pointIndex + 1]);
                 p3 = TRANSFORM(points[pointIndex + 2]);
                 CGContextAddCurveToPoint(context, p1.x, p1.y, p2.x, p2.y, p3.x, p3.y);
                 pointIndex += 3;
+                break;
+            case AJRBezierPathElementQuadraticCurveTo:
+                p1 = TRANSFORM(points[pointIndex]);
+                p2 = TRANSFORM(points[pointIndex + 1]);
+                CGContextAddQuadCurveToPoint(context, p1.x, p1.y, p2.x, p2.y);
+                pointIndex += 2;
                 break;
             case AJRBezierPathElementClose:
                 CGContextClosePath(context);
@@ -75,7 +81,7 @@ void AJRbuildpath(CGContextRef context,
 }
 
 CGPathRef AJRcreatepath(CGPoint *points, NSUInteger pointCount,
-                         AJRBezierPathElementType *elements, NSUInteger elementCount,
+                         AJRBezierPathElement *elements, NSUInteger elementCount,
                          AJRBezierPathPointTransform pointTransform) {
     NSUInteger pointIndex = 0;
     NSUInteger elementIndex = 0;
@@ -97,12 +103,18 @@ CGPathRef AJRcreatepath(CGPoint *points, NSUInteger pointCount,
                 CGPathAddLineToPoint(path, NULL, p1.x, p1.y);
                 pointIndex += 1;
                 break;
-            case AJRBezierPathElementCurveTo:
+            case AJRBezierPathElementCubicCurveTo:
                 p1 = TRANSFORM(points[pointIndex]);
                 p2 = TRANSFORM(points[pointIndex + 1]);
                 p3 = TRANSFORM(points[pointIndex + 2]);
                 CGPathAddCurveToPoint(path, NULL, p1.x, p1.y, p2.x, p2.y, p3.x, p3.y);
                 pointIndex += 3;
+                break;
+            case AJRBezierPathElementQuadraticCurveTo:
+                p1 = TRANSFORM(points[pointIndex]);
+                p2 = TRANSFORM(points[pointIndex + 1]);
+                CGPathAddQuadCurveToPoint(path, NULL, p1.x, p1.y, p2.x, p2.y);
+                pointIndex += 2;
                 break;
             case AJRBezierPathElementClose:
                 CGPathCloseSubpath(path);
@@ -115,7 +127,7 @@ CGPathRef AJRcreatepath(CGPoint *points, NSUInteger pointCount,
 
 void AJRstroke(CGContextRef context,
               CGPoint *points, NSUInteger pointCount,
-              AJRBezierPathElementType *elements, NSUInteger elementCount,
+              AJRBezierPathElement *elements, NSUInteger elementCount,
               AJRBezierPathPointTransform pointTransform) {
     AJRbuildpath(context, points, pointCount, elements, elementCount, pointTransform);
     CGContextStrokePath(context);
@@ -123,7 +135,7 @@ void AJRstroke(CGContextRef context,
 
 void AJRfill(CGContextRef context,
             CGPoint *points, NSUInteger pointCount,
-            AJRBezierPathElementType *elements, NSUInteger elementCount,
+            AJRBezierPathElement *elements, NSUInteger elementCount,
             AJRBezierPathPointTransform pointTransform) {
     AJRbuildpath(context, points, pointCount, elements, elementCount, pointTransform);
     CGContextFillPath(context);
@@ -131,7 +143,7 @@ void AJRfill(CGContextRef context,
 
 void AJReofill(CGContextRef context,
               CGPoint *points, NSUInteger pointCount,
-              AJRBezierPathElementType *elements, NSUInteger elementCount,
+              AJRBezierPathElement *elements, NSUInteger elementCount,
               AJRBezierPathPointTransform pointTransform) {
     AJRbuildpath(context, points, pointCount, elements, elementCount, pointTransform);
     CGContextEOFillPath(context);
@@ -139,14 +151,14 @@ void AJReofill(CGContextRef context,
 
 void AJRclip(CGContextRef context,
             CGPoint *points, NSUInteger pointCount,
-            AJRBezierPathElementType *elements, NSUInteger elementCount) {
+            AJRBezierPathElement *elements, NSUInteger elementCount) {
     AJRbuildpath(context, points, pointCount, elements, elementCount, NULL);
     CGContextClip(context);
 }
 
 void AJReoclip(CGContextRef context,
               CGPoint *points, NSUInteger pointCount,
-              AJRBezierPathElementType *elements, NSUInteger elementCount) {
+              AJRBezierPathElement *elements, NSUInteger elementCount) {
     AJRbuildpath(context, points, pointCount, elements, elementCount, NULL);
     CGContextEOClip(context);
 }
@@ -154,7 +166,7 @@ void AJReoclip(CGContextRef context,
 void AJRinfill(CGContextRef context,
               CGFloat x, CGFloat y,
               CGPoint *points, NSUInteger pointCount,
-              AJRBezierPathElementType *elements, NSUInteger elementCount,
+              AJRBezierPathElement *elements, NSUInteger elementCount,
               BOOL *hit) {
     AJRbuildpath(context, points, pointCount, elements, elementCount, NULL);
     *hit = CGContextPathContainsPoint(context, (CGPoint){x, y}, kCGPathFill);
@@ -163,7 +175,7 @@ void AJRinfill(CGContextRef context,
 void AJRineofill(CGContextRef context,
                 CGFloat x, CGFloat y,
                 CGPoint *points, NSUInteger pointCount,
-                AJRBezierPathElementType *elements, NSUInteger elementCount,
+                AJRBezierPathElement *elements, NSUInteger elementCount,
                 BOOL *hit) {
     AJRbuildpath(context, points, pointCount, elements, elementCount, NULL);
     *hit = CGContextPathContainsPoint(context, (CGPoint){x, y}, kCGPathEOFill);
@@ -172,7 +184,7 @@ void AJRineofill(CGContextRef context,
 void AJRinstroke(CGContextRef context,
                 CGFloat x, CGFloat y,
                 CGPoint *points, NSUInteger pointCount,
-                AJRBezierPathElementType *elements, NSUInteger elementCount,
+                AJRBezierPathElement *elements, NSUInteger elementCount,
                 BOOL *hit) {
     AJRbuildpath(context, points, pointCount, elements, elementCount, NULL);
     *hit = CGContextPathContainsPoint(context, (CGPoint){x, y}, kCGPathStroke);
@@ -180,7 +192,7 @@ void AJRinstroke(CGContextRef context,
 
 extern CGRect AJRstrokebounds(CGContextRef context,
                              CGPoint *points, NSUInteger pointCount,
-                             AJRBezierPathElementType *elements, NSUInteger elementCount) {
+                             AJRBezierPathElement *elements, NSUInteger elementCount) {
     AJRbuildpath(context, points, pointCount, elements, elementCount, NULL);
     CGContextReplacePathWithStrokedPath(context);
     return CGContextGetPathBoundingBox(context);
@@ -188,7 +200,7 @@ extern CGRect AJRstrokebounds(CGContextRef context,
 
 void AJRpathbbox(CGContextRef context,
                 CGPoint *points, NSUInteger pointCount,
-                AJRBezierPathElementType *elements, NSUInteger elementCount,
+                AJRBezierPathElement *elements, NSUInteger elementCount,
                 CGFloat *llx, CGFloat *lly, CGFloat *urx, CGFloat *ury) {
     CGRect            bounds;
     

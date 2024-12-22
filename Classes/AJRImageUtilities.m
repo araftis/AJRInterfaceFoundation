@@ -39,58 +39,6 @@
 
 #pragma mark - Generating Image Data
 
-NSData *AJRPNGDataFromCGImage(CGImageRef image, BOOL interlace) {
-    NSMutableData *result = [NSMutableData data];
-    CGImageDestinationRef destination = CGImageDestinationCreateWithData((__bridge CFMutableDataRef)result, (__bridge CFStringRef)UTTypePNG.identifier, 1, NULL);
-    if (destination) {
-        CGImageDestinationAddImage(destination, image, (__bridge CFDictionaryRef)@{(__bridge NSString *)kCGImagePropertyPNGInterlaceType:@(YES)});
-        if (!CGImageDestinationFinalize(destination)) {
-            result = nil;
-        }
-        CFRelease(destination);
-    }
-    return result;
-}
-
-NSData *AJRJPEGDataFromCGImage(CGImageRef image, CGFloat compression) {
-    NSMutableData *result = [NSMutableData data];
-    CGImageDestinationRef destination = CGImageDestinationCreateWithData((__bridge CFMutableDataRef)result, (__bridge CFStringRef)UTTypeJPEG.identifier, 1, NULL);
-    if (destination) {
-        CGImageDestinationAddImage(destination, image, (__bridge CFDictionaryRef)@{(__bridge NSString *)kCGImageDestinationLossyCompressionQuality:@(compression)});
-        if (!CGImageDestinationFinalize(destination)) {
-            result = nil;
-        }
-        CFRelease(destination);
-    }
-    return result;
-}
-
-NSData * _Nullable AJRGIFDataFromCGImage(CGImageRef image, BOOL ditherTransparency) {
-    NSMutableData *result = [NSMutableData data];
-    CGImageDestinationRef destination = CGImageDestinationCreateWithData((__bridge CFMutableDataRef)result, (__bridge CFStringRef)UTTypeGIF.identifier, 1, NULL);
-    if (destination) {
-        CGImageDestinationAddImage(destination, image, (__bridge CFDictionaryRef)@{(__bridge NSString *)kCGImagePropertyHasAlpha:@(ditherTransparency)});
-        if (!CGImageDestinationFinalize(destination)) {
-            result = nil;
-        }
-        CFRelease(destination);
-    }
-    return result;
-}
-
-NSData * _Nullable AJRBMPDataFromCGImage(CGImageRef image) {
-    NSMutableData *result = [NSMutableData data];
-    CGImageDestinationRef destination = CGImageDestinationCreateWithData((__bridge CFMutableDataRef)result, (__bridge CFStringRef)UTTypeBMP.identifier, 1, NULL);
-    if (destination) {
-        CGImageDestinationAddImage(destination, image, NULL);
-        if (!CGImageDestinationFinalize(destination)) {
-            result = nil;
-        }
-        CFRelease(destination);
-    }
-    return result;
-}
-
 #pragma mark - Creating Images
 
 extern void CGContextSetBaseCTM(CGContextRef context, CGAffineTransform transform);
@@ -110,6 +58,7 @@ CGImageRef AJRCreateImage(CGSize size, CGFloat scale, BOOL flipped, CGColorSpace
     }
     
     AJRDrawWithSavedGraphicsState(context, ^(CGContextRef context) {
+        // This may seem strange, but without this, shadows in flipped image contexts will not render correctly. If the fact that we're using private API becomes an issue with the App Store, we could probably work around this by rendering the image in non-flipped space and then flipping the resulting image when done. This would cause a slight performance hit for flipped images, but would avoid using private API.
         CGContextSetBaseCTM(context, CGContextGetCTM(context));
         commands(context);
     });

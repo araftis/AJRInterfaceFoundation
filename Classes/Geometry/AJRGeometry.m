@@ -103,8 +103,8 @@ CGRect AJRRectByCenteringInRect(CGRect rect, CGRect containingRect, AJRRectCente
             scale = containingRect.size.width / rect.size.width;
             outputRect.size.width *= scale;
             outputRect.size.height *= scale;
-            outputRect.origin.x = containingRect.origin.x + (containingRect.size.width - rect.size.width) / 2.0;
-            outputRect.origin.y = containingRect.origin.y + (containingRect.size.height - rect.size.height) / 2.0;
+            outputRect.origin.x = containingRect.origin.x + (containingRect.size.width - outputRect.size.width) / 2.0;
+            outputRect.origin.y = containingRect.origin.y + (containingRect.size.height - outputRect.size.height) / 2.0;
             break;
         case AJRRectCenteringFitHeight:
             scale = containingRect.size.height / rect.size.height;
@@ -118,6 +118,33 @@ CGRect AJRRectByCenteringInRect(CGRect rect, CGRect containingRect, AJRRectCente
                 outputRect = AJRRectByCenteringInRect(rect, containingRect, AJRRectCenteringFitWidth);
             } else {
                 outputRect = AJRRectByCenteringInRect(rect, containingRect, AJRRectCenteringFitHeight);
+            }
+            break;
+        case AJRRectCenteringFitWidthDown:
+            scale = containingRect.size.width / rect.size.width;
+            if (scale > 1.0) {
+                scale = 1.0;
+            }
+            outputRect.size.width *= scale;
+            outputRect.size.height *= scale;
+            outputRect.origin.x = containingRect.origin.x + (containingRect.size.width - outputRect.size.width) / 2.0;
+            outputRect.origin.y = containingRect.origin.y + (containingRect.size.height - outputRect.size.height) / 2.0;
+            break;
+        case AJRRectCenteringFitHeightDown:
+            scale = containingRect.size.height / rect.size.height;
+            if (scale > 1.0) {
+                scale = 1.0;
+            }
+            outputRect.size.width *= scale;
+            outputRect.size.height *= scale;
+            outputRect.origin.x = containingRect.origin.x + (containingRect.size.width - outputRect.size.width) / 2.0;
+            outputRect.origin.y = containingRect.origin.y + (containingRect.size.height - outputRect.size.height) / 2.0;
+            break;
+        case AJRRectCenteringFitWidthAndHeightDown:
+            if (containingRect.size.width / rect.size.width < containingRect.size.height / rect.size.height) {
+                outputRect = AJRRectByCenteringInRect(rect, containingRect, AJRRectCenteringFitWidthDown);
+            } else {
+                outputRect = AJRRectByCenteringInRect(rect, containingRect, AJRRectCenteringFitHeightDown);
             }
             break;
         case AJRRectCenteringScaleWidth:

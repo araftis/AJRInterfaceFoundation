@@ -31,6 +31,58 @@
 
 import CoreGraphics
 import AppKit
+import UniformTypeIdentifiers
+
+// MARK: - Generating Image Data
+
+public func AJRDataFromCGImage(_ image: CGImage, _ format: UTType, _ options: [CFString:Any]? = nil) -> Data? {
+    var result : NSMutableData? = NSMutableData()
+    if let destination = CGImageDestinationCreateWithData(result!, format.identifier as CFString, 1, nil) {
+        let options = options == nil ? nil : options! as CFDictionary
+        CGImageDestinationAddImage(destination, image, options)
+        if (!CGImageDestinationFinalize(destination)) {
+            result = nil
+        }
+    }
+    return result as Data?
+}
+
+@_cdecl("AJRPNGDataFromCGImage")
+public func AJRPNGDataFromCGImage(_ image: CGImage, _ interlace: Bool) -> Data? {
+    return AJRDataFromCGImage(image, UTType.png, [kCGImagePropertyPNGInterlaceType: interlace])
+}
+
+@_cdecl("AJRJPEGDataFromCGImage")
+public func AJRJPEGDataFromCGImage(_ image: CGImage, compression: CGFloat) -> Data? {
+    return AJRDataFromCGImage(image, UTType.jpeg, [kCGImageDestinationLossyCompressionQuality: compression])
+}
+
+@_cdecl("AJRGIFDataFromCGImage")
+public func AJRGIFDataFromCGImage(_ image: CGImage, ditherTransparency: Bool) -> Data? {
+    return AJRDataFromCGImage(image, UTType.gif, [kCGImagePropertyHasAlpha: ditherTransparency])
+}
+
+@_cdecl("AJRBMPDataFromCGImage")
+public func AJRBMPDataFromCGImage(_ image: CGImage) -> Data? {
+    return AJRDataFromCGImage(image, UTType.bmp)
+}
+
+// MARK: - Creating Images
+
+public func AJRCreateInverseMask(_ input: CGImage) -> CGImage {
+    let rect = CGRect(origin: .zero, size: input.size)
+    return AJRCreateImage(rect.size,
+                          1.0,
+                          false,
+                          nil) { context in
+        context.setFillColor(.white)
+        context.fill(rect)
+        context.clip(to: rect, mask: input)
+        context.clear(rect);
+    }
+}
+
+// MARK: - Testing
 
 private func test(width pixelsWide: CGFloat, height pixelsHigh: CGFloat, colorSpace colorSpaceIn: CGColorSpace?) -> Void {
     if let colorSpace = colorSpaceIn ?? CGColorSpace(name: CGColorSpace.sRGB as! CFString) {

@@ -37,52 +37,52 @@ NS_ASSUME_NONNULL_BEGIN
 
 extern void AJRbuildpath(CGContextRef context,
                         CGPoint *points, NSUInteger pointCount,
-                        AJRBezierPathElementType *elements, NSUInteger elementCount,
+                        AJRBezierPathElement *elements, NSUInteger elementCount,
                         _Nullable AJRBezierPathPointTransform pointTransform);
 
 extern CGPathRef AJRcreatepath(CGPoint *points, NSUInteger pointCount,
-                               AJRBezierPathElementType *elements, NSUInteger elementCount,
+                               AJRBezierPathElement *elements, NSUInteger elementCount,
                                _Nullable AJRBezierPathPointTransform pointTransform);
 
 extern void AJRstroke(CGContextRef context,
                      CGPoint *points, NSUInteger pointCount,
-                     AJRBezierPathElementType *elements, NSUInteger elementCount,
+                     AJRBezierPathElement *elements, NSUInteger elementCount,
                       _Nullable AJRBezierPathPointTransform pointTransform);
 extern void AJRfill(CGContextRef context,
                    CGPoint *points, NSUInteger pointCount,
-                   AJRBezierPathElementType *elements, NSUInteger elementCount,
+                   AJRBezierPathElement *elements, NSUInteger elementCount,
                     _Nullable AJRBezierPathPointTransform pointTransform);
 extern void AJReofill(CGContextRef context,
                      CGPoint *points, NSUInteger pointCount,
-                     AJRBezierPathElementType *elements, NSUInteger elementCount,
+                     AJRBezierPathElement *elements, NSUInteger elementCount,
                       _Nullable AJRBezierPathPointTransform pointTransform);
 extern void AJRclip(CGContextRef context,
                    CGPoint *points, NSUInteger pointCount,
-                   AJRBezierPathElementType *elements, NSUInteger elementCount);
+                   AJRBezierPathElement *elements, NSUInteger elementCount);
 extern void AJReoclip(CGContextRef context,
                      CGPoint *points, NSUInteger pointCount,
-                     AJRBezierPathElementType *elements, NSUInteger elementCount);
+                     AJRBezierPathElement *elements, NSUInteger elementCount);
 extern void AJRinfill(CGContextRef context,
                      CGFloat x, CGFloat y,
                      CGPoint *points, NSUInteger pointCount,
-                     AJRBezierPathElementType *elements, NSUInteger elementCount,
+                     AJRBezierPathElement *elements, NSUInteger elementCount,
                      BOOL *hit);
 extern void AJRineofill(CGContextRef context,
                        CGFloat x, CGFloat y,
                        CGPoint *points, NSUInteger pointCount,
-                       AJRBezierPathElementType *elements, NSUInteger elementCount,
+                       AJRBezierPathElement *elements, NSUInteger elementCount,
                        BOOL *hit);
 extern void AJRinstroke(CGContextRef context,
                        CGFloat x, CGFloat y,
                        CGPoint *points, NSUInteger pointCount,
-                       AJRBezierPathElementType *elements, NSUInteger elementCount,
+                       AJRBezierPathElement *elements, NSUInteger elementCount,
                        BOOL *hit);
 extern CGRect AJRstrokebounds(CGContextRef context,
                              CGPoint *points, NSUInteger pointCount,
-                             AJRBezierPathElementType *elements, NSUInteger elementCount);
+                             AJRBezierPathElement *elements, NSUInteger elementCount);
 extern void AJRpathbbox(CGContextRef context,
                        CGPoint *points, NSUInteger pointCount,
-                       AJRBezierPathElementType *elements, NSUInteger elementCount,
+                       AJRBezierPathElement *elements, NSUInteger elementCount,
                        CGFloat *llx, CGFloat *lly, CGFloat *urx, CGFloat *ury);
 
 NS_ASSUME_NONNULL_END

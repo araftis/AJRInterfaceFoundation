@@ -90,17 +90,22 @@ public extension CGColor {
     // MARK - Creating Colors
     
     static func color(red:CGFloat, green:CGFloat, blue:CGFloat, alpha:CGFloat) -> CGColor {
-		return CGColor(colorSpace:AJRGetSRGBColorSpace(), components:[red, green, blue, alpha])!
+        return CGColor(colorSpace: .sRGB, components:[red, green, blue, alpha])!
 	}
 	
     static func color(white:CGFloat, alpha:CGFloat) -> CGColor {
-		return CGColor(colorSpace:AJRGetGrayColorSpace(), components:[white, alpha])!
+        return CGColor(colorSpace: .gray, components:[white, alpha])!
 	}
 	
     static func color(cyan:CGFloat, magenta:CGFloat, yellow:CGFloat, black:CGFloat, alpha:CGFloat) -> CGColor {
-		return CGColor(colorSpace:AJRGetCMYKColorSpace(), components:[cyan, magenta, yellow, black, alpha])!
+        return CGColor(colorSpace: .deviceCMYK, components:[cyan, magenta, yellow, black, alpha])!
 	}
-	
+
+    static func color(linearGray white: CGFloat, alpha: CGFloat) -> CGColor {
+        let components = [white, alpha]
+        return CGColor(colorSpace: .gray, components: components)!
+    }
+
     // MARK: - Color Components
     
     /*

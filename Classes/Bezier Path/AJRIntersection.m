@@ -33,20 +33,16 @@
 
 #import "AJRGeometry.h"
 
-@implementation AJRIntersection
-{
+@implementation AJRIntersection {
 	CGPoint        point;
 	NSUInteger   direction;
 	NSUInteger   segment;
 	double        t;
 	
-	struct {
-		BOOL          isEndPoint:1;
-		BOOL          linear:1;
-		BOOL          userFlag3:1;
-		BOOL          userFlag4:1;
-		NSUInteger    _reserved:28;
-	} intersectionFlags;
+    BOOL          isEndPoint;
+    BOOL          linear;
+    BOOL          userFlag3;
+    BOOL          userFlag4;
 }
 
 + (id)intersectionWithPoint:(CGPoint)aPoint direction:(NSUInteger)aDirection segment:(NSUInteger)aSegment {
@@ -97,35 +93,35 @@
 }
 
 - (void)setIsEndPoint:(BOOL)flag {
-    intersectionFlags.isEndPoint = flag;
+    isEndPoint = flag;
 }
 
 - (BOOL)isEndPoint {
-    return intersectionFlags.isEndPoint;
+    return isEndPoint;
 }
 
 - (void)setLinear:(BOOL)flag {
-    intersectionFlags.linear = flag;
+    linear = flag;
 }
 
 - (BOOL)linear {
-    return intersectionFlags.linear;
+    return linear;
 }
 
 - (void)setUserFlag3:(BOOL)flag {
-    intersectionFlags.userFlag3 = flag;
+    userFlag3 = flag;
 }
 
 - (BOOL)userFlag3 {
-    return intersectionFlags.userFlag3;
+    return userFlag3;
 }
 
 - (void)setUserFlag4:(BOOL)flag {
-    intersectionFlags.userFlag4 = flag;
+    userFlag4 = flag;
 }
 
 - (BOOL)userFlag4 {
-    return intersectionFlags.userFlag4;
+    return userFlag4;
 }
 
 - (id)copy {
@@ -141,10 +137,10 @@
     new->segment = segment;
     new->t = t;
     
-    new->intersectionFlags.isEndPoint = intersectionFlags.isEndPoint;
-    new->intersectionFlags.linear = intersectionFlags.linear;
-    new->intersectionFlags.userFlag3 = intersectionFlags.userFlag3;
-    new->intersectionFlags.userFlag4 = intersectionFlags.userFlag4;
+    new->isEndPoint = isEndPoint;
+    new->linear = linear;
+    new->userFlag3 = userFlag3;
+    new->userFlag4 = userFlag4;
     
     return new;
 }
@@ -154,10 +150,10 @@
     direction = [coder decodeIntegerForKey:@"direction"];
     segment = [coder decodeIntegerForKey:@"segment"];
     t = [coder decodeFloatForKey:@"t"];
-    intersectionFlags.isEndPoint = [coder decodeBoolForKey:@"isEndPoint"];
-    intersectionFlags.linear = [coder decodeBoolForKey:@"linear"];
-    intersectionFlags.userFlag3 = [coder decodeBoolForKey:@"userFlag3"];
-    intersectionFlags.userFlag4 = [coder decodeBoolForKey:@"userFlag4"];
+    isEndPoint = [coder decodeBoolForKey:@"isEndPoint"];
+    linear = [coder decodeBoolForKey:@"linear"];
+    userFlag3 = [coder decodeBoolForKey:@"userFlag3"];
+    userFlag4 = [coder decodeBoolForKey:@"userFlag4"];
     
     return self;
 }
@@ -167,10 +163,10 @@
     [coder encodeInteger:direction forKey:@"direction"];
     [coder encodeInteger:segment forKey:@"segment"];
     [coder encodeFloat:t forKey:@"t"];
-    [coder encodeBool:intersectionFlags.isEndPoint forKey:@"isEndPoint"];
-    [coder encodeBool:intersectionFlags.linear forKey:@"linear"];
-    [coder encodeBool:intersectionFlags.userFlag3 forKey:@"userFlag3"];
-    [coder encodeBool:intersectionFlags.userFlag4 forKey:@"userFlag4"];
+    [coder encodeBool:isEndPoint forKey:@"isEndPoint"];
+    [coder encodeBool:linear forKey:@"linear"];
+    [coder encodeBool:userFlag3 forKey:@"userFlag3"];
+    [coder encodeBool:userFlag4 forKey:@"userFlag4"];
 }
 
 + (id)_intersectionForLine:(AJRLine)line withPerpendicularLineThroughPoint:(CGPoint)aPoint bounded:(BOOL)flag {
@@ -228,7 +224,7 @@
     intersection->t = iPoint.x / (line.end.x - line.start.x);
     
     if (NSEqualPoints(line.start, iPoint) || NSEqualPoints(line.end, iPoint)) {
-        intersection->intersectionFlags.isEndPoint = YES;
+        intersection->isEndPoint = YES;
     }
     
     return intersection;
@@ -298,7 +294,7 @@
     }
     
     if (NSEqualPoints(first.start, intersection->point) || NSEqualPoints(first.end, intersection->point) || NSEqualPoints(second.start, intersection->point) || NSEqualPoints(second.end, intersection->point)) {
-        intersection->intersectionFlags.isEndPoint = YES;
+        intersection->isEndPoint = YES;
     }
     
     return intersection;
@@ -430,7 +426,7 @@
         
         if (intersection) {
             if (NSEqualPoints(intersection->point, originalCurve.start) || NSEqualPoints(intersection->point, originalCurve.end)) {
-                intersection->intersectionFlags.isEndPoint = YES;
+                intersection->isEndPoint = YES;
             }
             [intersections addObject:intersection];
         }
@@ -453,6 +449,15 @@
         return nil;
     }
     
+    return intersections;
+}
+
++ (NSArray *)intersectionsForQuadraticCurve:(AJRQuadraticCurve)curve withLine:(AJRLine)line error:(double)error {
+    NSMutableArray *intersections = [NSMutableArray array];
+
+    // TODO: Make this work!
+    AJRLogWarning(@"%s not yet implemented.", __FUNCTION__);
+
     return intersections;
 }
 
@@ -489,10 +494,16 @@
     [self _findDistanceFromCurve:curve withPoint:aPoint tLower:0.0 tUpper:1.0 distance:&distance t:&(intersection->t) point:&(intersection->point)];
     
     if (NSEqualPoints(intersection->point, curve.start) || NSEqualPoints(intersection->point, curve.end)) {
-        intersection->intersectionFlags.isEndPoint = YES;
+        intersection->isEndPoint = YES;
     }
     
     return intersection;
+}
+
++ (id)intersectionForQuadraticCurve:(AJRQuadraticCurve)curve withPoint:(CGPoint)aPoint {
+    // TODO: Make this work!
+    AJRLogWarning(@"%s not yet implemented.", __FUNCTION__);
+    return nil;
 }
 
 + (id)intersectionForLine:(AJRLine)line withPerpendicularLineThroughPoint:(CGPoint)aPoint {
@@ -500,7 +511,7 @@
 }
 
 - (NSString *)description {
-    NSMutableString *string = [NSMutableString stringWithFormat:@"<%@ %p: %@, %lu, 0x%lx, 0x%lx, %@>", [self class], self, NSStringFromPoint(point), segment, direction & AJRLeftAndRightDirectionMask, direction & AJRTopAndBottomDirectionMask, intersectionFlags.linear ? @"YES" : @"NO"];
+    NSMutableString *string = [NSMutableString stringWithFormat:@"<%@ %p: %@, %lu, 0x%lx, 0x%lx, %@>", [self class], self, NSStringFromPoint(point), segment, direction & AJRLeftAndRightDirectionMask, direction & AJRTopAndBottomDirectionMask, linear ? @"YES" : @"NO"];
     
     return string;
 }

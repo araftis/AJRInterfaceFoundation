@@ -31,9 +31,8 @@
 
 #import "NSValue+Extensions.h"
 
-#import "AJRXMLCoder+Extensions.h"
-
 #import <AJRFoundation/AJRFoundation.h>
+#import <AJRInterfaceFoundation/AJRInterfaceFoundation-Swift.h>
 
 typedef NS_ENUM(uint8_t, AJRValueType) {
     AJRValueTypeSize,

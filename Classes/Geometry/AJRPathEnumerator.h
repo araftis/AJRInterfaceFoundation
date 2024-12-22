@@ -82,25 +82,25 @@ NS_ASSUME_NONNULL_BEGIN
 /*!
  Returns the next segment of path, and it's corresponding points.
 
- The number of points returned will vary between 0 and 3 depending on the type of element returned. So, an `AJRBezierPathElementClose`  will have no associated points, while `AJRBezierPathElementMoveTo` and `AJRBezierPathElementLineTo` will have 1 point returned, and `AJRBezierPathElementCurveTo` will return 3 points. As such, `points` should be large enough to hold three points.
+ The number of points returned will vary between 0 and 3 depending on the type of element returned. So, an `AJRBezierPathElementClose`  will have no associated points, while `AJRBezierPathElementMoveTo` and `AJRBezierPathElementLineTo` will have 1 point returned, and `AJRBezierPathElementCubicCurveTo` will return 3 points. As such, `points` should be large enough to hold three points.
 
  @param points A pointer to an array of CGPoint. This should be large enough to hold three points.
 
  @result The type of the next element or NULL if there are no more elements in the path.
  */
-- (nullable AJRBezierPathElementType *)nextElementWithPoints:(CGPoint *)points NS_SWIFT_NAME(_nextElement(withPoints:));
+- (nullable AJRBezierPathElement *)nextElementWithPoints:(CGPoint *)points NS_SWIFT_NAME(_nextElement(withPoints:));
 
 /*! Error value used when flattening bezier curves. This is derived from the initializing input path. */
 @property (nonatomic, assign) double error;
 
 /*! If currently enumerating a bezier curve, this is the current tValue of the curve. */
 @property (nonatomic, readonly) double tValue;
-/*! The definitive of the current bezier curve, but this is only valid if `elementType ==  `AJRBezierPathElementCurveTo`. */
+/*! The definitive of the current bezier curve, but this is only valid if `elementType ==  `AJRBezierPathElementCubicCurveTo`. */
 @property (nonatomic, readonly) AJRBezierCurve curve;    // Only valid if the current elementType is NSCurveToBezierPathElement
 /*! The current element index we're enumeration. This doesn't necessarily increment with each call, since each line segment of a bezier path with have the same elementIndex. */
 @property (nonatomic,readonly) NSInteger elementIndex;
 /*! The type of the current element type. This would be the same as asking the `AJRBezierPath` for the element type of the element at `elementIndex`. */
-@property (nonatomic, readonly) AJRBezierPathElementType elementType;
+@property (nonatomic, readonly) AJRBezierPathElement elementType;
 /*! If we're enumerating by line segments, this is true when the current line segment was starting via a moveTo. */
 @property (nonatomic, readonly) BOOL isMoveToLineSegment;
 

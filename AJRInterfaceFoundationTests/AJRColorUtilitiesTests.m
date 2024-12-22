@@ -39,7 +39,7 @@
 
 @implementation AJRColorUtilitiesTest
 
-static inline BOOL AJRFloatEqual(a, b) {
+static inline BOOL AJRFloatEqual(double a, double b) {
     return ((long long)(a * 100000.0) == (long long)(b * 100000.0));
 }
 

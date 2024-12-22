@@ -185,18 +185,18 @@ extension AJRWindingRule : AJRUserDefaultProvider, AJRXMLEncodableEnum {
     }
 }
 
-extension AJRBezierPathElementType : AJRUserDefaultProvider, AJRXMLEncodableEnum {
+extension AJRBezierPathElement : AJRUserDefaultProvider, AJRXMLEncodableEnum {
     
-    public static var allCases: [AJRBezierPathElementType] = [.setBoundingBox, .moveTo, .lineTo, .curveTo, .close]
-    
-    public static func userDefault(forKey key: String, from userDefaults: UserDefaults) -> AJRBezierPathElementType? {
+    public static var allCases: [AJRBezierPathElement] = [.setBoundingBox, .moveTo, .lineTo, .cubicCurveTo, .close]
+
+    public static func userDefault(forKey key: String, from userDefaults: UserDefaults) -> AJRBezierPathElement? {
         if let value = userDefaults.string(forKey: key) {
-            return AJRBezierPathElementType(string: value)
+            return AJRBezierPathElement(string: value)
         }
         return nil
     }
     
-    public static func setUserDefault(_ value: AJRBezierPathElementType?, forKey key: String, into userDefaults: UserDefaults) {
+    public static func setUserDefault(_ value: AJRBezierPathElement?, forKey key: String, into userDefaults: UserDefaults) {
         if let value {
             userDefaults.set(value.description, forKey: key)
         } else {
@@ -209,7 +209,8 @@ extension AJRBezierPathElementType : AJRUserDefaultProvider, AJRXMLEncodableEnum
         case .setBoundingBox: return "setBoundingBox"
         case .moveTo: return "moveTo"
         case .lineTo: return "lineTo"
-        case .curveTo: return "curveTo"
+        case .cubicCurveTo: return "curveTo"
+        case .quadraticCurveTo: return "quadCurveTo"
         case .close: return "close"
         @unknown default:
             preconditionFailure("Unknown case in \(type(of: self)). This shouldn't happen.")

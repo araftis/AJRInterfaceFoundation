@@ -77,8 +77,7 @@
     NSInteger x, y;
     NSInteger coordinateIndex = 2;
     CGPoint moveTo = CGPointZero, currentPoint, lastPoint = CGPointZero, where;
-    AJRBezierCurve curve;
-    
+
     if (error == 0.0) {
         error = [self flatness];
     }
@@ -112,7 +111,8 @@
                     lastPoint = currentPoint;
                     break;
                     
-                case AJRBezierPathElementCurveTo:
+                case AJRBezierPathElementCubicCurveTo: {
+                    AJRBezierCurve curve;
                     curve.start = lastPoint;
                     curve.handle1 = _points[coordinateIndex + 0];
                     curve.handle2 = _points[coordinateIndex + 1];
@@ -128,7 +128,26 @@
                     }
                     lastPoint = curve.end;
                     break;
-                    
+                }
+
+                case AJRBezierPathElementQuadraticCurveTo: {
+                    AJRQuadraticCurve curve;
+                    curve.start = lastPoint;
+                    curve.controlPoint = _points[coordinateIndex + 0];
+                    curve.end = _points[coordinateIndex + 1];
+                    coordinateIndex += 3;
+                    subintersections = [AJRIntersection intersectionsForQuadraticCurve:curve withLine:line error:error];
+                    if (subintersections) {
+                        for (y = 0; y < (const NSInteger)[subintersections count]; y++) {
+                            subintersection = [subintersections objectAtIndex:y];
+                            [subintersection setSegment:x - 1];
+                            [intersections addObject:subintersection];
+                        }
+                    }
+                    lastPoint = curve.end;
+                    break;
+                }
+
                 case AJRBezierPathElementClose:
                     subintersection = [AJRIntersection intersectionForLine:line withLine:(AJRLine){lastPoint, moveTo}];
                     if (subintersection) {
@@ -223,7 +242,7 @@ static id <AJRBezierPathProtocol> _AJRBezierPathUsingOperation(NSArray<id <AJRBe
     } else if (paths.count == 1) {
         // This happens when we're doing an operation on a single path, like when normalizing.
         CGPathRef intermediate = block(paths[0].CGPath, NULL);
-        id <AJRBezierPathProtocol> result = [[paths[0] class] bezierPathWithCGPath:intermediate];
+        id <AJRBezierPathProtocol> result = (id <AJRBezierPathProtocol>)[[paths[0] class] bezierPathWithCGPath:intermediate];
         CGPathRelease(intermediate);
         return result;
     } else {
@@ -236,7 +255,7 @@ static id <AJRBezierPathProtocol> _AJRBezierPathUsingOperation(NSArray<id <AJRBe
             leftPath = intermediate;
         }
 
-        id <AJRBezierPathProtocol> result = [finalClass bezierPathWithCGPath:leftPath];
+        id <AJRBezierPathProtocol> result = (id <AJRBezierPathProtocol>)[finalClass bezierPathWithCGPath:leftPath];
         CGPathRelease(leftPath);
 
         return result;
@@ -296,7 +315,7 @@ NSArray *AJRBezierPathGetSubcomponents(id <AJRBezierPathProtocol> path) {
     CFArrayRef subpaths = CGPathCreateSeparateComponents(path.CGPath, path.windingRule == NSWindingRuleEvenOdd);
 
     for (NSInteger x = 0; x < CFArrayGetCount(subpaths); x++) {
-        [components addObject:[path.class bezierPathWithCGPath:CFArrayGetValueAtIndex(subpaths, x)]];
+        [components addObject:(AJRBezierPath *)[path.class bezierPathWithCGPath:CFArrayGetValueAtIndex(subpaths, x)]];
     }
     CFRelease(subpaths);
 
