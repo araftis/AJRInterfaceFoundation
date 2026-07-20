@@ -965,7 +965,7 @@ CGContextRef AJRHitTestContext(void) {
     
     if (context == NULL) {
         CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-        context = CGBitmapContextCreate(bitmap.bytes, 1, 1, 8, 4, colorSpace, kCGImageAlphaPremultipliedLast);
+        context = CGBitmapContextCreate(bitmap.bytes, 1, 1, 8, 4, colorSpace, kCGBitmapByteOrder32Host | kCGImageAlphaPremultipliedLast);
         CGColorSpaceRelease(colorSpace);
     }
     

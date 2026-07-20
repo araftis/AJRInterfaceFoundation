@@ -328,7 +328,7 @@ extern void AJRHSBToRGB(CGFloat hueIn, CGFloat saturationIn, CGFloat brightnessI
 #define HUE_ANGLE 60.0
 void AJRRGBToHSB(CGFloat rp, CGFloat gp, CGFloat bp, CGFloat *r_h, CGFloat *r_s, CGFloat *r_v) {
     CGFloat cmax, cmin, delta;
-    NSInteger cmaxwhich, cminwhich;
+    NSInteger cmaxwhich;
     
     //debug ("rgb=%d,%d,%d rgbprime=%f,%f,%f", r, g, b, rp, gp, bp);
     
@@ -337,9 +337,8 @@ void AJRRGBToHSB(CGFloat rp, CGFloat gp, CGFloat bp, CGFloat *r_h, CGFloat *r_s,
     if (gp > cmax) { cmax = gp; cmaxwhich = 1; }
     if (bp > cmax) { cmax = bp; cmaxwhich = 2; }
     cmin = rp;
-    cminwhich = 0;
-    if (gp < cmin) { cmin = gp; cminwhich = 1; }
-    if (bp < cmin) { cmin = bp; cminwhich = 2; }
+    if (gp < cmin) { cmin = gp; }
+    if (bp < cmin) { cmin = bp; }
     
     //debug ("cmin=%f,cmax=%f", cmin, cmax);
     delta = cmax - cmin;

@@ -37,7 +37,7 @@ import AppKit
 #endif
 
 
-extension NSLayoutConstraint.Attribute : CustomStringConvertible {
+extension NSLayoutConstraint.Attribute : @retroactive CustomStringConvertible {
     
     public var description: String {
         switch self {

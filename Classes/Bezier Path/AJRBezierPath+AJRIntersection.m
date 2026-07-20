@@ -267,7 +267,7 @@ id <AJRBezierPathProtocol> AJRBezierPathByUnioningPaths(NSArray<id <AJRBezierPat
     if (paths.count) {
         NSWindingRule rule = paths[0].windingRule;
         return _AJRBezierPathUsingOperation(paths, ^CGPathRef(CGPathRef path1, CGPathRef path2) {
-            return CGPathCreateCopyByUnioningPath(path1, path2, rule == AJRWindingRuleEvenOdd);
+            return CGPathCreateCopyByUnioningPath(path1, path2, rule == NSWindingRuleEvenOdd);
         });
     }
     return nil;
@@ -277,7 +277,7 @@ id <AJRBezierPathProtocol> AJRBezierPathByIntersectingPaths(NSArray<id <AJRBezie
     if (paths.count) {
         NSWindingRule rule = paths[0].windingRule;
         return _AJRBezierPathUsingOperation(paths, ^CGPathRef(CGPathRef path1, CGPathRef path2) {
-            return CGPathCreateCopyByIntersectingPath(path1, path2, rule == AJRWindingRuleEvenOdd);
+            return CGPathCreateCopyByIntersectingPath(path1, path2, rule == NSWindingRuleEvenOdd);
         });
     }
     return nil;
@@ -287,7 +287,7 @@ id <AJRBezierPathProtocol> AJRBezierPathBySubtractingPaths(NSArray<id <AJRBezier
     if (paths.count) {
         NSWindingRule rule = paths[0].windingRule;
         return _AJRBezierPathUsingOperation(paths, ^CGPathRef(CGPathRef path1, CGPathRef path2) {
-            return CGPathCreateCopyBySubtractingPath(path1, path2, rule == AJRWindingRuleEvenOdd);
+            return CGPathCreateCopyBySubtractingPath(path1, path2, rule == NSWindingRuleEvenOdd);
         });
     }
     return nil;
@@ -297,7 +297,7 @@ id <AJRBezierPathProtocol> AJRBezierPathBySymmetricDifferenceOfPaths(NSArray<id 
     if (paths.count) {
         NSWindingRule rule = paths[0].windingRule;
         return _AJRBezierPathUsingOperation(paths, ^CGPathRef(CGPathRef path1, CGPathRef path2) {
-            return CGPathCreateCopyBySymmetricDifferenceOfPath(path1, path2, rule == AJRWindingRuleEvenOdd);
+            return CGPathCreateCopyBySymmetricDifferenceOfPath(path1, path2, rule == NSWindingRuleEvenOdd);
         });
     }
     return nil;

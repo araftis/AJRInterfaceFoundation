@@ -82,17 +82,17 @@ static NSArray __attribute__((unused)) *AJRBezierCurvesFromPoints(CGPoint *point
  Fit a Bezier curve to a (sub)set of digitized points
  */
 static void FitCubic(CGPoint *points, NSInteger first, NSInteger last, AJRVector tHat1, AJRVector tHat2, double error, NSMutableArray *curves) {
-    AJRBezierCurve        bezierCurve;            /*Control points of fitted Bezier curve*/
-    double                *u;                        /*  Parameter values for point  */
-    double                *uPrime;                    /*  Improved parameter values */
-    double                maxError;                /*  Maximum fitting error     */
-    NSInteger                    splitPoint;                /*  Point to split point set at     */
-    NSInteger                    nPts;                        /*  Number of points in subset  */
-    double                iterationError;        /*Error below which you try iterating  */
-    NSInteger                    maxIterations = 4;    /*  Max times to try iterating  */
-    AJRVector            tHatCenter;                /* Unit tangent vector at splitPoint */
-    NSInteger                    i;
-    
+    AJRBezierCurve bezierCurve;     /* Control points of fitted Bezier curve*/
+    double *u;                      /* Parameter values for point  */
+    double *uPrime;                 /* Improved parameter values */
+    double maxError;                /* Maximum fitting error     */
+    NSInteger splitPoint;           /* Point to split point set at     */
+    NSInteger nPts;                 /* Number of points in subset  */
+    double iterationError;          /* Error below which you try iterating  */
+    NSInteger maxIterations = 4;    /*  Max times to try iterating  */
+    AJRVector tHatCenter;           /* Unit tangent vector at splitPoint */
+    NSInteger i;
+
     iterationError = error * error;
     nPts = last - first + 1;
     
@@ -118,6 +118,7 @@ static void FitCubic(CGPoint *points, NSInteger first, NSInteger last, AJRVector
     maxError = ComputeMaxError(points, first, last, bezierCurve, u, &splitPoint);
     if (maxError < error) {
         [curves addObject:[NSValue valueWithBezierCurve:bezierCurve]];
+        free((char *)u);
         return;
     }
     

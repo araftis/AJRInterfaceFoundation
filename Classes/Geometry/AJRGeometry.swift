@@ -151,7 +151,7 @@ public extension CGRect {
     }
 }
 
-extension CGSize : AJRUserDefaultProvider {
+extension CGSize : @retroactive AJRUserDefaultProvider {
     
     public static func userDefault(forKey key: String, from userDefaults: UserDefaults) -> CGSize? {
         if let rawSize = userDefaults.string(forKey: key) {
@@ -170,7 +170,7 @@ extension CGSize : AJRUserDefaultProvider {
     
 }
 
-extension CGPoint : AJRUserDefaultProvider {
+extension CGPoint : @retroactive AJRUserDefaultProvider {
     
     public static func userDefault(forKey key: String, from userDefaults: UserDefaults) -> CGPoint? {
         if let rawPoint = userDefaults.string(forKey: key) {
@@ -189,7 +189,7 @@ extension CGPoint : AJRUserDefaultProvider {
     
 }
 
-extension CGRect : AJRUserDefaultProvider {
+extension CGRect : @retroactive AJRUserDefaultProvider {
     
     public static func userDefault(forKey key: String, from userDefaults: UserDefaults) -> CGRect? {
         if let rawRect = userDefaults.string(forKey: key) {
